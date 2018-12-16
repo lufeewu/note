@@ -29,6 +29,9 @@ govendor test +local
 dep init
 ![lock toml vendor 关系](./img/28968009-f49a4a6a-78eb-11e7-93cf-e695d45488da.14d8c0f3.png)
 dep ensure
+
 dep ensure -add 
+
 dep check
+
 dep status 

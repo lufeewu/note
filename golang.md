@@ -2,15 +2,25 @@
 用于支持本地包管理依赖，通过 vendor.json 文件记录依赖包版本，可以将项目依赖的外部包拷贝到项目下的 vendor 目录下。
 ### 命令
 govendor init
+
 govendor add +external
+
 govendor list
+
 govendor list -v fmt
+
 govendor fetch golang.org/x/net/context@{version-id}
+
 govendor fetch golang.org/x/net/context@v1
+
 govendor fetch golang.org/x/net/context@=v1
+
 govendor fetch golang.org/x/net/context
+
 govendor fmt +local
+
 govendor install +local
+
 govendor test +local
   
 # dep

@@ -35,3 +35,26 @@ dep ensure -add
 dep check
 
 dep status 
+
+
+# 内建函数
+> close()
+用于关闭 channel（双向或者只写的），将不在阻塞读取。如果 channel 关闭且没有值，读取 ok 将会为 false
+
+
+# 垃圾回收
++ STW (Stop the World)
++ Mark STW，SWEEP 并行
++ 三色标记法
++ 写屏障( write barrier)
+
+> 三色标记法
+1. 所有对象最开始是白色
+2. 从 root 开始找到所有可达对象，标记为灰色，放入待处理队列
+3. 遍历灰色对象队列，将其引用对象标记为灰色放入待处理队列，自身标记为黑色
+4. 处理完灰色对象队列，执行清扫工作
+
+
+
+# ref
+1. <a href="http://legendtkl.com/2017/04/28/golang-gc/">Golang 垃圾回收剖析</a>

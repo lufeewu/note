@@ -40,6 +40,9 @@ dep status
 # 内建函数
 > close()
 用于关闭 channel（双向或者只写的），将不在阻塞读取。如果 channel 关闭且没有值，读取 ok 将会为 false
+> select case
+1. 存在 default 不阻塞
+2. 不存在 default 阻塞
 
 
 # 垃圾回收
@@ -54,7 +57,10 @@ dep status
 3. 遍历灰色对象队列，将其引用对象标记为灰色放入待处理队列，自身标记为黑色
 4. 处理完灰色对象队列，执行清扫工作
 
-
+# struct tag
+可以很方便的进行 json 、yaml 等文件的解析
 
 # ref
 1. <a href="http://legendtkl.com/2017/04/28/golang-gc/">Golang 垃圾回收剖析</a>
+2. <a href="https://www.jianshu.com/p/c4ec92afeca8">golang 自定义 struct 字段标签</a>
+

@@ -36,6 +36,44 @@ dep check
 
 dep status 
 
+# 语言特性
+1. 基础
++ 工作区和GOPATH
++ 命令源码文件、库源码文件
++ 变量、常量、函数、结构体、接口
+    + 浅拷贝，值类型和引用类型
+    + 指针
+    + 嵌入字段
++ 类型推断、代码块、类型断言
++ 数组、切片
+    + 切片的容量增长
++ container/list 包,指针
++ map(字典、键值对、键元素对、映射)
++ 通道 channel
+    + make、<-、select case
+    + FIFO 队列
+    + 副本、复制
+    + 缓冲通道、非缓冲通道
+    + panic、close
+    + 单向通道、双向通道
+    + 同步、异步
++ goroutine 协程
+    + sync.Pool、sync.Map、sync.WaitGroup
++ package
+    + fmt
+    + io.Writer
+    + bufio
+    + image
+
+
+## 为什么 go 语言没有继承
+
+        面向对象编程，至少在最知名的语言中，涉及到太多关于类型之间关系的讨论，这些关系通常可以自动派生。而 Go 则采用了不同的方法。
+        在 go 中，并不要求程序员提前声明两个类型是相关的，go 会自动满足指定其方法子集的任何接口。但这种方法真正的优势可不仅是减少记录。go 的类型可以同时满足多个接口，而不需要传统的多重继承的复杂性。接口可以是非常轻量的，具有一个甚至零个方法的接口就可以表示一个有用的概念。如果出现了新的需求或者用于测试，可以在实体之后直接添加接口，而不需要注释原类型。由于类型和接口之间没有明确的关系，所以也不需要管理或争论的类型层次结构。
+        这些思想可以用于构建类似于类型安全的Unix管道的东西。例如，可以参考 fmt.fprintf 是如何格式化打印到任何输出而不仅是文件、bufio 包如何与文件 I/O 完全分离、image 包如何生成压缩文件。所有这些想法都源于用单个接口（io.writer）表示单个方法（write）。这些还只表面上，Go的接口对程序的结构还有着很深远的影响。
+        熟悉这些需要一些练习习惯，但这种类型依赖的隐式风格是 Go 高效的事情之一。
+
+> Why is there no type inheritance? https://golang.org/doc/faq#inheritance
 
 # 内建函数
 > close()
@@ -63,4 +101,4 @@ dep status
 # ref
 1. <a href="http://legendtkl.com/2017/04/28/golang-gc/">Golang 垃圾回收剖析</a>
 2. <a href="https://www.jianshu.com/p/c4ec92afeca8">golang 自定义 struct 字段标签</a>
-
+3. <a href="https://www.kancloud.cn/kancloud/effective/72199">Effective Go 中文版</a>

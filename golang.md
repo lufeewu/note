@@ -47,6 +47,9 @@ dep status
     + 指针、uintptr、unsafe.Pointer、不可寻址值
     + 嵌入字段
     + 接口类型、动态类型、静态类型、**接口赋值**、**零值**、iface、无类型 nil
+    + 常量默认类型
+    + byte、uint8
+    + value.(type)
     + **副本**
 + 类型推断、代码块、类型断言
 + 数组、切片
@@ -71,7 +74,8 @@ dep status
     + struct{}{}
     + sync/atomic
     + > 怎样让我们启用的多个 goroutine 按照既定的顺序运行?
-
++ if、for、switch 语句
+    + range、
 ![golang GMP 模型](./img/golang_GMP.png)
 
 + package

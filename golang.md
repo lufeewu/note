@@ -44,7 +44,7 @@ dep status
    + go、range、channel、make、type
 + 变量、常量、函数、结构体、接口
     + **浅拷贝，值类型和引用类型**
-    + 指针、uintptr、unsafe.Pointer
+    + 指针、uintptr、unsafe.Pointer、不可寻址值
     + 嵌入字段
     + 接口类型、动态类型、静态类型、**接口赋值**、**零值**、iface、无类型 nil
     + **副本**
@@ -62,7 +62,18 @@ dep status
     + 单向通道、双向通道
     + 同步、异步
 + goroutine 协程
+    + go 语句 
     + sync.Pool、sync.Map、sync.WaitGroup
+    + CSP 并发模型
+    + GPM (goroutine、processor、machine) 
+    + runtime.GOMAXPROCS(maxProcs)
+    + goroutine pool
+    + struct{}{}
+    + sync/atomic
+    + > 怎样让我们启用的多个 goroutine 按照既定的顺序运行?
+
+![golang GMP 模型](./img/golang_GMP.png)
+
 + package
     + fmt
     + io.Writer

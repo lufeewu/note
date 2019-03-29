@@ -78,7 +78,14 @@ dep status
     + range、
 ![golang GMP 模型](./img/golang_GMP.png)
 
++ **panic、recover、defer**
 + package
+    + **error**
+        + 卫述语句
+        + error type
+        + 错误处理
+        + 立体的错误类型体系
+        + 扁平的错误值列表
     + fmt
     + io.Writer
     + bufio

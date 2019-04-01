@@ -61,7 +61,6 @@ dep status
     + FIFO 队列
     + 副本、复制
     + 缓冲通道、非缓冲通道
-    + panic、close
     + 单向通道、双向通道
     + 同步、异步
 + goroutine 协程
@@ -91,6 +90,25 @@ dep status
     + bufio
     + image
 
++ panic、defer、recover
+    + panic
+        + index out of rang
+        + runtime error: index out of ra...
+        + exit status 2
+        + 从 panic 被引发到程序终止运行的大致过程是什么？
+            1. 建立 panic 详情
+            2. 沿着调用栈的反方向传播至顶端, main 函数
+            3. go runtime 回收，程序崩溃
+            4. 打印 panic 详情
+        + 意外 panic, 主动 panic()函数
+    + recover
+    + defer
+        + 不支持 go 语言内建函数调用
+        + 不支持 unsafe 包中的函数的调用表达式
+        + 倒序执行、FILO 队列（栈）
+        + 可以在 defer 中引发 panic 么？
+
++ test 测试
 
 ## 为什么 go 语言没有继承
 

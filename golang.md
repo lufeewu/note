@@ -108,7 +108,26 @@ dep status
         + 倒序执行、FILO 队列（栈）
         + 可以在 defer 中引发 panic 么？
 
-+ test 测试
++ 测试
+    + go 程序测试
+        + 功能测试（test）
+        + 基准测试（benchmark, 性能测试）
+        <img src="./img/test_benchmark.png">
+        + 示例测试（example）
+        + go clean -cache
+        + -cpu、-count、-parallel、-benchmark、-benchtime
+        + GPM(Goroutine、Processor、Machine)
+    + 程序监测
+    + go 语言标准库代码用法
+    + 单元测试、API 测试、集成测试、灰度测试
+
++ sync.Mutex、sync.RWMutex
+    + 竞态条件 (race condition)
+    + 同步、临界区（critical section）、互斥量（mutual exclusion）
+    + lock、unlock、deadlock
+    + time.Ticker
+    + 共享资源（存储、计算、I/O、网络等）
+
 
 ## 为什么 go 语言没有继承
 
@@ -126,6 +145,7 @@ dep status
 1. 存在 default 不阻塞
 2. 不存在 default 阻塞
 
+# TCMalloc
 
 # 垃圾回收
 + STW (Stop the World)
@@ -141,6 +161,9 @@ dep status
 
 # struct tag
 可以很方便的进行 json 、yaml 等文件的解析
+
+# golang 问题
+1. map、struct、切片在 64 位机器中占用多少字节
 
 # ref
 1. <a href="http://legendtkl.com/2017/04/28/golang-gc/">Golang 垃圾回收剖析</a>

@@ -121,12 +121,21 @@ dep status
     + go 语言标准库代码用法
     + 单元测试、API 测试、集成测试、灰度测试
 
-+ sync.Mutex、sync.RWMutex
++ 互斥锁 sync.Mutex、sync.RWMutex
     + 竞态条件 (race condition)
     + 同步、临界区（critical section）、互斥量（mutual exclusion）
     + lock、unlock、deadlock
     + time.Ticker
     + 共享资源（存储、计算、I/O、网络等）
+    + 互斥锁和读写锁的指针类型都实现了哪一个接口？（Lock接口）
+    + 怎样获取读写锁中的读锁？（Rlock）
+
++ 条件变量 sync.Cond
+    + 等待通知(wait)，wait 方法做了什么？
+    + 单发通知(signal)
+    + 广播通知(broadcast)
+    + sendCond、recvCond
+    + *sync.Cond类型的值可以被传递吗？那sync.Cond...
 
 
 ## 为什么 go 语言没有继承

@@ -137,6 +137,15 @@ dep status
     + sendCond、recvCond
     + *sync.Cond类型的值可以被传递吗？那sync.Cond...
 
++ 原子操作 (sync/atomic)
+    + sync/atomic 包提供了几种原子操作？可操作的数据类型又有哪些？
+    + atomic.Value
+    + 加法（Add）、比较并交换（compare and swap，简称 CAS）、加载（load）、存储（load）和交换（swap）
+    + 原子操作减法（无符号数的减法）
+    + CAS 比较交换操作相比交换操作有什么优势？
+    + 自旋锁（spinlock）
+
++ sync.WaitGroup 和 sync.Once
 
 ## 为什么 go 语言没有继承
 

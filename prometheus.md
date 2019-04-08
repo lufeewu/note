@@ -72,5 +72,10 @@ CNCF 的一个工程，是一个系统和服务监控工具。它从配置的目
 + 启动 web
 + 启动 notifier manager
 
+## remote storage
+> 通过实现 remote_write/remote_read adapter 的接口，可以将 prometheus 持久存储到第三方存储如 opentsdb、influxdb、graphite 等数据库中. 在 documentation/examples/remote_storage中有实现这三个 adapter.
+
+
+
 # ref
 1. https://yunlzheng.gitbook.io/prometheus-book/part-ii-prometheus-jin-jie/readmd/scale-prometheus-with-federation

@@ -146,6 +146,16 @@ dep status
     + 自旋锁（spinlock）
 
 + sync.WaitGroup 和 sync.Once
+    + sync.WaitGroup、Add、Done、Wait
+    + GoF 单例模式
+    + 在使用 waitgroup 值实现一对多的 goroutine 协作流程时，怎样才能让分发子任务的 goroutine 获得各个子任务的具体执行结果呢？
+
++ context.Context
+    + context.Background、context.WithCancel、context.CancelFunc、context.WithDeadline、context.WithTimeout
+    + <img src='img/golang_context.png'>
+    + context 值在传达撤销信号的时候是广度优先的，还是深度优先的？其优势和劣势都是什么？
+
++ 临时对象池 sync.Pool
 
 ## 为什么 go 语言没有继承
 

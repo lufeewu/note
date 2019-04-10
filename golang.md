@@ -168,7 +168,20 @@ dep status
         + 让并发安全字典只能存储某个特定类型的键
         + 接受动态的类型设置，并在程序运行的时候通过反射操作进行检查（reflect.Type)
     + sync.Map dirty 字段
-    
+
++ Unicode 
+    + Ascii、Unicode、UTF-8、byte（http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html）
+    + rune
+    + 使用带有 range 子句的 for 语句遍历字符串的时候应该注意什么？
+    + 判断一个 Unicode 字符是否为单字节有几种方式？
+
++ strings 包与字符串操作
+    + strings.Builder、strings.Reader
+    + 裁剪、拼接（切片、+）
+    + strings.Builder 类型在使用上有约束么？
+    + 为什么说 strings.Reader 类型的值可以高效地读取字符串？(已读计数)
+    + *strings.Builder 和 *strings.Reader 分别实现了哪些接口？这样做有什么好处？
+
 ## 为什么 go 语言没有继承
 
         面向对象编程，至少在最知名的语言中，涉及到太多关于类型之间关系的讨论，这些关系通常可以自动派生。而 Go 则采用了不同的方法。

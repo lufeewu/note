@@ -182,6 +182,19 @@ dep status
     + 为什么说 strings.Reader 类型的值可以高效地读取字符串？(已读计数)
     + *strings.Builder 和 *strings.Reader 分别实现了哪些接口？这样做有什么好处？
 
++ bytes 包与字符串操作
+    + Buffer 长度、总长度, Len、Cap
+    + 已读计数
+    + Truncate 
+    + 扩容策略是怎样的？
+    + 哪些方法可能造成内容泄露？
+    + 深度拷贝、副本传递避免泄露
+    + strings.Builder 和 bytes.Buffer 的 string 方法，哪一个高效？
+
++ I/O
+
+
+
 ## 为什么 go 语言没有继承
 
         面向对象编程，至少在最知名的语言中，涉及到太多关于类型之间关系的讨论，这些关系通常可以自动派生。而 Go 则采用了不同的方法。

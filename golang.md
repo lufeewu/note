@@ -232,7 +232,7 @@ dep status
     + io 包中的同步内存管道的运作机制是是么？
     <img src='img/io_interface.png'>
 
-
++ bufio( buffered I/O)
 
 ## 为什么 go 语言没有继承
 

@@ -191,7 +191,46 @@ dep status
     + 深度拷贝、副本传递避免泄露
     + strings.Builder 和 bytes.Buffer 的 string 方法，哪一个高效？
 
-+ I/O
++ **I/O**
+    > io 包中共有简单接口 11 个. 其中读取操作相关的接口 5 个，写入相关的接口 4 个，关闭操作相关的 1 个以及 1 个读写位置设定相关的接口
+    + strings.Builder 指针类型实现接口包括 io.Writer、io.ByteWriter、fmt.Stringer、io.stringWriter
+    + strings.Reader 指针类型实现接口
+        - io.Reader
+        - io.ReaderAt
+        - io.ByteReader
+        - io.RuneReader
+        - io.Seeker
+        - io.ByteScanner
+        - io.RuneScanner
+        - io.WriterTo
+    + bytes.Buffer 指针类型实现接口
+        - io.Reader
+        - io.ByteReader
+        - io.RuneReader
+        - io.ByteScanner
+        - io.RuneScanner
+        - io.WriterTo
+        - io.Writer
+        - io.ByteWriter
+        - io.ReaderFrom
+    + io.Reader 扩展接口
+        - io.ReadWriter
+        - io.ReadCloser
+        - io.ReadWriteCloser
+        - io.ReadSeeker
+        - io.ReadWriteSeeker
+    + io.Reader 实现接口
+        - io.LimitedReader
+        - io.SectionReader
+        - io.teeReader
+        - io.multiReader
+        - io.pipe
+        - io.PipeReader
+    + io 包中的接口都有哪些？它们之间都有着怎样的关系？
+        - 核心接口 io.Reader、io.Writer、io.Closer
+        - 四大操作类,读取、写入、关闭、读写位置设定
+    + io 包中的同步内存管道的运作机制是是么？
+    <img src='img/io_interface.png'>
 
 
 

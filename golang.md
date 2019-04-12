@@ -232,7 +232,14 @@ dep status
     + io 包中的同步内存管道的运作机制是是么？
     <img src='img/io_interface.png'>
 
-+ bufio( buffered I/O)
++ bufio ( buffered I/O , 内置缓冲区)
+    + Reader
+        - 字段 buf、rd、r、w、err、lastByte、lastRuneSize
+        - bufio.Reader 类型的读取方法有哪些不同？(4个读取流程代表)
+    + Scanner
+    + writer 和 ReadWriter
+    + Flush 方法
+    + 内容泄露 Reader、Peek、ReadSlice、ReadLine 
 
 ## 为什么 go 语言没有继承
 

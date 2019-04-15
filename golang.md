@@ -241,6 +241,23 @@ dep status
     + Flush 方法
     + 内容泄露 Reader、Peek、ReadSlice、ReadLine 
 
++ os 包中的 API
+    > APi 基于操作系统，为使用操作系统功能提供高层次支持，同时不依赖具体的操作系统
+    + 帮助使用操作系统中的文件系统、权限系统、环境变量、系统进程及系统信号
+    + os.File
+        - 类 Unix 的一切都可以看做是文件
+        - 文本文件、二进制文件、压缩文件、目录
+        - 符号链接、物理设备、命名管道、套接字（socket）
+        - os.File 类型实现了哪些 io 包中的接口？
+        - 怎样获得一个 os.File 类型的指针值？（Create、NewFile、Open、OpenFile）
+        - os 错误值 os.PathError、os.ErrInvalid、os.ErrPermission、os.ErrExist
+    + 可以用于 File 值的操作模式都有哪些？（只读、读写、只写）
+    + 怎样设定常规文件的访问权限？
+    + 怎样通过 os 包中的 API 创建和操作一个系统进程？
+
++ 网络
+
+
 ## 为什么 go 语言没有继承
 
         面向对象编程，至少在最知名的语言中，涉及到太多关于类型之间关系的讨论，这些关系通常可以自动派生。而 Go 则采用了不同的方法。

@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Birds interface {
 	Twitter() string
@@ -41,7 +43,7 @@ func ChickenAnimation(chicken Chicken) {
 	chicken.Twitter()
 }
 
-func main() {
+func checkassign() {
 	// var bird Birds
 	// sparrow := &Sparrow{name: "hey"}
 	// bird = sparrow

@@ -244,6 +244,7 @@ dep status
 + os 包中的 API
     > APi 基于操作系统，为使用操作系统功能提供高层次支持，同时不依赖具体的操作系统
     + 帮助使用操作系统中的文件系统、权限系统、环境变量、系统进程及系统信号
+    + dir、env、error、exec、export、executable、file、getwd、path、pipe、removeall、stat、sys、types、wait、signal、user
     + os.File
         - 类 Unix 的一切都可以看做是文件
         - 文本文件、二进制文件、压缩文件、目录
@@ -256,6 +257,37 @@ dep status
     + 怎样通过 os 包中的 API 创建和操作一个系统进程？
 
 + 网络
+    + socket、IPC（Inter-Process Communication）
+        - 系统信号（signal）
+        - 管道（pipe）
+        - 套接字（socket）
+        - 文件锁（file lock）
+        - 消息队列（message queue）
+        - 信号灯（semaphore，信号量）
+    + syscall
+        - syscall.Socket, 3 个参数表示通信域、类型及使用协议
+        <img src="img/socket.png">
+    + net
+        - net.Dial(network, address string)
+        - network 可选 9 个值: tcp、tcp4、tcp6、udp、udp4、udp6、unix、unixgram、unixpacket
+        - 调用 net.DialTimeout 函数时超过给定的时间意味着什么？
+        - net.Dialer 类型 
+        - DialContext 方法
+        - 怎样在 net.Conn 类型的值上正确地设定针对读操作和写操作的超时时间？
+    + net/http
+        - http.Get()、*http.Client
+        - http.Client 类型中的 Transport 字段代表着什么？ 
+        - *http.Transport、http.RoundTripper
+            - IdleConnTimeout
+            - DefaultTransport
+            - ResponseHeaderTimeout
+            - ExpectContinueTimeout
+            - TLSHandshakeTimeout
+        - http.Server 类型的 ListenAndServe 方法都做了哪些事情？(服务端)
+        - 怎样优雅的停止 HTTP 协议的网络服务程序？
+
+        
+
 
 
 ## 为什么 go 语言没有继承

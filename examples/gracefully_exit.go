@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-func main() {
+func graceuflly_exit() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "Server is running")

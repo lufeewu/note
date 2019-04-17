@@ -286,6 +286,23 @@ dep status
         - http.Server 类型的 ListenAndServe 方法都做了哪些事情？(服务端)
         - 怎样优雅的停止 HTTP 协议的网络服务程序？
 
++ 性能分析
+    + runtime/pprof
+    + net/http/pprof
+    + runtime/trace
+    + 概要文件解析工具 go tool pprof 、go tool trace
+    + 概要文件: CPU 概要文件、内存概要文件、阻塞概要文件
+    + go test
+    + 怎样让程序对 CPU 概要信息进行采样？（runtime/pprof）
+        - runtime/pprof.StartCPUProfile
+    + 怎样设定内存概要信息的采样频率？（runtime.MemProfileRate)
+    + 怎样获取到阻塞概要信息？（SetBlockProfileRate）
+    + runtime/pprof.Lookup 函数的正确调用方式是什么？
+        - runtime/pprof 6 个预定义概要名称: goroutine、heap、allocs、threadcreate、block、mutex
+    <img src="img/pprof.png"> 
+    + 如何为基于 HTTP 协议的网络服务添加性能分析接口？（net/http/pprof）
+    + runtime/trace 代码包的功用是什么？
+        
         
 
 

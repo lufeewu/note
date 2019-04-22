@@ -40,8 +40,23 @@ dep status
 1. 基础
 + 工作区和GOPATH
 + 命令源码文件、库源码文件
-+ 关键字
-   + go、range、channel、make、type
++ 25 个关键字不允许定义
+   + var、const、**package**、import
+   + func、return、**interface**、struct、type、**map**、range
+   + go、select、**chan**
+   + if、else、switch、case、default、fallthrough、for、break、continue
+   + goto、**defer**
++ 预定义
+    + 内建常量 true、false、iota、nil
+    + 内建类型 
+        - int、int8、int16、int32、int64
+        - uint、uint8、uint16、uint32、uint64、uintprt
+        - float32、float64、complex64、complex128
+        - bool、byte、rune、string、error
+    + 内建函数
+        - make、len、cap、new、append、copy、close、delete
+        - complex、real、imag
+        - **panic**、**recover**
 + 变量、常量、函数、结构体、接口
     + **浅拷贝，值类型和引用类型**
     + 指针、uintptr、unsafe.Pointer、不可寻址值

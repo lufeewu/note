@@ -73,9 +73,26 @@ func testDefer2() {
 
 }
 
+func testSlice() {
+	b := []int{3, 4, 5, 6}
+	var p *[]int
+	p = &b
+	logrus.Infoln(p)
+	*p = append(*p, 3)
+	logrus.Infoln(p)
+
+	var c []int
+	c = append(c, *p...)
+	logrus.Infoln(c)
+	for _, v := range c {
+		logrus.Infoln(v)
+	}
+}
+
 func main() {
 	// errNil()
 	// testCap()
 	// testDefer()
-	testDefer2()
+	// testDefer2()
+	testSlice()
 }

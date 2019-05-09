@@ -1,6 +1,7 @@
 package main
 
 import (
+	"io"
 	"os"
 
 	"github.com/sirupsen/logrus"
@@ -57,15 +58,20 @@ func testInterface() {
 	// 2. 实现 interface、值方法、指针方法
 	// Go 语言实现一个接口并不需要显示声明，只要你实现了接口中的所有方法就认为你实现了这个接口 Duck typing
 	// 指针方法集合包括值方法接口以及指针方法，值类型方法集合是指针类型方法的真子集
-	/*
-		var sr = &io.SectionReader{}
-		var b io.Reader
-		b = sr
-		var p []byte
-		logrus.Infoln(b.Read(p))
-		logrus.Infoln(string(p))
-	*/
+
+	var sr = &io.SectionReader{}
+	var b io.Reader
+	b = sr
+	var p []byte
+	logrus.Infoln(b.Read(p))
+	logrus.Infoln(string(p))
+
 }
+
+/*
+	实现了 io 的类型
+	bufio、bytes、strings、crypto/tls、archive/tar、math/rand、os/File
+*/
 
 func main() {
 	// testIO()

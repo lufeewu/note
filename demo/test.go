@@ -3,9 +3,11 @@ package main
 import (
 	"bytes"
 	"fmt"
-	"os"
 	"time"
 	"unsafe"
+
+	"github.com/gin-gonic/autotls"
+	"github.com/gin-gonic/gin"
 
 	"github.com/sirupsen/logrus"
 )
@@ -90,6 +92,38 @@ func unreadBytesTest() {
 	fmt.Printf("%v\n", string(unreadBytes))
 }
 
+func letsEncrypt() {
+	r := gin.Default()
+
+	// Ping handler
+	r.GET("/ping", func(c *gin.Context) {
+		c.String(200, "pong")
+	})
+
+	logrus.Infoln(autotls.Run(r, "127.0.0.1"))
+
+}
+
+func testClose() {
+
+	cancel := make(chan struct{})
+	cancel2 := make(chan struct{})
+
+	go func() {
+		// close(cancel2)
+		time.Sleep(1 * time.Second)
+		cancel <- struct{}{}
+	}()
+
+	select {
+	case _, ok := <-cancel:
+		logrus.Infoln("cancel1", ok)
+	case _, ok := <-cancel2:
+		logrus.Infoln("cancel2", ok)
+	}
+
+}
+
 func main() {
 	// Time()
 	// t := time.NewTimer(10 * time.Second)
@@ -101,7 +135,12 @@ func main() {
 	// 		logrus.Infoln("2")
 	// 	}
 	// }
-	unreadBytesTest()
-	os.PathError
+	// unreadBytesTest()
+
+	// letsEncrypt()
+	// router := gin.Default()
+
+	// router.RunTLS(":18080", "", "")
+	testClose()
 
 }

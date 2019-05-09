@@ -45,8 +45,8 @@ func tsocket() {
 	default:
 		logrus.Warnln("wrong socket type, exit...")
 	}
-
 }
+
 func main() {
 	tsocket()
 }

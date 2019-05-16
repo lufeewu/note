@@ -356,8 +356,8 @@ dep status
 可以很方便的进行 json 、yaml 等文件的解析
 
 # golang 问题
-1. map、struct、切片在 64 位机器中占用多少字节
-
+1. map、struct、切片在 64 位机器中占用多少字节？
+2. 为什么 nil != nil ？
 #  工具
 1. go-callvis 源码分析
 

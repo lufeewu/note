@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/json"
+
 	"github.com/sirupsen/logrus"
 )
 
@@ -89,10 +91,55 @@ func testSlice() {
 	}
 }
 
+// I test interface
+type I interface {
+	Get() int
+	// Set() int
+}
+
+// Iface iface struct implement interface I
+type Iface struct {
+}
+
+// Get get
+func (i Iface) Get() int {
+	logrus.Infoln("get")
+	return 0
+}
+
+func returnInterface() I {
+
+	return Iface{}
+}
+func testInterface() {
+
+	var i I
+	i = Iface{}
+	i.Get()
+	returnInterface().Get()
+}
+
+func jsonNumber() {
+
+	var tmp map[string]interface{}
+	tmp = make(map[string]interface{})
+	tmp["flyCount"] = json.Number("0123453332112")
+	flyCount, err := tmp["flyCount"].(json.Number).Int64()
+	if err != nil {
+		logrus.Errorf("error: %v", err)
+	}
+	logrus.Infoln(flyCount)
+
+}
+
 func main() {
 	// errNil()
 	// testCap()
 	// testDefer()
 	// testDefer2()
-	testSlice()
+	// testSlice()
+
+	// testInterface()
+	jsonNumber()
+
 }

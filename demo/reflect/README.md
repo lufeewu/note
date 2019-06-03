@@ -3,16 +3,30 @@
 
 
 ## 结构
+
+        type Struct struct {
+            A int `json:"a,omitempty"`
+        }
+
++ field tag 成员标签变量
+    - 标签键值对 key:"value"
+
 + ValueOf
+    - Interface()、CanInterface()、Set() ... 
 + TypeOf
+    - 通过 TypeOf 可以获取 struct 的结构信息，包括名称、类型、附加 tag
+    - StructField
+        - Name、Type、Tag
+        - Index、Anonymous、PkgPath、Offset
+    - Tag/StructTag
+        - LookUp
+        - Get
 
 ## 优质项目
 + gorm
 + json
 + yaml
 + grpc
-
-
 
 
 # ref

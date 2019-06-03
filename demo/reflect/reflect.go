@@ -35,8 +35,17 @@ func testReflect2() {
 		logrus.Infoln(objType.Field(i).Name, objType.Field(i).Type, objValue.Field(i).Interface())
 		field := objType.Field(i).Tag.Get("json")
 		logrus.Infoln("json:", field, len(field))
+		logrus.Infoln("------------------------------------")
+		logrus.Infoln("Name ---", objType.Field(i).Name)
+		logrus.Infoln("Anonymous ---", objType.Field(i).Anonymous)
+		logrus.Infoln("PkgPath ---", objType.Field(i).PkgPath)
+		logrus.Infoln("Index ---", objType.Field(i).Index)
+		logrus.Infoln("Offset ---", objType.Field(i).Offset)
+		logrus.Infoln("Tag ---", objType.Field(i).Tag)
+		logrus.Infoln("Type ---", objType.Field(i).Type)
+		logrus.Infoln("------------------------------------")
 	}
-	logrus.Infoln(objValue.Interface())
+	logrus.Infoln(objValue.Set)
 
 	var err interface{} = nil
 	var nil2 interface{} = nil
@@ -46,6 +55,6 @@ func testReflect2() {
 }
 
 func main() {
-	testReflect()
+	// testReflect()
 	testReflect2()
 }

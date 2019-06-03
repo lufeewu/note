@@ -117,7 +117,7 @@ dep status
             4. 打印 panic 详情
         + 意外 panic, 主动 panic()函数
     + recover
-    + defer
+    + deferc
         + 不支持 go 语言内建函数调用
         + 不支持 unsafe 包中的函数的调用表达式
         + 倒序执行、FILO 队列（栈）
@@ -252,7 +252,7 @@ dep status
         - 字段 buf、rd、r、w、err、lastByte、lastRuneSize
         - bufio.Reader 类型的读取方法有哪些不同？(4个读取流程代表)
     + Scanner
-    + writer 和 ReadWriter
+    + Writer 和 ReadWriter
     + Flush 方法
     + 内容泄露 Reader、Peek、ReadSlice、ReadLine 
 
@@ -355,9 +355,33 @@ dep status
 # struct tag
 可以很方便的进行 json 、yaml 等文件的解析
 
+# 语言设计
+1. 类型设计的原则
+
+        变量包括 (type,value) 两部分,type 包括 static type 和 concrete type.
+        reflect/type.go 中的 rtype 与 runtime/type.go 中的 _type 保持一致.
+
+2. golang 反射为什么会慢？
+
+        涉及内存分配以及后续的 GC
+        reflect 实现里面有大量的枚举，也就是 for 循环，比如类型之类的
+
+
+
+
 # golang 问题
 1. map、struct、切片在 64 位机器中占用多少字节？
 2. 为什么 nil != nil ？
+3. 进程、线程、协程有什么关系？
+    
+    <img src="img/routine_thread_process.jpg">
+
+4. 什么是 interface？
+
+    interface 是具有一组方法的类型，如果一个类型实现了一个 interface 的所有方法，就说该类型实现了 interface. 
+
+
+
 #  工具
 1. go-callvis 源码分析
 

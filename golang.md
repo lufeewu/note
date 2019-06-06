@@ -366,7 +366,11 @@ dep status
         涉及内存分配以及后续的 GC
         reflect 实现里面有大量的枚举，也就是 for 循环，比如类型之类的
 
+3. goroutine 与线程的协同机制有哪些？
 
+    <img src="img/routine_sync.jpg">
+    各个操作系统的系统机制
+    <img src="img/os_sync.png">
 
 
 # golang 问题
@@ -380,7 +384,17 @@ dep status
 
     interface 是具有一组方法的类型，如果一个类型实现了一个 interface 的所有方法，就说该类型实现了 interface. 
 
+5. 原子操作有什么好处？
 
+    原子操作可以用互斥体完成，但它比互斥体更快，它是 CPU 而非操作系统提供的能力，如
+
+        var val int32
+        ...
+        newval = atomic.AddInt32(&val, delta)
+
+6. 用锁有什么需要注意的？
+
+    锁不是很容易控制，忘记 unlock 将会导致灾难性后果. 锁粒度不宜过大，不要在锁里面执行费时操作. 读操作阻止写而不阻止读，写操作阻止一切.
 
 #  工具
 1. go-callvis 源码分析

@@ -3,6 +3,7 @@ package main
 import (
 	"reflect"
 
+	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"
 )
 
@@ -55,6 +56,7 @@ func testReflect2() {
 }
 
 func main() {
-	// testReflect()
-	testReflect2()
+
+	gin.Context.Bind()
+
 }

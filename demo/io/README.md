@@ -45,7 +45,7 @@ io 中提供了 4 个基本 interface，以及它们的组合，此外还有一�
 + StringWriter
 
 ## io 的应用
-bufio 实现了带缓存的 I/O 操作，它也是 golang 基础库之一. 它实现了 io 库的 Reader、Writer、ReaderWriter 接口, 其中 方法 Read(p []byte)(n int,err error) 的实现如下
+bufio 实现了带缓存的 I/O 操作，它也是 golang 基础库之一. 它实现了 io 库的 Reader、Writer、ReaderWriter 接口, 其中方法 Read(p []byte)(n int,err error) 的实现如下
 
     func (b *Reader) Read(p []byte) (n int, err error) {
         n = len(p)
@@ -94,4 +94,4 @@ bufio 实现了带缓存的 I/O 操作，它也是 golang 基础库之一. 它�
         return n, nil
     }
 
-该 Read 将从写入 buf 但还为读出的字节缓存读出到 byte 数组 p 中，并在 buf 都已经读取出时候，归零缓存空间（即 b.r = 0 、 b.w = 0). 对于缓存空间的写入，可以参看 Write 方法的实现.
+该 Read 将从写入 buf 但还为读出的字节缓存读出到 byte 数组 p 中，并在 buf 都已经读取出时候，归零缓存空间（即 b.r = 0 、 b.w = 0), 并写入新数据到缓存 bufio 中(b.rd.Read(b.buf). 对于缓存 bufio 的写入，可以参看 Write 方法的实现.

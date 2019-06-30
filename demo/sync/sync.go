@@ -2,6 +2,7 @@ package main
 
 import (
 	"sync"
+	"time"
 
 	"github.com/sirupsen/logrus"
 )
@@ -34,7 +35,28 @@ func syncWaitGroup() {
 	w.Wait()
 
 }
+
+func syncChan() {
+	wg := sync.WaitGroup{}
+	ch := make(chan int, 100)
+	for i := 0; i < 1203; i++ {
+		ch <- 1
+		wg.Add(1)
+		go func(i int) {
+			defer func() {
+				<-ch
+				logrus.Infoln("over", i)
+				wg.Done()
+			}()
+			time.Sleep(1 * time.Second)
+		}(i)
+	}
+
+	wg.Wait()
+}
+
 func main() {
-	syncWaitGroup()
+	// syncWaitGroup()
+	syncChan()
 
 }

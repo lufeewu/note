@@ -2,7 +2,7 @@
 I/O 是计算机的基础之一，赋予计算机强大的扩展能力，使得其可以为众多业务提供支持. golang 作为一门编程语言，自然需要对软件提供 I/O 能力，使得软件能够更好的使用操作系统的能力.
 
 ## 源码结构
-+ iotuil
++ ioutil
     + ioutil.go
     + example_test.go    
     + ioutil_test.go     

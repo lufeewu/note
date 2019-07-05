@@ -3,36 +3,36 @@ golang (1.12 版本) 提供了 44 个标准库，可以直接调用. 标准库�
 
 ## 基础库
 + archive ✓
-+ bufio ✓✓✓
++ bufio ✓
 + builtin ✓
 + bytes ✓
 + cmd 
 + compress ✓
 + container ✓
-+ context
++ context ✓
 + crypto
 + database
 + debug
 + encoding
-+ errors ✓✓✓
-+ expvar
-+ flag
-+ fmt
++ errors ✓
++ expvar ✓
++ flag ✓
++ fmt ✓
 + go ✓
 + hash
 + html
 + image
-+ index
++ index ✓
 + internal
-+ io ✓✓✓
-+ log
++ io ✓
++ log ✓
 + math ✓
 + mime ✓
 + net
 + os
 + path
 + plugin
-+ reflect
++ reflect ✓
 + regexp
 + runtime
 + sort ✓

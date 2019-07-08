@@ -10,7 +10,7 @@ golang (1.12 版本) 提供了 44 个标准库，可以直接调用. 标准库�
 + compress ✓
 + container ✓
 + context ✓
-+ crypto
++ crypto ✓
 + database
 + debug
 + encoding

@@ -43,7 +43,6 @@ golang (1.12 版本) 提供了 44 个标准库，可以直接调用. 标准库�
 + testing ✓
 + text ✓
 + time
-+ unicode
-+ unsafe
-+ vendor
++ unicode ✓
++ unsafe ✓
 

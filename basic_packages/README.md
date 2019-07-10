@@ -19,9 +19,9 @@ golang (1.12 版本) 提供了 44 个标准库，可以直接调用. 标准库�
 + flag ✓
 + fmt ✓
 + go ✓
-+ hash
-+ html
-+ image
++ hash ✓
++ html ✓
++ image ✓
 + index ✓
 + internal
 + io ✓
@@ -33,15 +33,15 @@ golang (1.12 版本) 提供了 44 个标准库，可以直接调用. 标准库�
 + path
 + plugin
 + reflect ✓
-+ regexp
++ regexp ✓
 + runtime
 + sort ✓
-+ strconv
-+ strings
++ strconv ✓
++ strings ✓
 + sync
 + syscall
 + testing ✓
-+ text
++ text ✓
 + time
 + unicode
 + unsafe

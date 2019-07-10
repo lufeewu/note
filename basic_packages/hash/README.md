@@ -2,7 +2,7 @@
 标准库 hash 提供了 hash 函数的接口
 
 ## 源码
-总计 2890 多行，除去测试代码 1100 多行
+总计 2890 多行，除去测试代码 1700 多行
 + type Hash interface 
 + type Hash32 interface 
 + type Hash64 interface

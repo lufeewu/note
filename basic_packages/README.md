@@ -42,7 +42,7 @@ golang (1.12 版本) 提供了 42 个标准库，1 个 internal 库，目录中
 + syscall 148074
 + testing ✓
 + text ✓
-+ time 9333
++ **time** ✓ 9333
 + unicode ✓
 + unsafe ✓
 

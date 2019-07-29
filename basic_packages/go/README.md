@@ -22,3 +22,5 @@
 
 ## ref
 1. [Go的AST(抽象语法树)](https://zhuanlan.zhihu.com/p/2851658)
+2. [golang深入源代码系列之一：AST的遍历](https://www.jianshu.com/p/937d649039ec)
+3. [golang中ast库及初步使用](http://www.01happy.com/golang-ast-use/)

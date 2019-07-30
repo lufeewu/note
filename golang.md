@@ -399,6 +399,23 @@ dep status
 #  工具
 1. go-callvis 源码分析
 2. <a href="https://maiyang.me/post/2018-09-14-tips-vscode/">VS Code 中的代码自动补全和自动导入包</a>
+    - gocode (auto-completion)
+    - gopkgs (auto-completion of unimported packages && Add Import feature)
+    - go-outline (Go to symbol in file)
+    - go-symbols (Go to symbol in workspace)
+    - guru (Find all references and Go to implementation of symbols)
+    - gorename (Rename symbols)
+    - dlv (Debugging)
+    - gocode-gomod (Autocompletion, works with Modules)
+    - godef (Go to definition)
+    - golint (Linter)
+    - gopls (Language Server from Google)
+    - gotests (Generate unit tests)
+    - gomodifytags (Modify tags on structs)
+    - impl (Stubs for interfaces)
+    - fillstruct (Fill structs with defaults)
+    - goplay (The Go playground)
+    - godoctor (Extract to functions and variables)
 
 # ref
 1. <a href="http://legendtkl.com/2017/04/28/golang-gc/">Golang 垃圾回收剖析</a>

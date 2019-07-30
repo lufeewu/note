@@ -398,6 +398,7 @@ dep status
 
 #  工具
 1. go-callvis 源码分析
+2. <a href="https://maiyang.me/post/2018-09-14-tips-vscode/">VS Code 中的代码自动补全和自动导入包</a>
 
 # ref
 1. <a href="http://legendtkl.com/2017/04/28/golang-gc/">Golang 垃圾回收剖析</a>

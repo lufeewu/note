@@ -23,3 +23,13 @@
     - 已经有哪些玩家在里面？上下游有哪些类型的公司，在这之前用户是怎么解决他们的问题？我们的替代方案是怎么样的？
     - 产品创造的价值点是什么？核心指标是什么？
     - 用户需求潜在的变化在哪些地方？
+
+
+1. english
+You can visit these websites to help you improve your English:
+- TONGUE TWISTERS
+http://www.fun-with-words.com/tong_example.html
+- ORAL READING (10 WAYS TO IMPROVE READING FLUENCY)
+https://www.themeasuredmom.com/10-ways-to-improve-reading-fluency/
+- IMPROVE YOUR ENGLISH
+https://www.langports.com/100-things-you-can-do-to-improve-your-english/

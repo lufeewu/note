@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"time"
 
@@ -47,6 +48,28 @@ func tsocket() {
 	}
 }
 
+func testSlice() {
+	var result = make([]int, 3, 4)
+	var result2 = make([]int, 3)
+	fmt.Println(result, len(result), cap(result))
+	fmt.Println(append(result, 1))
+	fmt.Println(result2, len(result2), cap(result2))
+	_ = append(result, 1)
+	result2 = append(result, 1, 2)
+	fmt.Println(result, len(result), cap(result))
+	fmt.Println(result2, len(result2), cap(result2))
+
+	fmt.Println(append(result, 1))
+	_ = append(result, 1)
+	// result2 = append(result, 1, 2)
+	// append(result, 1)
+	result2 = append(result, 1)
+	fmt.Println(result2, result)
+	result[0] = 1
+	fmt.Println(result2, result)
+
+}
+
 func main() {
-	tsocket()
+	testSlice()
 }

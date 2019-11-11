@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"strings"
 	"time"
 	"unsafe"
 
@@ -141,6 +142,15 @@ func main() {
 	// router := gin.Default()
 
 	// router.RunTLS(":18080", "", "")
-	testClose()
+	// testClose()
+
+	r := gin.New()
+	r.GET("/a/b/c", func(c *gin.Context) {
+		s := strings.Split(c.Request.URL.String(), "/")
+		fmt.Println("t:", s[len(s)-1], len(s))
+		c.JSON(200, nil)
+	})
+	err := r.Run("0.0.0.0:12222")
+	fmt.Println(err)
 
 }

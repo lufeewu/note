@@ -33,3 +33,14 @@ http://www.fun-with-words.com/tong_example.html
 https://www.themeasuredmom.com/10-ways-to-improve-reading-fluency/
 - IMPROVE YOUR ENGLISH
 https://www.langports.com/100-things-you-can-do-to-improve-your-english/
+
+# git 操作
+## github 下载速度太慢
+
+使用 github clone 一些大型的 github 项目时，可能会很慢，甚至失败. 可以将 github.com 地址替换成 github.com.cnpmjs.org 就会加速了. 比如 clone kubernetes 项目,可以使用如下链接: 
+
+    git clone https://github.com.cnpmjs.org/kubernetes/kubernetes.git 
+
+亲测有效!~
+
+<img src="./img/github_accelerate.md">

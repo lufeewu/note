@@ -67,7 +67,6 @@ func testSlice() {
 	fmt.Println(result2, result)
 	result[0] = 1
 	fmt.Println(result2, result)
-
 }
 
 func main() {

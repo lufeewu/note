@@ -25,3 +25,7 @@
     - status: Pending、Running、Succeeded、Failed、Unknown
     - Projected Volume: Secret、ConfigMap、Downward API、ServiceAccountToken
     - Secret
+
+
+# 资料
+- <a  href="https://www.yuque.com/baxiaoshi/tyado3/bl6lev">图解 Kubernetes Pod 创建流程</a>

@@ -61,4 +61,3 @@ func timer() {
 func main() {
 	timer()
 }
-

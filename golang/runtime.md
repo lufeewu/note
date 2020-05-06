@@ -34,6 +34,29 @@ Goexit()
 NumGoroutine()
 GOOS
 
+## 并发
+n++ 并发安全问题
+
+    func race() {
+        num := 1000
+        wait := make(chan struct{}, num)
+        n := 0
+        for i := 0; i < num; i++ {
+            go func() {
+                // 译注：注意下面这一行
+                n++ // 一次访问: 读, 递增, 写
+                wait <- struct{}{}
+            }()
+        }
+
+        // 译注：注意下面这一行
+        // n++ // 另一次冲突的访问
+        for i := 0; i < num; i++ {
+            <-wait
+        }
+        fmt.Println(n) // 输出：未指定
+    }
+
 ## pprof
 gcBgMarkWorker
 mallocgc

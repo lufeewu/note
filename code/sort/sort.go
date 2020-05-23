@@ -8,7 +8,7 @@ package sort
 */
 // 可参考文章: https://www.cnblogs.com/gaopeng527/p/6699648.html
 
-// 选择排序
+// SelectSort 选择排序
 func SelectSort(list []int) {
 	for i, _ := range list {
 		tmp := i
@@ -22,6 +22,7 @@ func SelectSort(list []int) {
 	return
 }
 
+// InsertSort 插入排序
 func InsertSort(list []int) {
 	for i := 1; i < len(list); i++ {
 		for j := i; j > 0; j-- {
@@ -35,6 +36,7 @@ func InsertSort(list []int) {
 	return
 }
 
+// BubbleSort 冒泡排序
 func BubbleSort(list []int) {
 	for i := 0; i < len(list)-1; i++ {
 		for j := 1; j < len(list)-i; j++ {
@@ -85,7 +87,7 @@ func merge(list []int, a, b int) {
 	}
 }
 
-// 左闭右闭[a,b]
+// MergeSort 归并排序左闭右闭[a,b]
 func MergeSort(list []int, a, b int) {
 	if a+1 >= b {
 		if list[a] > list[b] {
@@ -101,9 +103,7 @@ func MergeSort(list []int, a, b int) {
 	merge(list, a, b)
 }
 
-/*
-  3. 快速排序
-*/
+// QuickSort 快速排序
 func QuickSort(list []int) {
 	var (
 		midValue   int
@@ -147,7 +147,7 @@ func QuickSort(list []int) {
 
 }
 
-/*
+/*HeapSort 堆排序
   4. 堆排序
 	 nlog n
 	 稳定
@@ -190,9 +190,7 @@ func HeapSort(list []int) {
 	}
 }
 
-/*
-  5. 希尔排序
-*/
+// ShellSort 希尔排序
 func ShellSort(list []int) {
 	n := len(list)
 	for d := n / 2; d > 0; d = d / 2 {

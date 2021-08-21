@@ -14,7 +14,7 @@ func canPartition(nums []int) bool {
 		return false
 	}
 	target := sum / 2
-	dp := make([]int, target+1)
+	dp := make([]int, target+1) // 容量为 i 背包中最大存放的数
 	for _, v := range nums {
 		for j := target; j >= v; j-- {
 			dp[j] = max(dp[j], dp[j-v]+v)

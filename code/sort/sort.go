@@ -104,7 +104,33 @@ func MergeSort(list []int, a, b int) {
 }
 
 // QuickSort 快速排序
-func QuickSort(list []int) {
+func QuickSort(nums []int, left, right int) {
+	if left >= right {
+		return
+	}
+	pivot, l, r := nums[left], left, right
+	for l < r {
+		for l < r && nums[r] >= pivot {
+			r--
+		}
+		if l < r {
+			nums[l] = nums[r]
+		}
+		for l < r && nums[l] <= pivot {
+			l++
+		}
+		if l < r {
+			nums[r] = nums[l]
+		}
+
+	}
+	nums[l] = pivot
+	QuickSort(nums, left, l-1)
+	QuickSort(nums, l+1, right)
+}
+
+// QuickSort2 快速排序实现 2
+func QuickSort2(list []int) {
 	var (
 		midValue   int
 		head, tail int
@@ -136,13 +162,13 @@ func QuickSort(list []int) {
 	if list[head] > midValue {
 		list[0], list[head-1] = list[head-1], list[0]
 
-		QuickSort(list[0 : head-1])
-		QuickSort(list[head:])
+		QuickSort2(list[0 : head-1])
+		QuickSort2(list[head:])
 	} else {
 		list[0], list[head] = list[head], list[0]
 
-		QuickSort(list[0:head])
-		QuickSort(list[head+1:])
+		QuickSort2(list[0:head])
+		QuickSort2(list[head+1:])
 	}
 
 }

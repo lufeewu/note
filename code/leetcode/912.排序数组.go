@@ -8,7 +8,8 @@
 func sortArray(nums []int) []int {
 	// QuickSort(nums, 0, len(nums)-1)
 	// sort.Ints(nums)
-	HeapSort(nums)
+	tmp := make([]int, len(nums))
+	MergeSort(nums, 0, len(nums)-1, tmp)
 	return nums
 }
 
@@ -66,6 +67,50 @@ func adjustHeap(nums []int, l, r int) {
 			break
 		}
 	}
+}
+
+func merge(list []int, l, r int, tmp []int) {
+	copy(tmp, list)
+	var i, j, mid, pos int
+	i = l
+	mid = (l + r) / 2
+	j = mid + 1
+	pos = l
+	for i <= mid && j <= r {
+		if tmp[i] < tmp[j] {
+			list[pos] = tmp[i]
+			pos++
+			i++
+		} else {
+			list[pos] = tmp[j]
+			pos++
+			j++
+		}
+	}
+	for i <= mid {
+		list[pos] = tmp[i]
+		pos++
+		i++
+	}
+	for j <= r {
+		list[pos] = tmp[j]
+		pos++
+		j++
+	}
+}
+
+// MergeSort 归并排序左闭右闭[a,b]
+func MergeSort(list []int, a, b int, tmp []int) {
+	if a+1 >= b {
+		if list[a] > list[b] {
+			list[a], list[b] = list[b], list[a]
+		}
+		return
+	}
+	// 排序包括下标(a+b)/2的值
+	MergeSort(list, a, (a+b)/2, tmp)
+	MergeSort(list, (a+b)/2+1, b, tmp)
+	merge(list, a, b, tmp)
 }
 
 // @lc code=end

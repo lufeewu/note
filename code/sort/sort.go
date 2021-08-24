@@ -51,37 +51,36 @@ func BubbleSort(list []int) {
 /*
   2. 归并排序
 */
-func merge(list []int, a, b int) {
+func merge(list []int, a, b int, tmp []int) {
 	var (
 		i, j int
 		mid  int
 		pos  int
 	)
 
-	temp := make([]int, len(list))
-	copy(temp, list)
+	copy(tmp, list)
 	i = a
 	mid = (a + b) / 2
 	j = mid + 1
 	pos = a
 	for i <= mid && j <= b {
-		if temp[i] < temp[j] {
-			list[pos] = temp[i]
+		if tmp[i] < tmp[j] {
+			list[pos] = tmp[i]
 			pos++
 			i++
 		} else {
-			list[pos] = temp[j]
+			list[pos] = tmp[j]
 			pos++
 			j++
 		}
 	}
 	for i <= mid {
-		list[pos] = temp[i]
+		list[pos] = tmp[i]
 		pos++
 		i++
 	}
 	for j <= b {
-		list[pos] = temp[j]
+		list[pos] = tmp[j]
 		pos++
 		j++
 	}
@@ -95,12 +94,13 @@ func MergeSort(list []int, a, b int) {
 		}
 		return
 	}
+	tmp := make([]int, len(list))
 	// 排序包括下标(a+b)/2的值
 	MergeSort(list, a, (a+b)/2)
 
 	MergeSort(list, (a+b)/2+1, b)
 
-	merge(list, a, b)
+	merge(list, a, b, tmp)
 }
 
 // QuickSort 快速排序
@@ -178,40 +178,35 @@ func QuickSort2(list []int) {
 	 nlog n
 	 稳定
 */
-func HeapSort(list []int) {
-	n := len(list)
-	// 建堆
+
+// HeapSort 堆排序
+func HeapSort(nums []int) {
+	n := len(nums)
+	// 建堆, 最大堆
 	for i := n/2 - 1; i >= 0; i-- {
-		k := i
-		for 2*k+1 < n {
-			j := 2*k + 1
-			if j+1 < n && list[j] < list[j+1] {
-				j++
-			}
-			if list[j] > list[k] {
-				list[k], list[j] = list[j], list[k]
-				k = j
-			} else {
-				break
-			}
-		}
+		adjustHeap(nums, i, n)
+	}
+	// 取出数据放到末尾, 并调整堆
+	for i := n - 1; i > 0; i-- {
+		nums[0], nums[i] = nums[i], nums[0]
+		adjustHeap(nums, 0, i)
 	}
 
-	// 调整堆
-	for i := n - 1; i > 0; i-- {
-		list[0], list[i] = list[i], list[0]
-		k := 0
-		for 2*k+1 < i {
-			j := 2*k + 1
-			if j+1 < i && list[j] < list[j+1] {
-				j++
-			}
-			if list[j] > list[k] {
-				list[k], list[j] = list[j], list[k]
-				k = j
-			} else {
-				break
-			}
+}
+
+func adjustHeap(nums []int, l, r int) {
+	k := l
+	for 2*k+1 < r {
+		j := 2*k + 1
+		// 选择子节点中较大的一个
+		if j+1 < r && nums[j] < nums[j+1] {
+			j++
+		}
+		if nums[k] < nums[j] {
+			nums[k], nums[j] = nums[j], nums[k]
+			k = j
+		} else {
+			break
 		}
 	}
 }

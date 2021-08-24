@@ -69,7 +69,6 @@ func adjustHeap(nums []int, l, r int) {
 	}
 }
 
-<<<<<<< HEAD
 func merge(list []int, l, r int, tmp []int) {
 	copy(tmp, list)
 	i, j, mid, pos := l, (l+r)/2+1, (l+r)/2, l
@@ -110,7 +109,5 @@ func MergeSort(list []int, a, b int, tmp []int) {
 	merge(list, a, b, tmp)
 }
 
-=======
->>>>>>> bd99f0f... feat: 增加 leetcode medium 及排序
 // @lc code=end
 

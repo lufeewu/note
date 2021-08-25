@@ -64,7 +64,7 @@ func merge(list []int, a, b int, tmp []int) {
 	j = mid + 1
 	pos = a
 	for i <= mid && j <= b {
-		if tmp[i] < tmp[j] {
+		if tmp[i] <= tmp[j] {
 			list[pos] = tmp[i]
 			pos++
 			i++

@@ -71,13 +71,9 @@ func adjustHeap(nums []int, l, r int) {
 
 func merge(list []int, l, r int, tmp []int) {
 	copy(tmp, list)
-	var i, j, mid, pos int
-	i = l
-	mid = (l + r) / 2
-	j = mid + 1
-	pos = l
+	i, j, mid, pos := l, (l+r)/2+1, (l+r)/2, l
 	for i <= mid && j <= r {
-		if tmp[i] < tmp[j] {
+		if tmp[i] <= tmp[j] {
 			list[pos] = tmp[i]
 			pos++
 			i++

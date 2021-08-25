@@ -14,7 +14,7 @@ func numTrees(n int) int {
 	dp[1] = 1
 	for i := 2; i <= n; i++ {
 		for j := 1; j <= i; j++ { // top is j
-			dp[i] += dp[j-1] * dp[i-j]
+			dp[i] += dp[j-1] * dp[i-j] // 左子树数量 * 右子树数量
 		}
 	}
 	return dp[n]

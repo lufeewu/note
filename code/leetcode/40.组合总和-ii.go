@@ -6,6 +6,9 @@
 
 // @lc code=start
 func combinationSum2(candidates []int, target int) (ans [][]int) {
+	return combinationSum2DP(candidates, target)
+}
+func combinationSum2DFS(candidates []int, target int) (ans [][]int) {
 	sort.Ints(candidates)
 	var freq [][2]int
 	for _, num := range candidates {
@@ -62,8 +65,10 @@ func combinationSum2DP(candidates []int, target int) [][]int {
 		for j := target; j >= v+1; j-- {
 			if len(dp[j-v]) > 0 {
 				for _, arr := range dp[j-v] {
-					arr = append(arr, v)
-					dp[j] = append(dp[j], arr)
+					var tmp = make([]int, len(arr))
+					copy(tmp, arr)
+					tmp = append(tmp, v)
+					dp[j] = append(dp[j], tmp)
 					dp[j] = removeDuplicate(dp[j])
 				}
 			}
@@ -92,9 +97,7 @@ func removeDuplicate(arr [][]int) [][]int {
 			}
 		}
 		if !exist {
-			var tmp []int = make([]int, len(arr[i]))
-			copy(tmp, arr[i])
-			res = append(res, tmp)
+			res = append(res, arr[i])
 		}
 	}
 	return res

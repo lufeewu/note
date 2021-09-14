@@ -87,7 +87,7 @@ func main() {
 	sort.SelectSort(list)
 	sort.InsertSort(list)
 	sort.BubbleSort(list)
-	sort.QuickSort(list)
+	sort.QuickSort(list, 0, len(list))
 	sort.ShellSort(list)
 	sort.HeapSort(list)
 }

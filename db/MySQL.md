@@ -57,6 +57,11 @@ MySQL 的扩容可以通过停服务扩容和平滑扩容方案。
 1. MySQL innodb 的行级锁实现方式，如何避免表锁？
 2. MySQL 的事务是如何实现的？(锁)
 
+## 其它
+密码存储方案: 直接存储、加密存储、hash 存储、hash + salt 存储、BCrypt 与 SCrypt 等算法。
+- BCrypt 算法: BCrypt 是一个跨平台文件加密工具。它是一种单向加密算法，每次随机盐+明文进行加密，它会经过多次 hash 最终生成密文。最终的密文包含 salt 等信息，便于验证。
+- SCrypt 算法: 是一种 KDF 算法, SCrypt 算法需要占用大量的内存，硬件要求高，从而提高了黑客试探的成本。
+
 ## 参考
 1. [MySQL索引（二）B+树在磁盘中的存储](https://juejin.cn/post/6844903856388718606)
 2. [亿级流量下平滑扩容：TDSQL水平扩容方案实践](https://cloud.tencent.com/developer/article/1611288)

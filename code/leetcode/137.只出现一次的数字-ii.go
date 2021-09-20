@@ -6,6 +6,19 @@
 
 // @lc code=start
 func singleNumber(nums []int) int {
+	return singleNumberStateHelper(nums)
+}
+
+func singleNumberStateHelper(nums []int) int {
+	one, two := 0, 0
+	for _, num := range nums {
+		one = (one ^ num) & ^two
+		two = (two ^ num) & ^one
+	}
+	return one
+}
+
+func singleNumberBitsHelper(nums []int) int {
 	var res int32
 	var i uint
 	// 计算每个 bit 位出现的次数
@@ -21,6 +34,31 @@ func singleNumber(nums []int) int {
 		}
 	}
 	return int(res)
+}
+
+func singleNumberQuickSortHelper(nums []int, left, right int) int {
+	if right-left == 0 {
+		return nums[left]
+	}
+	k := rand.Intn(right + 1 - left)
+	pivot := nums[left+k]
+	nums[left], nums[k] = nums[k], nums[left]
+	l, r := left, right
+	for l < r {
+		for l < r && nums[r] >= pivot {
+			r--
+		}
+		nums[l] = nums[r]
+		for l < r && nums[l] < pivot {
+			l++
+		}
+		nums[r] = nums[l]
+	}
+	nums[l] = pivot
+	if l > left && (l-left)%3 > 0 {
+		return singleNumberQuickSortHelper(nums, left, l-1)
+	}
+	return singleNumberQuickSortHelper(nums, l, right)
 }
 
 // @lc code=end

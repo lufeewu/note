@@ -16,29 +16,24 @@ func isPalindrome(head *ListNode) bool {
 	if head == nil || head.Next == nil {
 		return true
 	}
-	n := 0
-	cur := head
-	for cur != nil {
-		cur = cur.Next
-		n++
-	}
-	cur = head
-	for i := 0; i < n/2; i++ {
-		cur = cur.Next
+	slow, fast := head, head.Next
+	for fast != nil && fast.Next != nil {
+		slow = slow.Next
+		fast = fast.Next.Next
 	}
 
-	var pre *ListNode = nil
-	for cur != nil {
-		cur.Next, cur, pre = pre, cur.Next, cur
+	fast = slow.Next
+	slow = nil
+	for fast != nil {
+		fast.Next, fast, slow = slow, fast.Next, fast
 	}
 
-	cur = pre
-	for i := 0; i < n/2; i++ {
-		if cur.Val != head.Val {
+	slow, fast = head, slow
+	for fast != nil {
+		if slow.Val != fast.Val {
 			return false
 		}
-		cur = cur.Next
-		head = head.Next
+		slow, fast = slow.Next, fast.Next
 	}
 
 	return true

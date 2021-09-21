@@ -26,8 +26,7 @@ func Constructor(capacity int) LFUCache {
 		capacity:       capacity,
 	}
 }
-
-func (this *LFUCache) Get(key int) int {
+func (this *LFUCache) get(key int) *Entry {
 	if elem, ok := this.valueCache[key]; ok {
 		data := elem.Value.(*Entry)
 		oldList := this.frequencyCache[data.frequency]
@@ -43,7 +42,14 @@ func (this *LFUCache) Get(key int) int {
 		}
 		e := newList.PushFront(data)
 		this.valueCache[key] = e
-		return data.value
+		return data
+	}
+	return nil
+}
+
+func (this *LFUCache) Get(key int) int {
+	if entry := this.get(key); entry != nil {
+		return entry.value
 	}
 	return -1
 }
@@ -52,22 +58,8 @@ func (this *LFUCache) Put(key int, value int) {
 	if this.capacity <= 0 {
 		return
 	}
-	if elem, ok := this.valueCache[key]; ok {
-		data := elem.Value.(*Entry)
-		oldList := this.frequencyCache[data.frequency]
-		oldList.Remove(elem)
-		if data.frequency == this.minFrequency && oldList.Len() == 0 {
-			this.minFrequency += 1
-		}
-		data.frequency += 1
-		data.value = value
-		newList, ok := this.frequencyCache[data.frequency]
-		if !ok {
-			newList = list.New()
-			this.frequencyCache[data.frequency] = newList
-		}
-		e := newList.PushFront(data)
-		this.valueCache[key] = e
+	if entry := this.get(key); entry != nil {
+		entry.value = value
 		return
 	}
 

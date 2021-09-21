@@ -6,100 +6,99 @@
 
 // @lc code=start
 type LFUCache struct {
-	freqCache map[int]*list.List
-	valCache  map[int]*list.Element
-	minFreq   int
-	limit     int
+	frequencyCache map[int]*list.List
+	valueCache     map[int]*list.Element
+	minFrequency   int
+	capacity       int
 }
 
-type Node struct {
-	freq int
-	key  int
-	val  int
+type Entry struct {
+	frequency int
+	key       int
+	value     int
 }
 
 func Constructor(capacity int) LFUCache {
 	return LFUCache{
-		freqCache: make(map[int]*list.List, 0),
-		valCache:  make(map[int]*list.Element, capacity),
-		minFreq:   0,
-		limit:     capacity,
+		frequencyCache: make(map[int]*list.List, 0),
+		valueCache:     make(map[int]*list.Element, capacity),
+		minFrequency:   0,
+		capacity:       capacity,
 	}
 }
 
 func (this *LFUCache) Get(key int) int {
-
-	if node, ext := this.valCache[key]; ext {
-		data := node.Value.(*Node)
-		oldList := this.freqCache[data.freq]
-		oldList.Remove(node)
-		if data.freq == this.minFreq && oldList.Len() == 0 {
-			this.minFreq += 1
+	if elem, ok := this.valueCache[key]; ok {
+		data := elem.Value.(*Entry)
+		oldList := this.frequencyCache[data.frequency]
+		oldList.Remove(elem)
+		if data.frequency == this.minFrequency && oldList.Len() == 0 {
+			this.minFrequency += 1
 		}
-		data.freq += 1
-		newList, ok := this.freqCache[data.freq]
+		data.frequency += 1
+		newList, ok := this.frequencyCache[data.frequency]
 		if !ok {
 			newList = list.New()
-			this.freqCache[data.freq] = newList
+			this.frequencyCache[data.frequency] = newList
 		}
 		e := newList.PushFront(data)
-		this.valCache[key] = e
-		return data.val
+		this.valueCache[key] = e
+		return data.value
 	}
 	return -1
 }
 
 func (this *LFUCache) Put(key int, value int) {
-
-	if this.limit <= 0 {
+	if this.capacity <= 0 {
 		return
 	}
-	if node, ext := this.valCache[key]; ext {
-		data := node.Value.(*Node)
-		oldList := this.freqCache[data.freq]
-		oldList.Remove(node)
-		if data.freq == this.minFreq && oldList.Len() == 0 {
-			this.minFreq += 1
+	if elem, ok := this.valueCache[key]; ok {
+		data := elem.Value.(*Entry)
+		oldList := this.frequencyCache[data.frequency]
+		oldList.Remove(elem)
+		if data.frequency == this.minFrequency && oldList.Len() == 0 {
+			this.minFrequency += 1
 		}
-		data.freq += 1
-		data.key = key
-		data.val = value
-		newList, ok := this.freqCache[data.freq]
+		data.frequency += 1
+		data.value = value
+		newList, ok := this.frequencyCache[data.frequency]
 		if !ok {
 			newList = list.New()
-			this.freqCache[data.freq] = newList
+			this.frequencyCache[data.frequency] = newList
 		}
 		e := newList.PushFront(data)
-		this.valCache[key] = e
+		this.valueCache[key] = e
 		return
 	}
-	if len(this.valCache) == this.limit {
-		delList, ok := this.freqCache[this.minFreq]
+
+	if len(this.valueCache) == this.capacity {
+		delList, ok := this.frequencyCache[this.minFrequency]
 		if ok {
-			delNode := delList.Back()
-			if delNode != nil {
-				dataToDel := delNode.Value.(*Node)
-				delList.Remove(delNode)
-				delete(this.valCache, dataToDel.key)
-				if dataToDel.freq == this.minFreq && delList.Len() == 0 {
-					this.minFreq += 1
+			delEle := delList.Back()
+			if delEle != nil {
+				dataToDel := delEle.Value.(*Entry)
+				delList.Remove(delEle)
+				delete(this.valueCache, dataToDel.key)
+				if dataToDel.frequency == this.minFrequency && delList.Len() == 0 {
+					this.minFrequency += 1
 				}
 			}
 
 		}
 	}
-	newlist, ok := this.freqCache[1]
+
+	newlist, ok := this.frequencyCache[1]
 	if !ok {
 		newlist = list.New()
-		this.freqCache[1] = newlist
+		this.frequencyCache[1] = newlist
 	}
-	e := newlist.PushFront(&Node{
-		freq: 1,
-		key:  key,
-		val:  value,
+	e := newlist.PushFront(&Entry{
+		frequency: 1,
+		key:       key,
+		value:     value,
 	})
-	this.minFreq = 1
-	this.valCache[key] = e
+	this.minFrequency = 1
+	this.valueCache[key] = e
 }
 
 /**

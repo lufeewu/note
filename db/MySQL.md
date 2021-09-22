@@ -13,6 +13,11 @@ MySQL 的主要知识包括索引及其原理、索引优化、事务、锁、�
 - B 树: B 树即二叉搜索树，数据的查询效率是 log2(n)。
 - 索引优化: 索引优化可以提升查询效率，主要编写高效的 SQL 语句。如在 select、group by、order by、join 等操作列上使用索引，尽量使用批量插入数据等。
 
+### ES 索引
+MySQL 的索引并不适合海量数据的查询，难以应对海量数据下复杂的查询。ES(Elasticsearch)基于 Lucene 引擎构建的开源分布式搜索分析引擎，可以提供针对 PB 数据的实时查询，在全文检索、日志分析、监控分析等场景应用广泛。可以用 es 配合 mysql 在商品查询等场景中未用户提供高效检索服务。
+
+Elasticsearch 使用**倒排索引**, 可以快速的通过 value 查询，然后查询最终数据。将 value 进行有效排列，通过二叉搜索树便可以快速查询到指定 value 数据。
+
 ### 事务
 事务具有 ACID 特性。
 可以按照使用场景的将 MySQL 事务的隔离级别分为 RU、RC、RR、S，它们分别在数据一致性和性能上有所区别。
@@ -40,6 +45,20 @@ MySQL 的主要知识包括索引及其原理、索引优化、事务、锁、�
 - 半同步模式: 接受到其中一台从节点的返回信息就会 commit。否则需要等待超时然后切换成异步模式再提交。这样会一定程度上降低性能，但能保证 binlog 至少传输到了一个从节点。
 - 全同步模式: 主节点和从节点全部执行 commit 并确认才算成功。
 
+### MGR 群组复制
+MGR(MySQL Group Replication): MySQL 的群组复制，提供更好的冗余性、自动恢复以及写入扩展。群组复制可以通过群组内任意服务器对数据进行更新，而不是主从之分。群组添加了一个验证步骤，通过验证的事务才能进行提交，提交后群组内其它成员同样进行释放、提交。
+
+MGR 实现了 Replicated Database State Machine 理论，通信的服务基于 **Paxos** 理论实现，为 MySQL 5.7 之后的版本提供同步复制(日志复制、数据释放异步)。从而提供高可用的 MySQL 数据库服务，它能实现故障自动转移，分布式容错能力、支持多主更新的架构，自动重配置(加入/移除节点、崩溃等)并自动侦测和处理冲突。
+
+### MySQL Innodb Cluster
+MySQL Innodb Cluster 是一个高可用的 MySQL 框架，它通过以下组件组成:
+- MySQL Group Replication: 提供 DB 的扩展、自动故障转移
+- MySQL Router: 轻量级中间件，提供应用程序连接目标的故障转移
+- MySQL Shell: 新的 MySQL 客户端，多种接口模式。可以设置群组复制及Router
+- X DevAPI: 一个 API 通过 XProtocol 与服务器通信
+- Admin API: 一个特殊的API通过 MySQL Shell 使用，可以用于对 Innodb Cluster 进行配置管理
+
+
 ## 性能
 MySQL 的性能根据磁盘、内存、CPU 等配置不同会有所差异，一般写性能在 1000/s 级别，而读性能在 10000/s 级别。所以在方案设计中，要充分考虑到数据库的写入能力，如在订单、支付等的需求中，需要考虑削峰、一致性等。而在数据读取上，要避免慢 SQL 查询，同时在高并发场景中，要考虑缓存优化、分库分表等方式避免超过 DB 的读性能瓶颈。
 
@@ -65,3 +84,5 @@ MySQL 的扩容可以通过停服务扩容和平滑扩容方案。
 ## 参考
 1. [MySQL索引（二）B+树在磁盘中的存储](https://juejin.cn/post/6844903856388718606)
 2. [亿级流量下平滑扩容：TDSQL水平扩容方案实践](https://cloud.tencent.com/developer/article/1611288)
+3. [可能是我见过最好的 MySQL 高可用解决方案 MySQL InnoDB Cluster 中文教程！](https://www.modb.pro/db/15033)
+4. [ElasticSearch 索引 VS MySQL 索引](https://segmentfault.com/a/1190000023733216)

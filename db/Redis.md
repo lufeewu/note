@@ -23,6 +23,13 @@ Redis 的高可用灾备方案主要是主从方式。
 ### 分片机制
 Redis 通过一致性哈希解决分布式集群中，存在节点伸缩的情况下，有尽可能多的请求命中原来的机器节点。
 
+### 数据结构
+redis 的数据结构包括 list、string、hash、set、zset 五种。它们的底层实现包括 ziplist、hashtable、intset、skiplist 等.
+- ziplist: 压缩列表是为了节约内存而开发的，它主要用于 hash 和 list。由一系列特殊编码的内存块构成的列表，一个 ziplist 可以包含多个节点。
+- skiplist: 是一种有序的数据结构。一个跳表有多个层 level 组成，通常是 10-20 层，默认是 12 层，每一层都是有序的链表，第 0 层拥有所有数据。它通过在每个节点中维持多个指向其它节点的指针，达到快速访问的目的。它的平均访问效率是 o(log n)。
 
 ## 参考
 1. [Redis · 特性分析 · AOF Rewrite 分析](http://mysql.taobao.org/monthly/2016/03/05/)
+2. [Redis数据结构底层实现](https://segmentfault.com/a/1190000040206818)
+3. [redis中zSet排序原理----skipList跳跃表](https://segmentfault.com/a/1190000022320734)
+4. [压缩列表](https://redisbook.readthedocs.io/en/latest/compress-datastruct/ziplist.html)

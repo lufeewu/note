@@ -62,3 +62,4 @@ kafka 的主要特性:
 4. [kafka的可靠性与一致性](https://zhuanlan.zhihu.com/p/107705346)
 5. [浅谈Kafka特性与架构](https://juejin.cn/post/6844903957664382989)
 6. [八年面试生涯，整理了一套Kafka面试题](https://juejin.cn/post/6844903889003610119)
+7. [Kafka的Exactly-once语义与事务机制](https://www.cnblogs.com/luxiaoxun/p/13048474.html)

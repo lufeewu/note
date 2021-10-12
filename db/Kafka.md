@@ -29,7 +29,11 @@ kafka 的主要特性:
 - 可扩展性: 支持集群动态扩展 
 
 
-## 性能指标
+## 监控
+监控 kafka，可以从 kafka 主机、 JVM 和 kafka 集群三个维度进行。
+- 主机监控: 指的是监控 Broker 所在节点的机器的性能。主要涉及到监控指标包括机器负载、CPU、内存使用率、I/O、TCP 连接数、文件打开数、inode 使用情况等。
+- JVM 监控: kafka broker 进程是一个 java 进程，故需要考虑监控 JVM。主要需要关注 FULL GC 的频率和时长、活跃对象大小、应用线程总数等。
+- 集群监控: 对 kafka 集群的监控，可以考虑从集群中 broker 进程启动情况、端口建立情况、broker 日志、broker 端线程情况(Log Compaction 线程、副本拉取消息的线程)、关键 JMX 指标、kafka 客户端等。
 
 
 ## 参考

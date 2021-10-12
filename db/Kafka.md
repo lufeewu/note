@@ -15,6 +15,25 @@ kafka 是 Apache 基金会开源项目，是一个高吞吐、分布式、分区
 - Partition: 一个 broker 中可以有多个 topic，一个 topic 可以设置多个 partition(分区). 每个 partition 在物理上对应一个文件夹，存储这个 partition 的所有消息和索引文件。partition 中每个消息分配一个有序的 ID(offset).
 - Offset: 偏移 offset 是 partition 分区中消息的有序 ID，它是顺序递增的。通过三元组 <topic,partition,offset> 就可以唯一的定位一条消息。
 
+### Rebalance
+Consumer Group 的重平衡 Rebalance 规定额一个 Consumer Group 下的所有 Consumer 如何达成一致，用来分配订阅 Topic 的每个分区。触发 Rebalance 的条件主要有 3 个:
+1. Consumer Group 内的成员数量发生变化，比如新的 Consumer 实例加入组或离开组，或者实例崩溃被剔除组。
+2. 订阅主题数发生变化。Consumer Group 支持正则表达式的方式订阅主题，若新的主题满足正则表达式导致订阅主题数发生变化。
+3. 订阅主题的分区数发生变更。Kafka 当前只能允许增加一个主题的分区数，当分区数增加时，就会触发订阅主题的所有 Group 开启 Rebalance。
+
+在 Rebalance 过程中，所有的 Consumer 实例都会停止消费，等待 Rebalance 完成，这是需要注意的地方，而且 Rebalance 的速度叫慢，曾有上百个 Group 的 Rebalance 成功需几个小时的例子。
+
+### 事务
+- At most once(最多一次): 不会重复，但是可能丢失数据。当生产者 ack 超时或者返回错误时，不重试发送消息，会导致消息可能没有写入 kafka topic 中。
+- At least once(最少一次): 不会丢失，但是可能导致重复。当生产者的 ack 超时或错误，而此时 broker 已经写入了消息，生产者的重试机制会导致消息被写入两次。
+- exactly once(精确一次): 刚好一次，不丢失也不重复，具有幂等性。它需要消息系统本身、生成消息的业务程序及消费消息的业务程序一起完成。
+
+### ack 机制
+kafka 的消息确认机制可以选择三种模式，通过设置 acks 参数为 0、-1、1。
+- 0: 生产者不会等待 broker 的 ack，这个延迟最低，但是可能在 server 挂掉的时候丢失数据。
+- 1: 服务端会等待 ack 值，leader 确认接收到消息后发送 ack，但是 leader 挂掉后不会确保其它副本完成数据复制，可能导致数据丢失。
+- -1: 在 1 的基础上，服务端会等待所有 follower 的副本收到数据后才会收到 leader 的 ack ，这样数据不会丢失。
+
 ## 特性
 kafka 具有一致性和可靠性。
 - 一致性: 由于副本并没开放读的能力，所有的操作均有 leader 完成。故 kafka 的一致性保障比较简单，主要指 leader 发生切换前后，通过 HighWatermark 实现。
@@ -42,3 +61,4 @@ kafka 的主要特性:
 3. [怎么理解 Kafka 消费者与消费组之间的关系?](https://segmentfault.com/a/1190000039125247)
 4. [kafka的可靠性与一致性](https://zhuanlan.zhihu.com/p/107705346)
 5. [浅谈Kafka特性与架构](https://juejin.cn/post/6844903957664382989)
+6. [八年面试生涯，整理了一套Kafka面试题](https://juejin.cn/post/6844903889003610119)

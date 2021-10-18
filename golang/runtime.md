@@ -60,3 +60,18 @@ n++ 并发安全问题
 ## pprof
 gcBgMarkWorker
 mallocgc
+
+## 数据结构
+golang 有丰富的数据结构，除了基础的 int、string、char、byte 等，还提供了 map、slice、channel 等类型。
+
+### map 底层
+golang 的 map 主要基于哈希表原理，能够实现 o(1) 时间复杂度的操作。
+- 内存分配: 当通过 make 申请 map 时，当指定的 hint 小于等于 8 时，直接在栈上分配一个 bucket(每个 bucket 可以存储 8 对 kv). 而当 hint 大于 8 小于等于 52 时，会在堆上分配 bucket，但不会分配 overflow bucket。当 make 的 hint 大于 52 时，会在堆上分配 bucket 和 extra 的 overflow bucket。
+- buckets: 一段连续空间 2^B 大小的 bucket 数组。当触发 buckets 扩容，则会增长 2 倍大小。
+- oldbuckets: 用于实现增量扩容，若扩容正在进行中，则 oldbuckets 是有值的。
+- mapextra: mapextra 中包含 overflow 的 bucket(也氛围 overflow 和 oldoverflow) 。 overflow bucket 用于在出现哈希冲突时进行存储冲突 kv，即拉链法解决冲突。
+- 寻址: 通过将 key 进行 hash，并将 hash 所得的低位值作为 buckets 数组的索引，然后高位 hash 比较 bucket 中的 hash 是否一致，一致则在 bucket 中寻找指定 key。不一致则继续在 overflow buckets 中寻找。
+
+## 参考
+1. [golang map底层实现](http://yangxikun.github.io/golang/2019/10/07/golang-map.html)
+2. [](https://studygolang.com/articles/14583)

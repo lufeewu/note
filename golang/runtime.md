@@ -74,4 +74,5 @@ golang 的 map 主要基于哈希表原理，能够实现 o(1) 时间复杂度�
 
 ## 参考
 1. [golang map底层实现](http://yangxikun.github.io/golang/2019/10/07/golang-map.html)
-2. [](https://studygolang.com/articles/14583)
+2. [解剖Go语言map底层实现](https://studygolang.com/articles/14583)
+3. [深入解析 go - 2.3 map的实现](https://tiancaiamao.gitbooks.io/go-internals/content/zh/02.3.html)

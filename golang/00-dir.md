@@ -2,8 +2,7 @@
 1. 值类型与引用类型
 2. go 语言的左值、右值(表示存储在存储器某个地址的数据值)
 3. 内置函数 new、make、copy、delete、close、len、cap、new、make、copy、append
-4. 
-
+4. go 的基础数据类型 map、channel、slice、int、float、rune、byte 等
 
 ## golang 进阶
 1. golang 的可寻址(addressable)
@@ -59,7 +58,6 @@
 - 模式
 1. 测试表，表格驱动测试与子测试一起使用
 2. 功能选项（一种模式）
-
 
 ## golang 文章记录
 1. [Frequently Asked Questions (FAQ)](src="https://golang.org/doc/faq")

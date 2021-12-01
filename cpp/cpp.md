@@ -73,7 +73,7 @@ switch case, 一个 switch 语句可以测试一个变量等于多个值的情�
         }
 
 switch 语句有以下规则需要遵循:
-- switch 语句中的每个 expression 必须是一个整型或枚举型，或者是一个包含转换函数可转换为整型或枚举类型的 class 类型，expression 不能是 string 等类型。
+- switch 语句中的每个 expression 必须是一个整型或枚举型，或者是一个包含转换函数可转换为整型或枚举类型的 class 类型，expression 不能是 string 等类型，但可以是 char 等。
 - 可以有任意数量的 case 语句。每个 case 语句后有一个比较值和一个冒号。
 - case 的 constant-expression 与 expression 变量必须是相同数据类型，且必须是常量或字面量。
 - 执行变量为等于 case 的变量，case 后的语句会被执行，直到遇到 break 语句。如果 case 语句没有 break，则会继续执行后面的 case。

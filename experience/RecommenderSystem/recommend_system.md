@@ -1,6 +1,12 @@
 # 简介
 推荐系统(recommender system)是目前十分流行的信息流分发系统。无论是在电商、资讯、短视频社区、微博等应用上，都有推荐系统的影子。它可以在信息爆炸的时代，帮助用户进行信息筛选，快速找到感兴趣的内容。
 
+## 推荐系统工程
+推荐系统工程:
+- 推荐系统存储: 用户行为日志存储
+- A/B 实验平台
+- feed 流
+
 ## 概念
 传统的推荐系统流程中包括召回、粗排、精排、重排。
 召回: 召回是推荐系统的第一阶段，主要根据用户和商品部分的特征，从海量的物品库里，快速找回一小部分用户潜在感兴趣的物品，然后交给排序环节。常用的召回方法如下:
@@ -48,6 +54,16 @@ feed 流即信息流，常见的 feed 流有手淘商品列表、微信朋友圈
 7. 协同过滤优缺点？
 8. LR 中连续特征为什么要做离散化？
 
+## a/b 实验平台
+a/b 实验平台，提供一个可以方便的使用控制变量的手段同时进行多种功能改进的效果对比。
+
+### google 分层实验论文
+目前主流的分层实验是基于 google 的分层实验论文 《Overlapping Experiment infrastructure- More, Better, Faster Experimentation》 
+domain: 域指流量的一个划分
+layer: 层指系统参数的子集
+experiment: 指在一个流量划分上，进行 0 或多个参数的修改，最后改变的过程
+发布层(launch layers): 对参数的一个独立划分，总是在默认域中
+
 ## 参考
 1. [【知乎】深入理解推荐系统：召回](https://zhuanlan.zhihu.com/p/115690499)
 2. [今日头条推荐算法原理首公开，头条首席算法架构师带来详细解读](https://www.leiphone.com/category/yanxishe/XlIxFZ5W3j8MvaEL.html)
@@ -56,3 +72,5 @@ feed 流即信息流，常见的 feed 流有手淘商品列表、微信朋友圈
 5. [推荐系统的架构](https://kb.cnblogs.com/page/662938/)
 6. [深入理解：推荐系统中的召回与排序（一）](http://www.woshipm.com/data-analysis/4542994.html)
 7. [Feed流系统设计](https://www.jianshu.com/p/f8f0930f9d68)
+8. [【分层实验框架】Google 重叠实验框架：更多，更好，更快地实验](https://logosty.github.io/2019/11/22/%E5%88%86%E5%B1%82%E5%AE%9E%E9%AA%8C%E6%A1%86%E6%9E%B6-Google-%E9%87%8D%E5%8F%A0%E5%AE%9E%E9%AA%8C%E6%A1%86%E6%9E%B6-%E6%9B%B4%E5%A4%9A-%E6%9B%B4%E5%A5%BD-%E6%9B%B4%E5%BF%AB%E5%9C%B0%E5%AE%9E%E9%AA%8C.html)
+9. [【阿里云社区】10分钟搞懂分层实验原理](https://developer.aliyun.com/article/5837)

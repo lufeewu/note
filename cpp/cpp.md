@@ -174,6 +174,10 @@ c++ 的面向对象的特性主要是封装、多态、继承。通过 class 可
         p->say();  // 基类指针指向派生类，虚成员函数调用了派生类的实现
     }
 
+## ref() 和 cref() 
+c++11 中引入了 std::ref 用于取某个变量的引用，为了解决一些传参问题。主要是在函数式编程如 std::bind 的时候，对参数是直接拷贝而不是引用的，需要借助 std::ref 传递引用，std::cref 则是 const 类型引用。
+
 ## 参考
 1. [C++ 继承](https://www.runoob.com/cplusplus/cpp-inheritance.html)
 2. [C++ 虚函数和纯虚函数的区别](https://www.runoob.com/w3cnote/cpp-virtual-functions.html)
+3. [C++11 的 std::ref 用法](https://murphypei.github.io/blog/2019/04/cpp-std-ref)

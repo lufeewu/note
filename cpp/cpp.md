@@ -11,7 +11,6 @@ C++ 没有自动垃圾回收。RALL 资源获取即初始化，它的核心是�
 现代 C++ 通过声明堆栈上的对象尽可能避免使用堆内存。对于需要较大资源的堆栈，它应尽可能归对象所有。对象初始化时，获取它拥有的资源，最后在析构函数中释放资源。
 在 C++ 11 中，标准库提供了智能指针。智能指针处理拥有的内存的分配和删除，无需显示的编写析构函数。
 
-
 ## 文件
 在 cpp 工程中，包含两类文件，.cpp 文件和 .h 文件，其中 .cpp 文件被称作 c++ 源文件，里面主要放 c++ 的源代码，而 .h 文件则被称作 c++ 头文件。
 
@@ -176,6 +175,17 @@ c++ 的面向对象的特性主要是封装、多态、继承。通过 class 可
 
 ## ref() 和 cref() 
 c++11 中引入了 std::ref 用于取某个变量的引用，为了解决一些传参问题。主要是在函数式编程如 std::bind 的时候，对参数是直接拷贝而不是引用的，需要借助 std::ref 传递引用，std::cref 则是 const 类型引用。
+
+
+## Linux 库
+linux 是由 c/c++ 编写的操作系统，linux 开放了很多 c/c++ 调用的库。
+
+### 共享内存
+在 linux 系统开发中，可以通过 shm_open 函数创建或者打开共享内存文件，shm_open 操作的文件一定是位于 tmpfs 文件系统内的。常见的 linux 系统中 tmpfs 文件系统存放在 /dev/shm 内。通过 fruncate 函数会将参数 fd 指定的文件大小改为参数 length 指定的大小。
+
+int shm_open(const char *name, int oflag, mode_t mode): 用于创建或者打开共享内存文件。
+int ftruncate(int fd, off_t length): 会将参数 fd 指定的文件大小改为参数 length 指定的大小，参数 fd 为已打开的文件描述词。
+void *mmap64( void *addr, size_t len, int protection, int flags, int fildes, off64_t off): 用于建立内存映射文件，将某个文件的内容映射到内存中，对该内存区域的读写也就是对文件的读写。
 
 ## 参考
 1. [C++ 继承](https://www.runoob.com/cplusplus/cpp-inheritance.html)

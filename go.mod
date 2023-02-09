@@ -10,7 +10,7 @@ require (
 	github.com/casbin/casbin v1.9.1
 	github.com/casbin/casbin/v2 v2.35.1
 	github.com/casbin/mongodb-adapter/v2 v2.1.0
-	github.com/emicklei/go-restful v2.15.0+incompatible
+	github.com/emicklei/go-restful v2.16.0+incompatible
 	github.com/fsnotify/fsnotify v1.4.9
 	github.com/gin-gonic/autotls v0.0.3
 	github.com/gin-gonic/gin v1.7.3

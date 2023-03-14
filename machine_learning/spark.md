@@ -10,10 +10,15 @@ Apache Spark 是开源集群运算框架。允许用户将资料加载至集群�
 - 图形处理 Spark GraphX: GraphX 是构建在 Spark 上的分布式图形处理框架。提供 ELT、探索性分析和迭代图形计算，让用户能够以交互方式大规模构建、转换图形数据结构。
 
 Spark RDD: 是一种数据存储集合。只能由它支持的数据源或是其它 RDD 经过一定的转换产生。在 RDD 上可以执行的操作有两种转换和行动，每个 RDD 都记录了自己如何由持久化存储的源数据计算得出的，即血统。
-
+HDFS: 适合存储大文件存储的分布式文件系统. 
+HBase: 
+### yarn
+yarn 是一个资源调度平台，负责为运算程序提供服务器运算资源，相当于分布式的操作系统平台。
 ### PySpark
 pyspark 提供 Spark 的 Python API，能够通过 python 操作 RDDs. Py4j 库允许 python 动态的操作 JVM 的对象。
 
 ## 参考资料
 1. [SparkSQL并行执行多个Job的探索](https://cloud.tencent.com/developer/article/1901879)
 2. [AWS: 介绍 Apache Spark](https://aws.amazon.com/cn/big-data/what-is-spark/)
+3. [Spark on Kubernetes 与 Spark on Yarn 不完全对比分析](https://www.infoq.cn/article/7cmvdianctkck4birhvi)
+3. [Difference Between HDFS and HBase](https://www.educba.com/hdfs-vs-hbase/)

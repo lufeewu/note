@@ -55,6 +55,13 @@ kafka 的主要特性:
 - 集群监控: 对 kafka 集群的监控，可以考虑从集群中 broker 进程启动情况、端口建立情况、broker 日志、broker 端线程情况(Log Compaction 线程、副本拉取消息的线程)、关键 JMX 指标、kafka 客户端等。
 
 
+## 性能指标
+吞吐量: 单机支持 10w 级别
+topic 数量: 几十至几百 topic 时候，吞吐量会大幅下降, 与机器数量有关
+时效性: 延迟在 ms 级别
+可靠性: 可以做到 0 丢失
+
+
 ## 参考
 1. [kafka 基础知识梳理(一) - 概述](https://www.jianshu.com/p/6b9fa8891026)
 2. [Kafka 入门介绍](https://lotabout.me/2018/kafka-introduction/)
@@ -63,3 +70,4 @@ kafka 的主要特性:
 5. [浅谈Kafka特性与架构](https://juejin.cn/post/6844903957664382989)
 6. [八年面试生涯，整理了一套Kafka面试题](https://juejin.cn/post/6844903889003610119)
 7. [Kafka的Exactly-once语义与事务机制](https://www.cnblogs.com/luxiaoxun/p/13048474.html)
+8. [主流MQ的介绍](https://juejin.cn/post/6844904122643120142)

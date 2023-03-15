@@ -10,6 +10,17 @@
 下面是三种模式的对比:
 <img src="./img/sync_mode.png">
 
+## 设计原则
+**可用性**:
+**柔性可用**:
+**不信任原则**: 对输入不信任、对输出不信任、对服务不信任、对依赖系统不信任、对请求不信任、
+当接入外部系统时, 如何提升系统的可用性.对于等待第三方回调时, 需要从不信任第三方回调可靠性的情况下设计业务系统.
+
+## 一致性
+一致性: 数据保持一致. 在分布式数据中指多个节点中的数据值是一致的.
+ACID: 指事务的原子性(atomicity)、一致性(consistency)、隔离性(isolation)、持久性(durability).
 ## 参考
 1. [微博朋友圈亿级Feed流如何设计](https://www.phpmianshi.com/?id=30)
 2. [设计数据密集型应用 - 中文翻译](https://vonng.gitbooks.io/ddia-cn/content/)
+3. [后台必备意识——柔性可用](https://cloud.tencent.com/developer/article/1339887)
+4. [程序世界里的不信任原则](https://cloud.tencent.com/developer/article/1005918)

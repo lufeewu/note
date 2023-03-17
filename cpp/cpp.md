@@ -187,7 +187,13 @@ int shm_open(const char *name, int oflag, mode_t mode): 用于创建或者打开
 int ftruncate(int fd, off_t length): 会将参数 fd 指定的文件大小改为参数 length 指定的大小，参数 fd 为已打开的文件描述词。
 void *mmap64( void *addr, size_t len, int protection, int flags, int fildes, off64_t off): 用于建立内存映射文件，将某个文件的内容映射到内存中，对该内存区域的读写也就是对文件的读写。
 
+### lambda 表达式
+在 c++ 11 及更高版本中, 提供了 Lambda 表达式，是一种在被调用的位置或作为参数传递给函数的位置匿名函数对象(闭包)的简便用法.
+
+
+
 ## 参考
 1. [C++ 继承](https://www.runoob.com/cplusplus/cpp-inheritance.html)
 2. [C++ 虚函数和纯虚函数的区别](https://www.runoob.com/w3cnote/cpp-virtual-functions.html)
 3. [C++11 的 std::ref 用法](https://murphypei.github.io/blog/2019/04/cpp-std-ref)
+4. [C++ Lambda表达式基本用法](https://lellansin.wordpress.com/2014/01/02/c-lambda表达式基本用法/)

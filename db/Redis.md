@@ -34,6 +34,13 @@ redis 的数据结构包括 list、string、hash、set、zset 五种。它们的
 **主备**: redis 支持主备自动转移故障, 但主从互备也不能保障数据一致性. 当出现同时宕机、网络故障时影响主从同步、过期 key 不主动删除.
 
 ## 性能
+redis 的单机性能与机器配置有关，一般写性能在 10w qps 左右，读性能为 100w qps.
+
+## 问题
+1. redis 的 zset 怎么实现的?(跳表、压缩表、哈希表)
+2. 使用 zset 做排行榜时, 如果要实现分数相同时按时间排序怎么实现?
+3. binlog 和 redolog 日志?
+4. 
 
 ## 参考
 1. [Redis · 特性分析 · AOF Rewrite 分析](http://mysql.taobao.org/monthly/2016/03/05/)

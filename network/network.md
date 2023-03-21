@@ -1,4 +1,5 @@
 # 计算机网络
+涉及 tcp、http、udp 等.
 
 ## OSI 七层网络模型
 <img src="../img/osi.png">
@@ -45,5 +46,12 @@ MQTT 协议包含多个基本概念如下:
 - 保留消息(Retained Message): MQTT 客户端向服务器发布消息时，可以设置保留消息标志，保留消息会驻留在消息服务器，后来的订阅者订阅主题时可以接受到最新的一条保留消息。
 - 遗嘱消息(Will Message): MQTT 客户端向服务端发送 CONNECT 请求时，可以携带遗嘱消息。MQTT 客户端异常下线时（客户端断开前未向服务器发送 DISCONNECT 消息)，MQTT 消息服务器会发布遗嘱消息。
 
+
+## 问题
+1. 10m buffer 里面存满数据, 将数据尽量发出去, 允许部分丢包, 使用 tcp 好还是 udp 好?
+    - udp 可以保证速度、没有重传机制、没有阻塞机制、速度最快
+    - tcp 可以保证尽量不丢包、丢包有重传, 网络环境差的时候推荐 tcp
+
 ## 参考
 1. [MQTT 协议 10 分钟快速入门](https://www.emqx.com/zh/blog/get-started-with-mqtt-in-ten-mins)
+2. [](https://note.grianchan.com/网络/网络.html)

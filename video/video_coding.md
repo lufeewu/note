@@ -7,5 +7,11 @@ h264/h265/266: 视频号压缩标准. 其中 h265 比 h264 压缩效率提升 50
 关键 I 帧: Intra-coded picture, 帧内编码图像帧, I 帧表示关键帧. 这一帧保留完整画面, 作为随机访问的参考点.
 P 帧、B 帧、IDR 关键帧: P 帧表示这一帧和之前的一个关键帧的差别，解码时需要之前缓存的画面叠加上本帧定义的差别，生成最终画面.B 帧是双向差别帧，B 帧记录的是本帧与前后帧的差别.IDR 帧属于 I 帧，解码器收到 IDR frame 时，将所有的参考帧队列丢弃，是强制刷新帧.
 
+## 视频质量评价
+- PSNR: Peak signal-to-noise ratio 峰值信噪比, 是一种工程表示用来表示最高的信号量和影响其表示精度的噪声功率的比值.
+- VMAF: Video Multi-method Assessment Fusion, 它借助人类视觉模型以及机器学习来评估视频的质量.
+- SSIM: Structural Similarity Index Measure 是一种预测数字电视、电影图像以及其他类型数字图像或视频的感知质量的方法.
+
 ## 参考文献
 1. [I帧、P帧、B帧、GOP、IDR 和PTS, DTS之间的关系](https://www.cnblogs.com/yongdaimi/p/10676309.html)
+2. [VMAF: The Journey Continues](https://netflixtechblog.com/vmaf-the-journey-continues-44b51ee9ed12)

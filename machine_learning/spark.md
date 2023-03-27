@@ -7,7 +7,7 @@ Apache Spark 是开源集群运算框架.允许用户将资料加载至集群存
 - 交互查询 SparkSQL: 低延迟交互式查询的分布式查询引擎，速度可比 MapReduce 快 100 倍.
 - 实时分析 Spark Streaming: 利用 Spark Core 的快速计划功能流式分析的实时解决方案.
 - 机器学习 Spark MLib: MLib 是在大规模数据上进行机器学习所需的算法库.算法包括分类、回归、集群、协同过滤和模式挖掘等功能.
-- 图形处理 Spark GraphX: GraphX 是构建在 Spark 上的分布式图形处理框架.提供 ELT、探索性分析和迭代图形计算，让用户能够以交互方式大规模构建、转换图形数据结构.
+- 图形处理 Spark GraphX: GraphX 是构建在 Spark 上的分布式图形处理框架. 提供 ELT、探索性分析和迭代图形计算，让用户能够以交互方式大规模构建、转换图形数据结构.
 
 - Spark RDD: 是一种数据存储集合.只能由它支持的数据源或是其它 RDD 经过一定的转换产生.在 RDD 上可以执行的操作有两种转换和行动，每个 RDD 都记录了自己如何由持久化存储的源数据计算得出的，即血统.
 - HDFS: 适合存储大文件存储的分布式文件系统. 
@@ -30,6 +30,13 @@ pyspark 提供 Spark 的 Python API，能够通过 python 操作 RDDs. Py4j 库�
     + 数据基础层(DWB): data warehouse base 数据基础层, 存储的是客观数据, 一般用作中间层, 可以认为是大量指标的数据层.
     + 数据服务层(DWS): data warehouse service 数据服务层, 基于DWB上的基础数据, 整合汇总成分析某一个主题域的服务数据层, 一般是宽表. 用于提供后续的业务查询, OLAP分析, 数据分发等.
 - 数据服务层/应用层(ADS): Application DataService 应用数据服务, 该层主要是提供数据产品和数据分析使用的数据, 一般会存储在 ES, MySQL 等系统中供线上系统使用.
+
+## Hbase
+Hbase 是一个 NoSQL 数据库, 一般用来存储海量的数据, 它基于 HDFS 分布式文件系统构建, Hbase 的一行记录由一个 RowKey 和一个或多个的列以及它的值.
+
+
+### 性能
+
 
 ## 参考资料
 1. [SparkSQL并行执行多个Job的探索](https://cloud.tencent.com/developer/article/1901879)

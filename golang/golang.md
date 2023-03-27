@@ -377,25 +377,21 @@ dep status
 1. map、struct、切片在 64 位机器中占用多少字节？
 2. 为什么 nil != nil ？
 3. 进程、线程、协程有什么关系？
-    
-    <img src="img/routine_thread_process.jpg">
+    <img src="../img/routine_thread_process.jpg">
 
 4. 什么是 interface？
-
-    interface 是具有一组方法的类型，如果一个类型实现了一个 interface 的所有方法，就说该类型实现了 interface. 
+    - interface 是具有一组方法的类型，如果一个类型实现了一个 interface 的所有方法，就说该类型实现了 interface. 
 
 5. 原子操作有什么好处？
+    - 原子操作可以用互斥体完成，但它比互斥体更快，它是 CPU 而非操作系统提供的能力，如
 
-    原子操作可以用互斥体完成，但它比互斥体更快，它是 CPU 而非操作系统提供的能力，如
-
-        var val int32
-        ...
-        newval = atomic.AddInt32(&val, delta)
+            var val int32
+            ...
+            newval = atomic.AddInt32(&val, delta)
 
 6. 用锁有什么需要注意的？
-
-    锁不是很容易控制，忘记 unlock 将会导致灾难性后果. 锁粒度不宜过大，不要在锁里面执行费时操作. 读操作阻止写而不阻止读，写操作阻止一切.
-
+   - 锁不是很容易控制，忘记 unlock 将会导致灾难性后果. 锁粒度不宜过大，不要在锁里面执行费时操作. 读操作阻止写而不阻止读，写操作阻止一切.
+7. 使用 golang map 有什么需要注意的?
 #  工具
 1. go-callvis 源码分析
 2. <a href="https://maiyang.me/post/2018-09-14-tips-vscode/">VS Code 中的代码自动补全和自动导入包</a>

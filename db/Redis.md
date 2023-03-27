@@ -41,6 +41,10 @@ redis 无法满足数据的强一致性.
     +  任何一次读都能读到某个数据的最近一次写的数据. 
     +  系统中的所有进程，看到的操作顺序，都和全局时钟下的顺序一致
 
+### 实践
+- 大 key: 通常以 key 的大小和 key 内成员数判定. 如 key 本身过大 string 类型 key 大小 5MB, key 成员数过多 zset 类型成员有 10000 个, key 成员的数据量过大 hash 类型的 key 的 value 总值大小 100MB.
+- 热 key: 根据请求 key 的频次判定. 如 70% 的访问为特定的 key, 带宽使用率集中每秒对某个数据量 1MB 的 HASH key 发送大量 HGETALl, CPU 集中在特定的 key 每秒对有数万个成员的 zset key 发送大量 ZRANGE 请求.
+
 ## 性能
 redis 的单机性能与机器配置有关，一般写性能在 10w qps 左右，读性能为 100w qps. 
 
@@ -48,6 +52,9 @@ redis 的单机性能与机器配置有关，一般写性能在 10w qps 左右�
 1. redis 的 zset 怎么实现的?(跳表、压缩表、哈希表)
 2. 使用 zset 做排行榜时, 如果要实现分数相同时按时间排序怎么实现?
 3. binlog 和 redolog 日志?
+4. redis 大 key 如何删除避免崩溃?
+5. redis 内存淘汰机制?
+6. redis 分布式锁与 zookeeper 有什么区别?
 
 ## 参考
 1. [Redis · 特性分析 · AOF Rewrite 分析](http://mysql.taobao.org/monthly/2016/03/05/)
@@ -59,3 +66,4 @@ redis 的单机性能与机器配置有关，一般写性能在 10w qps 左右�
 7. [别再说你不知道分布式事务了](https://www.51cto.com/article/711909.html)
 8. [Abase2：字节跳动新一代高可用 NoSQL 数据库](https://www.51cto.com/article/709845.html)
 9. [什么是顺序一致性？](https://zhuanlan.zhihu.com/p/527494829)
+10. [发现并处理Redis的大Key和热Key](https://help.aliyun.com/document_detail/353223.html)

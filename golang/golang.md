@@ -392,6 +392,10 @@ dep status
 6. 用锁有什么需要注意的？
    - 锁不是很容易控制，忘记 unlock 将会导致灾难性后果. 锁粒度不宜过大，不要在锁里面执行费时操作. 读操作阻止写而不阻止读，写操作阻止一切.
 7. 使用 golang map 有什么需要注意的?
+8. mutex 和 rwmutex 有什么区别?
+9. WaitGroup 的作用与原理?
+10. 什么是 Context 包?
+
 #  工具
 1. go-callvis 源码分析
 2. <a href="https://maiyang.me/post/2018-09-14-tips-vscode/">VS Code 中的代码自动补全和自动导入包</a>

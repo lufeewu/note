@@ -27,12 +27,12 @@ golang 1.14 版本之前，对于 tight loop 不能被 gc 中断. 对于小的 t
         }
 
 ## runtime 库
-NumCPU() 
-GOMAXPROCS()
-Gosched()
-Goexit()
-NumGoroutine()
-GOOS
+- NumCPU() 
+- GOMAXPROCS()
+- Gosched()
+- Goexit()
+- NumGoroutine()
+- GOOS
 
 ## 并发
 n++ 并发安全问题
@@ -56,6 +56,11 @@ n++ 并发安全问题
         }
         fmt.Println(n) // 输出：未指定
     }
+### 协程
+Coroutine 轻量级线程, 它的切换完全在用户态进行, 相比线程、进程效率更高. 
+
+- 进程控制原语: 建立、撤销、等待、唤醒
+- 进程状态: D(TASK_UNINTERRUPTIBLE) 不可中断睡眠状态、R(TASK_RUNNING) 可执行状态、S(TASK_INTERRUPTIBLE) 可中断的睡眠状态、T/t(TASK_STOPPED or TASK_TRACED) 暂停状态或跟踪状态、X(TASK_DEAD - EXIT_DEAD) 退出状态，进程即将被销毁、Z(TASK_DEAD - EXIT_ZOMBIE) 退出状态，进程成为僵尸进程
 
 ## pprof
 gcBgMarkWorker
@@ -76,3 +81,5 @@ golang 的 map 主要基于哈希表原理，能够实现 o(1) 时间复杂度�
 1. [golang map底层实现](http://yangxikun.github.io/golang/2019/10/07/golang-map.html)
 2. [解剖Go语言map底层实现](https://studygolang.com/articles/14583)
 3. [深入解析 go - 2.3 map的实现](https://tiancaiamao.gitbooks.io/go-internals/content/zh/02.3.html)
+4. [Linux系统之进程状态](https://cloud.tencent.com/developer/article/1568077)
+5. [深入golang runtime的调度](https://zboya.github.io/post/go_scheduler/#go进程的启动)

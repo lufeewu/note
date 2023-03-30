@@ -7,4 +7,12 @@
 <img src="../img/cncf-observability.png">
 
 ## OpenTelemetry
-OpenTelemtry 是一个开源中立的项目，致力于提供一个业界通用的可观测性工具、接口、SDK 的集合。
+OpenTelemetry 是一个开源中立的项目，致力于提供一个业界通用的可观测性工具、接口、SDK 的集合。
+
+## 数据可观测性
+Data Observability 数据可观测性帮助理解系统的健康状态, 帮助接近实时的鉴别和解决问题.
+
+- 数据治理: 数据治理(Data Governance) 是一组标准和准则. 旨在维护整个数据管道的数据质量. 由于 AI 和 ML 等新兴技术严重依赖于作为变量的数据, 验证数据的质量至关重要. 数据治理帮助设定一个可观测性的框架,
+## 参考
+1. [一文看懂"数据治理"和"可观测性"](https://zhuanlan.zhihu.com/p/572937824)
+2. [Data Governance and Observability](https://www.kdnuggets.com/2022/08/data-governance-observability-explained.html)

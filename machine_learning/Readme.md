@@ -27,6 +27,12 @@ loss function: 损失函数是将随机事件或有关随机变量的取值映�
 - ROC 曲线: 在逻辑回归里, 设定一个阈值, 大于这个值为正类, 小于这个值为负类. 减小这个阈值, 那么更多的样本会被识别为正类, 可以提高正类识别率, 同时会有更多的负类被错误的识别为正类. 可以用 ROC 曲线评价分类器的好坏. 通过 TPR(纵坐标) = TP/(TP+FN) 和 FPR(横坐标) = FP/(FP+TN) 两个指标描绘曲线.
 - AUC(Area Under Curve) : AUC 被定义为 ROC 曲线下的面积, AUC 值越大的分类器, 正确率越高. 0.5 < AUC < 1 的情况下, 分类器优于随机猜测, 有预测价值.
 
+## Bert
+Bidirectional Encoder Representation from Transformers 是 2018 年 Google AI 研究院提出的预训练模型, 使用的是多层 Transformer 结构. 
+
+## Transformer
+Transformer 是一个利用注意力机制来提高模型训练速度的模型, 主要用于自然语言处理(NLP) 与计算机视觉(CV) 领域. Transformer 模型旨在处理自然语言等顺序输入数据, 可用于翻译、文本摘要等任务.
+
 ## 题目
 1. LR 推导、求导、梯度更新
 2. SVM 原形式、对偶形式
@@ -44,3 +50,5 @@ loss function: 损失函数是将随机事件或有关随机变量的取值映�
 3. <a src="https://github.com/INTERMT/Awesome-PyTorch-Chinese">PyTorch 中文学习资料集合</a>
 4. <a src="http://charleshm.github.io/2016/03/Model-Performance/">机器学习性能评估指标</a>
 5. [梳理常见机器学习面试题](https://zhuanlan.zhihu.com/p/82105066)
+6. [BERT](https://paddlepedia.readthedocs.io/en/latest/tutorials/pretrain_model/bert.html)
+7. [知乎 - 十分钟理解Transformer](https://zhuanlan.zhihu.com/p/82312421)

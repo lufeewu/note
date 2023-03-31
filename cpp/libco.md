@@ -81,11 +81,16 @@ libco 是微信开源的 c++ 协程库。2013 年开源在 github 上 https://gi
     - co_cond_broadcast: 同 co_cond_signal, 它用于广播通知所有协程。
     - co_cond_timedwait: 用于进行信号量的等待, 这是通过在 pEpoll 的 timeout 链表中加入一个 timeout 的 item 来实现超时触发，同时将 cond item 加入信号量所在的链表，然后使用 co_yield_ct 让出时间片。当发生超时触发时，调用 OnSignalProcessEvent 将协程环境恢复。
 
+
 ### libco 库原理与实现
 libco 框架可以分为三层, 分别是接口层、系统函数 Hook 层及事件驱动层。
 - 接口层: 主要提供协程原语、协程信号量、协程私有变量等。
 - 系统函数 Hook 层: 将一些相关的系统函数替换为自己的实现，包括 socket 族函数、gethostbyname、setenv/getenv 等
 - 事件驱动层: Linux 平台下主要是封装 epoll 相关的接口。
+
+
+### epoll
+
 
 #### 调度
 libco 是一个典型的非对称协程机制，严格意义上，不存在调度器。在执行 yield 时，当前协程只能将控制权交给调用者协程。它的调度主要基于 epoll/kqueue 的事件驱动调度，调度就是 epoll/kequeue 的事件循环。

@@ -24,7 +24,7 @@
 7. [epoll在Golang的应用](https://zhuanlan.zhihu.com/p/344581947)
 8. [如果这篇文章说不清 epoll 的本质，那就过来掐死我吧！](https://www.6aiq.com/article/1564634702930)
 9. [linux下epoll如何实现高效处理百万句柄](https://zhuanlan.zhihu.com/p/277664172)
-
+10. [在 golang 中是如何对 epoll 进行封装的？](https://zhuanlan.zhihu.com/p/484458312)
 ## 书本
 1. <a href="https://github.com/astaxie/build-web-application-with-golang/blob/master/zh/preface.md">build web application with golang</a>
 

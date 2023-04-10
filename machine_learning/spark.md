@@ -33,10 +33,21 @@ pyspark 提供 Spark 的 Python API，能够通过 python 操作 RDDs. Py4j 库�
 
 ## Hbase
 Hbase 是一个 NoSQL 数据库, 一般用来存储海量的数据, 它基于 HDFS 分布式文件系统构建, Hbase 的一行记录由一个 RowKey 和一个或多个的列以及它的值.
-
+- **hadoop**: 是一款支持数据密集型分布式应用程序的开源软件, 基于 MapReduce 计算模型, 为大数据的分布式储存与处理提供了软件框架. hadoop 核心模块包括分布式文件系统 hdfs、MapReduce 计算模型两个.
+- **hdfs**: 分布式文件系统(Hadoop Distributed File System), 是一个高度容错性系统, 适合部署在廉价的机器上. 适合具有超大数据集的应用程序. 
+- **MapReduce**: 
 
 ### 性能
 
+## 大数据
+大数据 Big Data 指传统数据处理软件不足以处理的大或复杂数据集的术语. 
+- IBM 5V 特点: Volume(大量)、Velocity(高速)、Variety(多样)、Value(低价值密度)、Veracity(真实性)
+- 技术栈: Spark、Storm、Flikn、MapReduce、Hive、HBase、Kudu、HDFS、Yarn、Mesos、Kubernetes、Logstash、Kafka、Pulsur、Zookeeper 等
+
+### Hive 
+Hive 是基于 Hadoop 的数据仓库工具, 用来进行数据提取、转化、加载, 是一种可以存储、查询和分析存储在 hadoop 中的大规模数据的机制. 它可以将结构化的数据文件映射为一张数据表, 提供 SQL 查询功能, 能将 SQL 语句转变为 MapReduce 任务来执行. 
+- **查询引擎**: 负责执行 SQL 语句.
+- **元存储**: 在 HDFS 中将数据收集虚拟化表.
 
 ## 参考资料
 1. [SparkSQL并行执行多个Job的探索](https://cloud.tencent.com/developer/article/1901879)
@@ -45,3 +56,5 @@ Hbase 是一个 NoSQL 数据库, 一般用来存储海量的数据, 它基于 HD
 4. [Difference Between HDFS and HBase](https://www.educba.com/hdfs-vs-hbase/)
 5. [中间表是什么？和报表有什么关系？会带来怎样的问题？又如何解决？](https://zhuanlan.zhihu.com/p/148782827)
 6. [数据仓库分层中的ODS、DWD、DWS](https://www.cnblogs.com/amyzhu/p/13513425.html)
+7. [腾讯云 -【万字长文】HDFS最全知识点整理（建议收藏）](https://cloud.tencent.com/developer/article/2005288)
+8. [百度百科 - hive](https://baike.baidu.com/item/hive/67986)

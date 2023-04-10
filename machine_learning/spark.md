@@ -54,7 +54,7 @@ pyspark 提供 Spark 的 Python API，能够通过 python 操作 RDDs. Py4j 库�
 Hbase 是一个 NoSQL 数据库, 一般用来存储海量的数据, 它基于 HDFS 分布式文件系统构建, Hbase 的一行记录由一个 RowKey 和一个或多个的列以及它的值.
 - **hadoop**: 是一款支持数据密集型分布式应用程序的开源软件, 基于 MapReduce 计算模型, 为大数据的分布式储存与处理提供了软件框架. hadoop 核心模块包括分布式文件系统 hdfs、MapReduce 计算模型两个.
 - **hdfs**: 分布式文件系统(Hadoop Distributed File System), 是一个高度容错性系统, 适合部署在廉价的机器上. 适合具有超大数据集的应用程序. 
-- **MapReduce**: 
+- **MapReduce**: 分布式运算程序框架, 用于在 Hadoop 中编写分布式程序. 通过 Map、Reduce 两步完成大规模分布式计算.
 
 ### 性能
 

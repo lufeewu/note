@@ -1,5 +1,5 @@
 # 简介
-音视频技术相关知识
+音视频技术相关知识.
 
 ## 概念
 h264/h265/266: 视频号压缩标准. 其中 h265 比 h264 压缩效率提升 50%, 而 h266 比 h265 压缩效率提升 50%.
@@ -23,8 +23,23 @@ P 帧、B 帧、IDR 关键帧: P 帧表示这一帧和之前的一个关键帧�
 - **体验质量**: QoE(Quailty of Experience), 从终端用户角度出发, 以用户对 App 的主观感受衡量满意程度. 短视频的主要 QoE 指标有观看次数(video view)、人均观看时长(average played time)、完播率(play complete ratio)、评论率(comment rate)、人均评论停留时长(average stay duration in comment)、点赞率(like rate)、收藏率(favorite rate)、转发率(forward rate)、加粉率(follow rate)、负反馈率(negative feedback rate)
 - **服务质量**: QoS(Quality of Service), 偏向于从客观角度出发, 通过各种参数衡量服务的整体性能. 对短视频 QoS 指标主要有传输延时(transport latency)、编码延时(encode latency)、解码延时(decode latency)、首帧时间(time to first frame)、帧率(frame per second)、秒开率(sec-opening rate)、缓存命中率(cache hit ratio)等
 - **多码率**: 同一个视频会存在多个码率, 根据用户的网络环境、视频内容、设备性能自适应码率, 称为码率自适应技术(Adaptive Bitrate Streaming).
+- **moov**: moov atom 定义了时间尺度、时长、显示特性以及用于在电影每个轨道的信息.
+## ffmpeg
+ffmpeg 是一个处理多媒体内容如视频、音频、字幕和相关元数据的库和工具集合.
+- 库集合: libavcodec、libavformat、libavutil、libavfilter、libavdevice、libswresample、libswscale.
+- 工具: ffmpeg、ffplay、ffprobe、aviocat、ismindex、qt-faststart
+
+## srs
+SRS 是一个简单、高效、实时的媒体服务, 支持 RTMP、WebRTC、HLS、HTTP-FLV、SRT、MPEG-DASH、GB28181 协议. 单进程支持约 9000 并发.
+
+目前主流的流媒体服务器有开源的 NginxRTMP、Crtmpd、Red5、SRS 等.
+- **NginxRTMP**: 支持音视频直播, 支持 flv/mp4 等格式, 支持 push、pull 模式, 可以录制 flv 等. 单进程支持约 3000 并发.
+- **Crtmpd**: CrtmpServer 是一个由 c++ 编写的开源 RTMP 流媒体服务器.
+- **Red5**: java 编写的开源流媒体服务 [red5-server](https://github.com/Red5/red5-server), 支持视频流、音频流、直播发布等功能, 支持 RTMP、RTMPT、RTMPS 和 RTMPE 等协议.
 ## 参考文献
 1. [I帧、P帧、B帧、GOP、IDR 和PTS, DTS之间的关系](https://www.cnblogs.com/yongdaimi/p/10676309.html)
 2. [VMAF: The Journey Continues](https://netflixtechblog.com/vmaf-the-journey-continues-44b51ee9ed12)
 3. [从 350ms 到 80ms，打造 iOS 短视频的极致丝滑体验](https://learnku.com/articles/60568)
 4. [短视频预加载技术（一）](https://johnsonlee.io/2021/02/10/short-video-preloading-1/)
+5. [github - FFmpeg/FFmpeg](https://github.com/FFmpeg/FFmpeg)
+6. [github - ossrs/srs](https://github.com/ossrs/srs)

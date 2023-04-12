@@ -34,8 +34,12 @@ SRS 是一个简单、高效、实时的媒体服务, 支持 RTMP、WebRTC、HLS
 
 目前主流的流媒体服务器有开源的 NginxRTMP、Crtmpd、Red5、SRS 等.
 - **NginxRTMP**: 支持音视频直播, 支持 flv/mp4 等格式, 支持 push、pull 模式, 可以录制 flv 等. 单进程支持约 3000 并发.
-- **Crtmpd**: CrtmpServer 是一个由 c++ 编写的开源 RTMP 流媒体服务器.
+- **Crtmpd**: CrtmpServer 是一个由 c++ 编写的开源高性能 RTMP 流媒体服务器. [shiretu/crtmpserver](https://github.com/shiretu/crtmpserver)
 - **Red5**: java 编写的开源流媒体服务 [red5-server](https://github.com/Red5/red5-server), 支持视频流、音频流、直播发布等功能, 支持 RTMP、RTMPT、RTMPS 和 RTMPE 等协议.
+
+## 音视频格式
+1. AAC: 高级音频编码(Advanced Audio Coding), 一种专门声音数据设计的文件压缩格式, 它采用了全新的算法进行编码, 更加高效, 有更高的性价比.
+
 ## 参考文献
 1. [I帧、P帧、B帧、GOP、IDR 和PTS, DTS之间的关系](https://www.cnblogs.com/yongdaimi/p/10676309.html)
 2. [VMAF: The Journey Continues](https://netflixtechblog.com/vmaf-the-journey-continues-44b51ee9ed12)
@@ -43,3 +47,4 @@ SRS 是一个简单、高效、实时的媒体服务, 支持 RTMP、WebRTC、HLS
 4. [短视频预加载技术（一）](https://johnsonlee.io/2021/02/10/short-video-preloading-1/)
 5. [github - FFmpeg/FFmpeg](https://github.com/FFmpeg/FFmpeg)
 6. [github - ossrs/srs](https://github.com/ossrs/srs)
+7. [crtmpserver 系列(二): 搭建简易流媒体直播系统](https://www.cnblogs.com/wangqiguo/p/6014519.html#_label0)

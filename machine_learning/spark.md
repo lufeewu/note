@@ -67,7 +67,7 @@ hbase 可以存储 PB 级别的数据(百亿、千亿条量级), 根据主键 Ro
 Hive 是基于 Hadoop 的数据仓库工具, 用来进行数据提取、转化、加载, 是一种可以存储、查询和分析存储在 hadoop 中的大规模数据的机制. 它可以将结构化的数据文件映射为一张数据表, 提供 SQL 查询功能, 能将 SQL 语句转变为 MapReduce 任务来执行. 
 - **查询引擎**: 负责执行 SQL 语句.
 - **元存储**: 在 HDFS 中将数据收集虚拟化表.
-
+- **partition**: 分区用于将一个大表分割到许多小的部分.
 ## 参考资料
 1. [SparkSQL并行执行多个Job的探索](https://cloud.tencent.com/developer/article/1901879)
 2. [AWS: 介绍 Apache Spark](https://aws.amazon.com/cn/big-data/what-is-spark/)

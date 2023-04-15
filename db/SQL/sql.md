@@ -10,9 +10,13 @@ sql 语句学习, 普通数据库操作、大数据分析.
 
 ## 实践
 sql 操作实践.
+- **insert into**: select into 用于从源表查询数据集结果.
 
-- **insert into**: select into 用于从源表查询数据集结果
+        SELECT table_column1, table_column2, table_column3...
+        INTO new_table_name [IN another_database]
+        FROM table_name;
 
 
 ## 参考
 1. [CSDN - 数据库（第一范式，第二范式，第三范式](https://blog.csdn.net/Dream_angel_Z/article/details/45175621)
+2. [SELECT INTO 敘述句](https://www.fooish.com/sql/select-into.html)

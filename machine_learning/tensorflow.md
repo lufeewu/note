@@ -7,7 +7,7 @@ tensorflow 是一个基于 python 的用于创建机器学习应用程序的库,
 - Master: 在分布式的运行时环境中, 根据 Session.run 的 Fetching 参数, 从计算图中反向遍历, 找到所依赖的最小子图.
 - Worker: 每个任务 TensorFlow 将启动一个 Worker Service, Worker Service 将按照计算图中节点之间的依赖关系, 根据当前可用的硬件环境(GPU/CPU), 调用 OP 的 Kernel 实现完成 OP 的运算.
 - Kernel: 是 OP 在某种硬件环境的特定实现, 它负责执行 OP 的运算.
-- 算法: tensorflow 支持多种算法. 包括回归分析、分类、卷积神经网络(CNN)、循环神经网络(RNN)、生成对抗网络(GANs)、卷积单元(Convolutional Units) 等, 还支持其它一些特殊算法, 如自编码(Autoencoder)、聚类(Clustering)等.
+- 算法: tensorflow 支持多种算法. 包括回归分析、分类、卷积神经网络(CNN)、循环神经网络(RNN)、生成对抗网络(GANs)、卷积单元(Convolutional Units)等, 还支持其它一些特殊算法, 如自编码(Autoencoder)、聚类(Clustering)等.
 
 ## kreas
 kreas 是一个用 python 编写的开源神经网络库.

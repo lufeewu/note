@@ -16,6 +16,9 @@ sql 操作实践.
         INTO new_table_name [IN another_database]
         FROM table_name;
 
+- **limit**: 用于限定返回的行数. 当后面接两个参数如 limit n,m 时, 表示从第 n 条记录开始返回 m 条记录.
+- **offset**: 用于指定跳过的记录条数, 单独使用可能不起作用
+
 
 ## 参考
 1. [CSDN - 数据库（第一范式，第二范式，第三范式](https://blog.csdn.net/Dream_angel_Z/article/details/45175621)

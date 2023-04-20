@@ -1,5 +1,5 @@
 # 简介
-ClickHouse 是一个列式数据库管理系统(DMBS), 数据在 ClickHouse 中始终是列式存储的.
+ClickHouse 是一个开源列式数据库管理系统(DMBS), 数据在 ClickHouse 中始终是列式存储的.
 
 ## 概念
 - **列式存储**: Online Analytical Processing, OLAP 将数据的每一列组织在一起, 大大减少在进行聚合计算时候磁盘 I/O 次数, 但在写入时要多次 I/O.
@@ -20,6 +20,16 @@ ClickHouse 是一个列式数据库管理系统(DMBS), 数据在 ClickHouse 中�
 - **服务器**: Server 实现了多个不同的接口. 用于外部客户端的 HTTP 接口、用于本机 Clickhouse 客户端及分布式查询的 TCP 接口、用于传输数据进行拷贝的接口.
 - **合并树**: MergeTree 是一系列支持按主键索引的存储引擎.
 - **复制**: 基于表实现的复制, 可以在同一个服务器上有可复制的表和不可复制的表.
+
+### 架构
+ClickHouse 的主要组件包括 Client、Server、Storage、Distributed、ZooKeeper、Replication .
+- **Client**: 用于与 ClickHouse 服务器进行通信, 向其发送查询请求.
+- **Server**: 服务器, 是 ClickHouse 的核心组件, 负载接受来自客户端的查询请求, 将结果返回给客户端.
+- **Storage**: 存储, ClickHouse 支持多种存储引擎, 包括 MergeTree 等.
+- **Distributed**: 支持分布式部署, 可以用多个节点组成一个 ClickHouse 集群, 提高系统的可用性和性能.
+- **Zookeeper**: 是一个分布式的协调服务, ClickHouse 可以通过 Zookeeper 实现集群节点的发现和管理.
+- **Replication**: ClickHouse 支持数据复制, 可以将数据从一个节点复制到其他节点, 提高系统的可用性和数据的容错性.
+
 
 ## 参考
 1. [什么是列式存储，一文秒懂](https://juejin.cn/post/6844904118872440840)

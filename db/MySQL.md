@@ -95,3 +95,4 @@ MySQL 的扩容可以通过停服务扩容和平滑扩容方案.
 3. [可能是我见过最好的 MySQL 高可用解决方案 MySQL InnoDB Cluster 中文教程！](https://www.modb.pro/db/15033)
 4. [ElasticSearch 索引 VS MySQL 索引](https://segmentfault.com/a/1190000023733216)
 5. [LSM树](https://fhfirehuo.github.io/Attacking-Java-Rookie/Chapter02/LSMTree.html)
+6. [Sql Or NoSql，看完这一篇你就懂了](https://www.cnblogs.com/xrq730/p/11039384.html)

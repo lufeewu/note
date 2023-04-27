@@ -1,5 +1,5 @@
 # 简介
-ClickHouse 是一个开源列式数据库管理系统(DMBS), 数据在 ClickHouse 中始终是列式存储的.
+ClickHouse 是一个开源列式数据库管理系统(DMBS), 数据在 ClickHouse 中始终是列式存储的. 它用于实时数据分析, 处理速度比传统方法快 100-1000 倍.
 
 ## 概念
 - **列式存储**: Online Analytical Processing, OLAP 将数据的每一列组织在一起, 大大减少在进行聚合计算时候磁盘 I/O 次数, 但在写入时要多次 I/O.
@@ -30,8 +30,14 @@ ClickHouse 的主要组件包括 Client、Server、Storage、Distributed、ZooKe
 - **Zookeeper**: 是一个分布式的协调服务, ClickHouse 可以通过 Zookeeper 实现集群节点的发现和管理.
 - **Replication**: ClickHouse 支持数据复制, 可以将数据从一个节点复制到其他节点, 提高系统的可用性和数据的容错性.
 
+## 性能
+相比于 MySQL、InfluxDB, ClickHouse 在同样的资源情况导入速度、磁盘占用、查询性能方面都十分突出. 
+- 4c16g 的资源, 官网 6600w 数据集, 导入耗时约 75 秒、磁盘空间 2.7G、全表 count 100 ms、 max/min 186ms、平均值 123ms、方差 113ms.
+- clickhouse 快的原因: 列式存储、数据压缩、向量化执行引擎、多线程和分布式、多样的表引擎(MergeTree).
+- clickhouse 缺点: 不支持事务、不支持真删除/更新、分布式能力弱、不支持高并发(建议 QPS 100).
 
 ## 参考
 1. [什么是列式存储，一文秒懂](https://juejin.cn/post/6844904118872440840)
 2. [github - ClickHouse/ClickHouse](https://github.com/ClickHouse/ClickHouse)
 3. [ClickHouse 架构概述](https://clickhouse.com/docs/zh/development/architecture)
+4. [记一次 ClickHouse 性能测试](https://juejin.cn/post/7131778389865660452)

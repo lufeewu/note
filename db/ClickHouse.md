@@ -25,7 +25,7 @@ ClickHouse 是一个开源列式数据库管理系统(DMBS), 数据在 ClickHous
 ClickHouse 的主要组件包括 Client、Server、Storage、Distributed、ZooKeeper、Replication .
 - **Client**: 用于与 ClickHouse 服务器进行通信, 向其发送查询请求.
 - **Server**: 服务器, 是 ClickHouse 的核心组件, 负载接受来自客户端的查询请求, 将结果返回给客户端.
-- **Storage**: 存储, ClickHouse 支持多种存储引擎, 包括 MergeTree 等.
+- **Storage**: 存储, ClickHouse 支持多种存储引擎, 包括 MergeTree、Collapsing 等.
 - **Distributed**: 支持分布式部署, 可以用多个节点组成一个 ClickHouse 集群, 提高系统的可用性和性能.
 - **Zookeeper**: 是一个分布式的协调服务, ClickHouse 可以通过 Zookeeper 实现集群节点的发现和管理.
 - **Replication**: ClickHouse 支持数据复制, 可以将数据从一个节点复制到其他节点, 提高系统的可用性和数据的容错性.
@@ -35,6 +35,8 @@ ClickHouse 的主要组件包括 Client、Server、Storage、Distributed、ZooKe
 - 4c16g 的资源, 官网 6600w 数据集, 导入耗时约 75 秒、磁盘空间 2.7G、全表 count 100 ms、 max/min 186ms、平均值 123ms、方差 113ms.
 - clickhouse 快的原因: 列式存储、数据压缩、向量化执行引擎、多线程和分布式、多样的表引擎(MergeTree).
 - clickhouse 缺点: 不支持事务、不支持真删除/更新、分布式能力弱、不支持高并发(建议 QPS 100).
+
+
 
 ## 参考
 1. [什么是列式存储，一文秒懂](https://juejin.cn/post/6844904118872440840)

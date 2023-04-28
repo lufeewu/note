@@ -30,6 +30,14 @@ ClickHouse 的主要组件包括 Client、Server、Storage、Distributed、ZooKe
 - **Zookeeper**: 是一个分布式的协调服务, ClickHouse 可以通过 Zookeeper 实现集群节点的发现和管理.
 - **Replication**: ClickHouse 支持数据复制, 可以将数据从一个节点复制到其他节点, 提高系统的可用性和数据的容错性.
 
+
+### MergeTree
+MergeTree 是 ClickHouse 最有特色、功能最强大的表引擎, 实现了数据的 partitioning、replication、mutation、merge 并在 merge 基础上的 replace、aggregation
+
+### 索引
+ClickHouse 的索引有 Sparse Index、Skip Indexes
+- Sparse Index: 稀疏索引针对表中部分数据建立索引项目, 为每个表中数据块建立一个索引项.
+- Skip Indexes: ClickHouse 提供了跳数索引能够显著的提高查询速度.
 ## 性能
 相比于 MySQL、InfluxDB, ClickHouse 在同样的资源情况导入速度、磁盘占用、查询性能方面都十分突出. 
 - 4c16g 的资源, 官网 6600w 数据集, 导入耗时约 75 秒、磁盘空间 2.7G、全表 count 100 ms、 max/min 186ms、平均值 123ms、方差 113ms.
@@ -42,3 +50,5 @@ ClickHouse 的主要组件包括 Client、Server、Storage、Distributed、ZooKe
 3. [ClickHouse 架构概述](https://clickhouse.com/docs/zh/development/architecture)
 4. [记一次 ClickHouse 性能测试](https://juejin.cn/post/7131778389865660452)
 5. [ClickHouse教程](https://clickhouse.com/docs/zh/getting-started/tutorial)
+6. [Clickhouse数据存储结构](https://www.cnblogs.com/eedbaa/p/14512803.html)
+7. [CSDN - 密集索引（dense index）和稀疏索引（sparse index）](https://blog.csdn.net/tuning_optmization/article/details/114361513)

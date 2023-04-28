@@ -63,6 +63,10 @@ hbase 可以存储 PB 级别的数据(百亿、千亿条量级), 根据主键 Ro
 - IBM 5V 特点: Volume(大量)、Velocity(高速)、Variety(多样)、Value(低价值密度)、Veracity(真实性)
 - 技术栈: Spark、Storm、Flikn、MapReduce、Hive、HBase、Kudu、HDFS、Yarn、Mesos、Kubernetes、Logstash、Kafka、Pulsur、Zookeeper 等
 
+### 实时计算
+一般是针对海量数据, 要求为秒级. Hadoop 并没有给出实时计算方案, 随后出现了 Storm、SparkStreaming、Flink 等实时计算框架. 
+- 实时计算特征: 无限数据、无限数据处理、低延迟.
+
 ### Hive 
 Hive 是基于 Hadoop 的数据仓库工具, 用来进行数据提取、转化、加载, 是一种可以存储、查询和分析存储在 hadoop 中的大规模数据的机制. 它可以将结构化的数据文件映射为一张数据表, 提供 SQL 查询功能, 能将 SQL 语句转变为 MapReduce 任务来执行. 
 - **查询引擎**: 负责执行 SQL 语句.
@@ -106,3 +110,4 @@ hive 的原理:
 6. [数据仓库分层中的ODS、DWD、DWS](https://www.cnblogs.com/amyzhu/p/13513425.html)
 7. [腾讯云 -【万字长文】HDFS最全知识点整理（建议收藏）](https://cloud.tencent.com/developer/article/2005288)
 8. [百度百科 - hive](https://baike.baidu.com/item/hive/67986)
+9. [一文读懂大数据实时计算](https://www.51cto.com/article/670300.html)

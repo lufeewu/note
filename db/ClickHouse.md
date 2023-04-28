@@ -36,10 +36,9 @@ ClickHouse 的主要组件包括 Client、Server、Storage、Distributed、ZooKe
 - clickhouse 快的原因: 列式存储、数据压缩、向量化执行引擎、多线程和分布式、多样的表引擎(MergeTree).
 - clickhouse 缺点: 不支持事务、不支持真删除/更新、分布式能力弱、不支持高并发(建议 QPS 100).
 
-
-
 ## 参考
 1. [什么是列式存储，一文秒懂](https://juejin.cn/post/6844904118872440840)
 2. [github - ClickHouse/ClickHouse](https://github.com/ClickHouse/ClickHouse)
 3. [ClickHouse 架构概述](https://clickhouse.com/docs/zh/development/architecture)
 4. [记一次 ClickHouse 性能测试](https://juejin.cn/post/7131778389865660452)
+5. [ClickHouse教程](https://clickhouse.com/docs/zh/getting-started/tutorial)

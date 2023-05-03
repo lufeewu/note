@@ -41,7 +41,7 @@ ClickHouse 的索引有 Sparse Index、Skip Indexes
 ## 性能
 相比于 MySQL、InfluxDB, ClickHouse 在同样的资源情况导入速度、磁盘占用、查询性能方面都十分突出. 
 - 4c16g 的资源, 官网 6600w 数据集, 导入耗时约 75 秒、磁盘空间 2.7G、全表 count 100 ms、 max/min 186ms、平均值 123ms、方差 113ms.
-- clickhouse 快的原因: 列式存储、数据压缩、向量化执行引擎、多线程和分布式、多样的表引擎(MergeTree).
+- clickhouse 快的原因: 列式存储、数据压缩、向量化执行引擎、多线程和分布式、多样的表引擎(MergeTree)、稀疏索引.
 - clickhouse 缺点: 不支持事务、不支持真删除/更新、分布式能力弱、不支持高并发(建议 QPS 100).
 
 ## 参考

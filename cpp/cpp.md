@@ -193,6 +193,8 @@ void *mmap64( void *addr, size_t len, int protection, int flags, int fildes, off
 在 c++ 11 及更高版本中, 提供了 Lambda 表达式，是一种在被调用的位置或作为参数传递给函数的位置匿名函数对象(闭包)的简便用法.
 
 
+## bazel 库管理
+bazel 是与 Make、Maven、Gradle 类似的开源构建和测试工具. 支持构建 c++、java、Android、iOS 项目.
 
 ## 参考
 1. [C++ 继承](https://www.runoob.com/cplusplus/cpp-inheritance.html)

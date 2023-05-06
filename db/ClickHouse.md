@@ -32,7 +32,11 @@ ClickHouse 的主要组件包括 Client、Server、Storage、Distributed、ZooKe
 
 
 ### MergeTree
-MergeTree 是 ClickHouse 最有特色、功能最强大的表引擎, 实现了数据的 partitioning、replication、mutation、merge 并在 merge 基础上的 replace、aggregation
+MergeTree 是 ClickHouse 最有特色、功能最强大的表引擎, 实现了数据的 partitioning、replication、mutation、merge 并在 merge 基础上的 replace、aggregation. 
+
+#### LSM Tree
+LSM Tree 全称 Log-Structured-Merge Tree, 即日志结构合并树, 它是一种数据结构设计思想。许多 NoSQL 存储采用的都是 LSM 树如 LevelDB、Hbase、RocksDB 等. 被设计用来提供比传统 B+ 树或 ISAM 更好的写操作吞吐量, 主要是通过消除本地随机更新操作.
+LSM Tree 由两个或以上的存储结构组成. 
 
 ### 索引
 ClickHouse 的索引有 Sparse Index、Skip Indexes
@@ -52,3 +56,4 @@ ClickHouse 的索引有 Sparse Index、Skip Indexes
 5. [ClickHouse教程](https://clickhouse.com/docs/zh/getting-started/tutorial)
 6. [Clickhouse数据存储结构](https://www.cnblogs.com/eedbaa/p/14512803.html)
 7. [CSDN - 密集索引（dense index）和稀疏索引（sparse index）](https://blog.csdn.net/tuning_optmization/article/details/114361513)
+8. [HBase|ClickHouse|MongoDB都在用LSM-Tree存储原理](https://blog.csdn.net/huzechen/article/details/107478781)

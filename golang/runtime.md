@@ -77,9 +77,29 @@ golang 的 map 主要基于哈希表原理，能够实现 o(1) 时间复杂度�
 - mapextra: mapextra 中包含 overflow 的 bucket(也氛围 overflow 和 oldoverflow) 。 overflow bucket 用于在出现哈希冲突时进行存储冲突 kv，即拉链法解决冲突。
 - 寻址: 通过将 key 进行 hash，并将 hash 所得的低位值作为 buckets 数组的索引，然后高位 hash 比较 bucket 中的 hash 是否一致，一致则在 bucket 中寻找指定 key。不一致则继续在 overflow buckets 中寻找。
 
+## 内存分配
+golang runtime 的内存分配算法主要源于 c 语言开发的 TCMalloc 算法, 全称 Thread-Caching Malloc, 核心思想是把内存分为多级管理, 从而降低锁的粒度.
+- 内存管理: 在启动时, 向操作系统申请一块虚拟地址空间的内存, 切成小块进行管理. 内存快被分配成如下三个区域.
+    + arena 区域: 堆区, 大小为 512GB. go 动态分配的内存都在这个区域, 它把内存分割成 8KB 大小的页, 一些页组合起来称为 mspan.
+    + bitmap 区域: 区域大小为 16GB, 标识 arena 区域哪些地址保存了对象, 并且用 4bit 标志位表示对象是否包含指针、GC 标记信息.
+    + spans 区域: 区域大小为 512 MB, 存放 span 的指针, 每个指针对应一页.
+- 内存分配: 由内存分配器完成, 由 3 种组件构成.
+    + mcache: 每个工作线程都会绑定一个 mcache, 本地缓存可用 mspan 资源.
+    + mcentral: 为所有 mcache 提供切分好的 mspan 资源. 每个 central 保存特定大小的全局 mspan 列表, 包括分配和未分配的.
+    + mheap: 代表 go 程序特有的所有堆空间, go 程序使用一个 mheap 的全局对象 _mheap 来管理内存.
+- 分配流程: 内存分配对象时, 根据对象大小分成三类, 小于等于 16B、一般对象(大于 16B, 小于等于 32KB)、大对象(32KB). 大体流程如下:
+    1. 32Kb 对象直接在 mheap 上分配
+    2. <= 16B 的对象使用 mcache 的 tiny 分配器分配.
+    3. 大于 16B 小于等于 32KB 的对象, 先计算对象的规格大小, 然后使用 mcache 中相应规格大小的 mspan 分配.
+        + 如果 mcache 没有相应规格大小的 mspan, 则向 mcentral 申请
+        + 如果 mcentral 没有相应规格大小的 mspan, 则向 mheap 申请
+        + 如果 mheap 中没有合适大小的 mspan, 则向操作系统申请
+
+
 ## 参考
 1. [golang map底层实现](http://yangxikun.github.io/golang/2019/10/07/golang-map.html)
 2. [解剖Go语言map底层实现](https://studygolang.com/articles/14583)
 3. [深入解析 go - 2.3 map的实现](https://tiancaiamao.gitbooks.io/go-internals/content/zh/02.3.html)
 4. [Linux系统之进程状态](https://cloud.tencent.com/developer/article/1568077)
 5. [深入golang runtime的调度](https://zboya.github.io/post/go_scheduler/#go进程的启动)
+6. [图解Go语言内存分配](https://juejin.cn/post/6844903795739082760)

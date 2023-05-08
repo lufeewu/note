@@ -38,6 +38,9 @@ MergeTree 是 ClickHouse 最有特色、功能最强大的表引擎, 实现了�
 LSM Tree 全称 Log-Structured-Merge Tree, 即日志结构合并树, 它是一种数据结构设计思想。许多 NoSQL 存储采用的都是 LSM 树如 LevelDB、Hbase、RocksDB 等. 被设计用来提供比传统 B+ 树或 ISAM 更好的写操作吞吐量, 主要是通过消除本地随机更新操作.
 LSM Tree 由两个或以上的存储结构组成. 
 
+#### SSTable
+SSTable(Sorted String Table)是排序字符串表的简称, 它是一个高效的 key-value 型文件存储格式. 它目前已经被广泛用于常用的一些存储引擎如 BigTable、Cassandra、Hbase、RocksDB、LevelDB 等 key-value 型存储引擎中. 
+
 ### 索引
 ClickHouse 的索引有 Sparse Index、Skip Indexes
 - Sparse Index: 稀疏索引针对表中部分数据建立索引项目, 为每个表中数据块建立一个索引项. 

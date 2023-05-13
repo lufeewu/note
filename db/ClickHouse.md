@@ -51,6 +51,10 @@ ClickHouse 的索引有 Sparse Index、Skip Indexes
 - clickhouse 快的原因: 列式存储、数据压缩、向量化执行引擎、多线程和分布式、多样的表引擎(MergeTree)、稀疏索引.
 - clickhouse 缺点: 不支持事务、不支持真删除/更新、分布式能力弱、不支持高并发(建议 QPS 100).
 
+
+## RocksDB
+RocksDB 是由 facebook 基于 LevelDB 开发的一款提供键值存储与读写功能的 LSM-tree 架构引擎. 用户写入的键值对会先写入键盘上的 WAL(Write Ahead Log), 然后在写入内存中的跳表(SkipList, 这部分结构称作 MemTable).
+
 ## 参考
 1. [什么是列式存储，一文秒懂](https://juejin.cn/post/6844904118872440840)
 2. [github - ClickHouse/ClickHouse](https://github.com/ClickHouse/ClickHouse)
@@ -60,3 +64,4 @@ ClickHouse 的索引有 Sparse Index、Skip Indexes
 6. [Clickhouse数据存储结构](https://www.cnblogs.com/eedbaa/p/14512803.html)
 7. [CSDN - 密集索引（dense index）和稀疏索引（sparse index）](https://blog.csdn.net/tuning_optmization/article/details/114361513)
 8. [HBase|ClickHouse|MongoDB都在用LSM-Tree存储原理](https://blog.csdn.net/huzechen/article/details/107478781)
+9. [RocksDB 简介](https://docs.pingcap.com/zh/tidb/dev/rocksdb-overview)

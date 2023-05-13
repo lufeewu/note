@@ -78,6 +78,9 @@ hive 的原理:
 2. Hive 的架构原理?
 3. Hive 的本地模式?
 
+#### hive sql
+HiveQL 是 hive 的与 sql 类似的查询语句.
+- 窗口函数: over() 是
 
 
 ## 面试题
@@ -111,3 +114,4 @@ hive 的原理:
 7. [腾讯云 -【万字长文】HDFS最全知识点整理（建议收藏）](https://cloud.tencent.com/developer/article/2005288)
 8. [百度百科 - hive](https://baike.baidu.com/item/hive/67986)
 9. [一文读懂大数据实时计算](https://www.51cto.com/article/670300.html)
+10. [hive over窗口函数的使用](https://www.cnblogs.com/erlou96/p/13590358.html)

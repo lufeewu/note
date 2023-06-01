@@ -39,6 +39,9 @@ SRS 是一个简单、高效、实时的媒体服务, 支持 RTMP、WebRTC、HLS
 
 ## 音视频格式
 1. AAC: 高级音频编码(Advanced Audio Coding), 一种专门声音数据设计的文件压缩格式, 它采用了全新的算法进行编码, 更加高效, 有更高的性价比.
+2. HDR: 高动态范围(High-Dynamic Range), 指动态范围特别高的应用, 一般的图像可能是 8 bit 的无符号字节表示, 而 HDR 图像则一般为 32 位浮点类型. HDR 可以呈现(模拟)出人色彩感知范围内相似的色彩, 尽可能地还原人眼所看到的景色.
+3. SDR: 标准动态范围(Standard Dynamic Range), 是指一种很常见的色彩显示方式, 信息大小相比 HDR 更小, 普及度更高.
+4. 
 
 ## 参考文献
 1. [I帧、P帧、B帧、GOP、IDR 和PTS, DTS之间的关系](https://www.cnblogs.com/yongdaimi/p/10676309.html)
@@ -48,3 +51,5 @@ SRS 是一个简单、高效、实时的媒体服务, 支持 RTMP、WebRTC、HLS
 5. [github - FFmpeg/FFmpeg](https://github.com/FFmpeg/FFmpeg)
 6. [github - ossrs/srs](https://github.com/ossrs/srs)
 7. [crtmpserver 系列(二): 搭建简易流媒体直播系统](https://www.cnblogs.com/wangqiguo/p/6014519.html#_label0)
+8. [OpenCV4学习笔记（59）——高动态范围（HDR）成像](https://blog.csdn.net/weixin_45224869/article/details/105895367)
+9. [SDR - 百度百科](https://baike.baidu.com/item/SDR/22316143)

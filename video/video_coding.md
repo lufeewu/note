@@ -24,6 +24,7 @@ P 帧、B 帧、IDR 关键帧: P 帧表示这一帧和之前的一个关键帧�
 - **服务质量**: QoS(Quality of Service), 偏向于从客观角度出发, 通过各种参数衡量服务的整体性能. 对短视频 QoS 指标主要有传输延时(transport latency)、编码延时(encode latency)、解码延时(decode latency)、首帧时间(time to first frame)、帧率(frame per second)、秒开率(sec-opening rate)、缓存命中率(cache hit ratio)等
 - **多码率**: 同一个视频会存在多个码率, 根据用户的网络环境、视频内容、设备性能自适应码率, 称为码率自适应技术(Adaptive Bitrate Streaming).
 - **moov**: moov atom 定义了时间尺度、时长、显示特性以及用于在电影每个轨道的信息.
+
 ## ffmpeg
 ffmpeg 是一个处理多媒体内容如视频、音频、字幕和相关元数据的库和工具集合.
 - 库集合: libavcodec、libavformat、libavutil、libavfilter、libavdevice、libswresample、libswscale.
@@ -41,7 +42,7 @@ SRS 是一个简单、高效、实时的媒体服务, 支持 RTMP、WebRTC、HLS
 1. AAC: 高级音频编码(Advanced Audio Coding), 一种专门声音数据设计的文件压缩格式, 它采用了全新的算法进行编码, 更加高效, 有更高的性价比.
 2. HDR: 高动态范围(High-Dynamic Range), 指动态范围特别高的应用, 一般的图像可能是 8 bit 的无符号字节表示, 而 HDR 图像则一般为 32 位浮点类型. HDR 可以呈现(模拟)出人色彩感知范围内相似的色彩, 尽可能地还原人眼所看到的景色.
 3. SDR: 标准动态范围(Standard Dynamic Range), 是指一种很常见的色彩显示方式, 信息大小相比 HDR 更小, 普及度更高.
-4. 
+4. HLS: 动态自适应技术(HTTP Live Streaming) 是 Apple 的动态自适应技术, 主要用于 PC 和 Apple 终端的音视频服务.
 
 ## 参考文献
 1. [I帧、P帧、B帧、GOP、IDR 和PTS, DTS之间的关系](https://www.cnblogs.com/yongdaimi/p/10676309.html)

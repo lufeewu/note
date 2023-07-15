@@ -9,7 +9,7 @@ P 帧、B 帧、IDR 关键帧: P 帧表示这一帧和之前的一个关键帧�
 
 ## 视频质量评价
 - PSNR: Peak signal-to-noise ratio 峰值信噪比, 是一种工程表示用来表示最高的信号量和影响其表示精度的噪声功率的比值.
-- VMAF: Video Multi-method Assessment Fusion, 它借助人类视觉模型以及机器学习来评估视频的质量.
+- VMAF: Video Multi-method Assessment Fusion, 它借助人类视觉模型以及机器学习来评估视频的质量. [Netflix/vmaf](https://github.com/Netflix/vmaf)
 - SSIM: Structural Similarity Index Measure 是一种预测数字电视、电影图像以及其他类型数字图像或视频的感知质量的方法.
 
 ## 音视频优化实践
@@ -24,7 +24,7 @@ P 帧、B 帧、IDR 关键帧: P 帧表示这一帧和之前的一个关键帧�
 - **服务质量**: QoS(Quality of Service), 偏向于从客观角度出发, 通过各种参数衡量服务的整体性能. 对短视频 QoS 指标主要有传输延时(transport latency)、编码延时(encode latency)、解码延时(decode latency)、首帧时间(time to first frame)、帧率(frame per second)、秒开率(sec-opening rate)、缓存命中率(cache hit ratio)等
 - **多码率**: 同一个视频会存在多个码率, 根据用户的网络环境、视频内容、设备性能自适应码率, 称为码率自适应技术(Adaptive Bitrate Streaming).
 - **moov**: moov atom 定义了时间尺度、时长、显示特性以及用于在电影每个轨道的信息.
-
+- **极速高清**: 
 ## ffmpeg
 ffmpeg 是一个处理多媒体内容如视频、音频、字幕和相关元数据的库和工具集合.
 - 库集合: libavcodec、libavformat、libavutil、libavfilter、libavdevice、libswresample、libswscale.
@@ -44,6 +44,13 @@ SRS 是一个简单、高效、实时的媒体服务, 支持 RTMP、WebRTC、HLS
 3. SDR: 标准动态范围(Standard Dynamic Range), 是指一种很常见的色彩显示方式, 信息大小相比 HDR 更小, 普及度更高.
 4. HLS: 动态自适应技术(HTTP Live Streaming) 是 Apple 的动态自适应技术, 主要用于 PC 和 Apple 终端的音视频服务.
 
+## 音频处理
+音频处理库
+- [audioflux](https://github.com/libAudioFlux/audioFlux): 用于音频、音乐分析、特征提取
+- [torchaudio](https://github.com/pytorch/audio): 用于音频信号处理的数据操作和转换，由 PyTorch 提供技术支持
+- [librosa](https://github.com/librosa/librosa): 用于音频和音乐分析、描述及合成的 c++ 库, 提供 Python 绑定
+- [essentia](https://github.com/MTG/essentia): 用于音频和音乐分析的 Python 库
+
 ## 参考文献
 1. [I帧、P帧、B帧、GOP、IDR 和PTS, DTS之间的关系](https://www.cnblogs.com/yongdaimi/p/10676309.html)
 2. [VMAF: The Journey Continues](https://netflixtechblog.com/vmaf-the-journey-continues-44b51ee9ed12)
@@ -54,3 +61,4 @@ SRS 是一个简单、高效、实时的媒体服务, 支持 RTMP、WebRTC、HLS
 7. [crtmpserver 系列(二): 搭建简易流媒体直播系统](https://www.cnblogs.com/wangqiguo/p/6014519.html#_label0)
 8. [OpenCV4学习笔记（59）——高动态范围（HDR）成像](https://blog.csdn.net/weixin_45224869/article/details/105895367)
 9. [SDR - 百度百科](https://baike.baidu.com/item/SDR/22316143)
+10. [音频处理效率测评：audioflux、torchaudio、librosa和essentia库哪个更快？](https://juejin.cn/post/7225856176131293243)

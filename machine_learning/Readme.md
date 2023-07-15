@@ -33,6 +33,14 @@ Bidirectional Encoder Representation from Transformers 是 2018 年 Google AI �
 ## Transformer
 Transformer 是一个利用注意力机制来提高模型训练速度的模型, 主要用于自然语言处理(NLP) 与计算机视觉(CV) 领域. Transformer 模型旨在处理自然语言等顺序输入数据, 可用于翻译、文本摘要等任务.
 
+## 因果推断
+因果推断是一门研究因果关系的跨学科领域, 其核心内容是确定给定条件下变量之间的因果关系, 以及在特定干预下如何解释和估计这种关系.
++ 双重差分法: Differences-in-Differences(DID) 别名倍差法, 常用于政策效应评估.
++ Double Machine Learning: Double Machine Learning(DML) 是一种基于观测数据进行因果建模去偏方法.
++ 相关性生成机制: 因果、混淆偏差、样本选择偏差
++ 因果关系阶梯: 关联和预测、干预、反事实推理. 其中干预常用的方法是 AB test, 主要维度有 ATE、CATE、ITE .
++ 因果推断流派: 潜在因果模型、因果图模型、计量经济学方法, 其中因果模型和因果图模型是互联网数据分析的主流的两个流派.
+
 ## 题目
 1. LR 推导、求导、梯度更新
 2. SVM 原形式、对偶形式
@@ -52,3 +60,4 @@ Transformer 是一个利用注意力机制来提高模型训练速度的模型, 
 5. [梳理常见机器学习面试题](https://zhuanlan.zhihu.com/p/82105066)
 6. [BERT](https://paddlepedia.readthedocs.io/en/latest/tutorials/pretrain_model/bert.html)
 7. [知乎 - 十分钟理解Transformer](https://zhuanlan.zhihu.com/p/82312421)
+8. [知乎 - 双重差分法（DID）介绍](https://zhuanlan.zhihu.com/p/48952513)

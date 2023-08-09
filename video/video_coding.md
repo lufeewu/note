@@ -38,6 +38,10 @@ SRS 是一个简单、高效、实时的媒体服务, 支持 RTMP、WebRTC、HLS
 - **Crtmpd**: CrtmpServer 是一个由 c++ 编写的开源高性能 RTMP 流媒体服务器. [shiretu/crtmpserver](https://github.com/shiretu/crtmpserver)
 - **Red5**: java 编写的开源流媒体服务 [red5-server](https://github.com/Red5/red5-server), 支持视频流、音频流、直播发布等功能, 支持 RTMP、RTMPT、RTMPS 和 RTMPE 等协议.
 
+### RTMP 协议
+- 消息优先级: 控制消息 > 音频消息 > 视频消息, 当网络传输能力受限时, 优先传输高优先级消息的数据.
+- 分块: 大消息切割成小块, 避免大的优先级消息堵塞了发送缓冲从而阻塞了小的高优先级消息.
+
 ## 音视频格式
 1. AAC: 高级音频编码(Advanced Audio Coding), 一种专门声音数据设计的文件压缩格式, 它采用了全新的算法进行编码, 更加高效, 有更高的性价比.
 2. HDR: 高动态范围(High-Dynamic Range), 指动态范围特别高的应用, 一般的图像可能是 8 bit 的无符号字节表示, 而 HDR 图像则一般为 32 位浮点类型. HDR 可以呈现(模拟)出人色彩感知范围内相似的色彩, 尽可能地还原人眼所看到的景色.
@@ -51,6 +55,17 @@ SRS 是一个简单、高效、实时的媒体服务, 支持 RTMP、WebRTC、HLS
 - [librosa](https://github.com/librosa/librosa): 用于音频和音乐分析、描述及合成的 c++ 库, 提供 Python 绑定
 - [essentia](https://github.com/MTG/essentia): 用于音频和音乐分析的 Python 库
 
+## 其它知识
+- DTS: 解码时间戳
+- PTS: 显示时间戳. PTS 和 DTS 用于指导播放端行为, 但它们是在编码的时候由编码器生成.
+- SPS: Sequence Parameter Set, 保存一组编码后的图像序列所依赖的全局参数.
+- PPS: Picture Parameter Set, 保存每一帧编码后的图像所依赖的参数.
+- MOOV Box: Moov Box 即 Movie Box, MP4 中存储的所有媒体数据的索引信息的 Box. Moov Box 是 MP4 文件中最重要的 Box 之一, 一般播放器需要读取到 Moov 数据才开始播放流程.
+- NALU: 一般可以通过媒体封装层确定编码格式. 而对于裸流则可以尝试通过码流本身的格式规范进行探测.
+- UDP/TCP: 在视频会议场景可以通过 UDP 降低通话延迟, 它没有面相连接、可靠传输、拥塞控制等机制, 这些机制会带来更高的延迟. TCP 可以做到建连一次、多路复用. 
+- WebRTC: 通过 NACK、FEC、JitterBuffer、NetEQ 等机制弥补 UDP 的丢包、乱序抖动等问题.
+- CDN 应用: 内容分发网络, 在短视频/直播中解决网络带宽、访问量大、网点分布不均匀导致的体验问题. 它将内容分发到离用户最近的网络节点上. CDN 常用直播协议有 RTMP、HLS、HTTP FLV 等.
+
 ## 参考文献
 1. [I帧、P帧、B帧、GOP、IDR 和PTS, DTS之间的关系](https://www.cnblogs.com/yongdaimi/p/10676309.html)
 2. [VMAF: The Journey Continues](https://netflixtechblog.com/vmaf-the-journey-continues-44b51ee9ed12)
@@ -62,3 +77,4 @@ SRS 是一个简单、高效、实时的媒体服务, 支持 RTMP、WebRTC、HLS
 8. [OpenCV4学习笔记（59）——高动态范围（HDR）成像](https://blog.csdn.net/weixin_45224869/article/details/105895367)
 9. [SDR - 百度百科](https://baike.baidu.com/item/SDR/22316143)
 10. [音频处理效率测评：audioflux、torchaudio、librosa和essentia库哪个更快？](https://juejin.cn/post/7225856176131293243)
+11. [2022年最新音视频开发面试题集锦](https://zhuanlan.zhihu.com/p/526653246)

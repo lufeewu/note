@@ -82,6 +82,8 @@ hive 的原理:
 HiveQL 是 hive 的与 sql 类似的查询语句.
 - 窗口函数: over() 是
 
+## iceberg
+Apache iceberg 是一种分布式、社区驱动、Apache 2.0 许可的 100% 开源数据表格式, 有助于简化存储在数据湖中的大型数据集的数据处理.
 
 ## 面试题
 大数据开发面试题:
@@ -115,3 +117,4 @@ HiveQL 是 hive 的与 sql 类似的查询语句.
 8. [百度百科 - hive](https://baike.baidu.com/item/hive/67986)
 9. [一文读懂大数据实时计算](https://www.51cto.com/article/670300.html)
 10. [hive over窗口函数的使用](https://www.cnblogs.com/erlou96/p/13590358.html)
+11. [什么是 Apache Iceberg？](https://aws.amazon.com/cn/what-is/apache-iceberg/)

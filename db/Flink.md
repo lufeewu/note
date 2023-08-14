@@ -11,6 +11,10 @@ Apache Flink 是一个框架和分布式处理引擎, 用于在无边界和有�
 ## Flink 架构
 Flink 主要针对实时计算领域处理流数据, 在此之前还有 Storm、SparkStreaming 等. 下面是几个实时计算框架的对比: 
 ![实时计算框架对比](../img/flink_compare.png)
+- JobManager: 负责整个 Flink 集群任务的调度及资源管理, 从客户端获取提交的应用, 然后根据集群中 TaskManager 上 TaskSlot 的使用情况, 为提交的应用分配 TaskSlot 资源并命令 TaskManager 从客户端获取的应用.
+- TaskManager: 相当于集群的的 Slave 节点, 负责具体的任务执行和对应任务在每个节点上的资源申请和管理.
+- Client 客户端: 负责将任务提交到集群, 与 JobManager 构建 Akka 连接, 然后将任务提交到 JobManager, 通过和 JobManager 之间进行交互获取任务执行的状态.
+
 
 ## 数据仓库架构
 海量数据分析的技术架构经历了多个演进历程，从小时级发展到亚秒级。

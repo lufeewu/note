@@ -3,6 +3,7 @@ libco 是微信开源的 c++ 协程库。2013 年开源在 github 上 https://gi
 
 ## 协程
 协程，又称微线程，英文名(Coroutine)。协程的概念很早就有，但是近年在 go 、lua 等语言兴起后，才开始被广泛应用。协程可以用于完成并发，它比线程更加轻量级，不同于线程和进程，它不是由操作系统进行调度的，协程的切换不需要进入内核态，它是由用户态进行调度切换的，这也让协程的切换消耗更小。
+![进程切换](../img/process_switch.png)
 
 ## libco demo
 多线程并发模式中，经典的模型就是生产者消费者问题。下面是使用 libco 的 协程处理生产者消费者问题的样例代码。代码来自 https://github.com/tencent-wechat/libco/blob/master/example_cond.cpp

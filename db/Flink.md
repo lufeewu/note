@@ -15,6 +15,8 @@ Flink 主要针对实时计算领域处理流数据, 在此之前还有 Storm、
 - TaskManager: 相当于集群的的 Slave 节点, 负责具体的任务执行和对应任务在每个节点上的资源申请和管理.
 - Client 客户端: 负责将任务提交到集群, 与 JobManager 构建 Akka 连接, 然后将任务提交到 JobManager, 通过和 JobManager 之间进行交互获取任务执行的状态.
 
+## 流式框架
+![流式计算框架对比](../img/streaming_framework_compare.png)
 
 ## 数据仓库架构
 海量数据分析的技术架构经历了多个演进历程，从小时级发展到亚秒级。
@@ -34,6 +36,49 @@ Lambda 架构满足了实时的需求，但带来了许多开发和运维工作�
 通常将系统分位在线系统和离线系统，近线系统则介于二者之间，有时效性要求但为在线系统提供已经计算好的离线数据。近线系统的主要目的是实时、快捷的挖掘热点事件，并输出热点事件特征供上层应用使用。
 
 
+## flink 问题
+1. Flink 的应用架构? JobManager 和 TaskManager 作用?
+2. Flink 的压测和监控?
+3. 为什么用 Flink 而不用 Spark?
+    - Flink 的低延时、高吞吐量和对流式数据应用场景支持的更好.
+    - Spark 采用的是 RDD 模型、Flink 基本数据模型是数据流以及事件 Event 序列
+    - Spark 是批计算、Flink 是标准的流执行模式
+4. checkpoint 存储?
+5. exactly-once 的保证与实现?
+6. Flink 的状态机制?
+7. 海量 key 去重?
+    - 可以考虑使用布隆过滤器进行去重
+8. checkpoint 比较 spark 
+9. Flink 的 watermark 机制
+10. Flink 的 CEP 编程中当状态没达到时数据保存在哪里?
+11. Flink 的三种时间语义是什么? 分别说出应用场景?
+12. Flink 在面对数据高峰时如何处理?
+13. Flink 如何做容错?
+14. Flink 有没有重启策略? 有哪些?
+    - 固定延迟重启策略、故障率重启策略、无重启策略、Fallback 重启策略
+15. Flink 中的状态存储?
+    - Flink 提供了三种状态存储方式: MemoryStateBackend、FsStateBackend、RocksDBStateBackend
+16. Flink 中的时间有几类?
+    - 事件时间、摄入时间、处理时间
+17. Flink 的 kafka 连接器有什么特别的地方?
+18. Flink 是如何进行内存管理的?
+    - 分为 Network Buffers、Memory Manage Pool、User Code 三部分
+19. Flink 如何序列化?
+    - Flink 没有使用原生 Java 序列化，实现了独特的序列化框架. 通过 TypeInformation、TypeSerializer 高效的进行序列化和反序列化.
+20. Flink 中如何处理 Window 的数据倾斜?
+    - Window 数据倾斜L 指的是数据在不同的窗口内堆积的数据量相差过多
+    - 解决方式: 重新设计窗口聚合 key、在数据进入窗口前进行预聚合
+20. Flink 中的聚合函数 GroupBy、Distinct、KeyBy 出现数据热点时如何处理?
+    - 业务上规避: 如对热点数据进行单独处理
+    - Key 设计优化: 可以拆分热 Key
+    - 微批模型参数 MiniBatch 优化: 缓存一定的数据再触发、减少对 State 的访问、提升吞吐和减少数据的输出量
+21. Flink 任务延迟高如何处理?
+    - 通过管理后台查询出现反压的算子或 task. 然后进行资源调优、算子调优. 对作业中的 Operator 的并发数、CPU、堆内存进行调优等.
+    - 反压: BackPressure 被广泛应用到实时流处理系统中, 通常出现在短时负载高峰导致系统接受数据的速率远高于处理数据的速率.
+22. Flink 消费 kafka 数据时候, 如何处理脏数据?
+    - 可以处理前增加 Fliter 算子, 将不符合规则的数据过滤出去.
+
+
 ## 参考资料
 1. [【大数据实战】Docker中Flink集群搭建](https://www.cnblogs.com/isuning/p/16214378.html)
 2. [Apache Flink 是什么？](https://flink.apache.org/zh/what-is-flink/flink-architecture/)
@@ -41,3 +86,5 @@ Lambda 架构满足了实时的需求，但带来了许多开发和运维工作�
 4. [Chapter 4. Platform Architecture](https://www.oreilly.com/library/view/open-source-data/9781492074281/ch04.html)
 5. [实时数仓之 Kappa 架构与 Lambda 架构（建议收藏！）](https://zhuanlan.zhihu.com/p/584255261)
 6. [大数据Flink进阶（四）：Flink应用场景以及其他实时计算框架对比原创](https://cloud.tencent.com/developer/article/2241665)
+7. [Flink面试题](https://zhuanlan.zhihu.com/p/138101642)
+8. [流式计算的三种框架：Storm、Spark和Flink](https://zhuanlan.zhihu.com/p/82018078)

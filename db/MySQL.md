@@ -13,6 +13,7 @@ MySQL 的主要知识包括索引及其原理、索引优化、事务、锁、�
 - B 树: B 树即二叉搜索树，数据的查询效率是 log2(n).
 - 索引优化: 索引优化可以提升查询效率，主要编写高效的 SQL 语句.如在 select、group by、order by、join 等操作列上使用索引，尽量使用批量插入数据等.
 - LSM (Log-Structured Merge-Trees): 结构化合并树, 大多数 NoSQL 数据库的核心思想都是基于 LSM 树做的. 它不属于具体的数据结构, 更多的是一种数据结构的设计思想.
+- B+ 树高: MySQL B+ 树的一个节点大小为一页, 对于 16K 页大小. 非叶子节点存的是 key + 指针, 叶子节点存的是数据行. 对于高度为 3 的 B+ 树, key 为 bigint, 8 byte 指针占 6 byte. 单节点可以存储 16 * 1024/(8+6) = 1170 个索引，按一条记录 1k, 单页 16 条数据, 总计可以存放 1170*1170*16 = 21902400 条数据.
 
 ### ES 索引
 MySQL 的索引并不适合海量数据的查询，难以应对海量数据下复杂的查询.ES(Elasticsearch)基于 Lucene 引擎构建的开源分布式搜索分析引擎，可以提供针对 PB 数据的实时查询，在全文检索、日志分析、监控分析等场景应用广泛.可以用 es 配合 mysql 在商品查询等场景中未用户提供高效检索服务.
@@ -96,3 +97,5 @@ MySQL 的扩容可以通过停服务扩容和平滑扩容方案.
 4. [ElasticSearch 索引 VS MySQL 索引](https://segmentfault.com/a/1190000023733216)
 5. [LSM树](https://fhfirehuo.github.io/Attacking-Java-Rookie/Chapter02/LSMTree.html)
 6. [Sql Or NoSql，看完这一篇你就懂了](https://www.cnblogs.com/xrq730/p/11039384.html)
+7. [分析了解pgsql中的索引](https://www.cnblogs.com/ricklz/p/12813080.html)
+8. [索引（B+树）、B+树一个节点有多大？（一千万条数据，B+树多高？）](https://blog.csdn.net/dl674756321/article/details/102987984)

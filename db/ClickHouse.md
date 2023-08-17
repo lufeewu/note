@@ -30,7 +30,6 @@ ClickHouse 的主要组件包括 Client、Server、Storage、Distributed、ZooKe
 - **Zookeeper**: 是一个分布式的协调服务, ClickHouse 可以通过 Zookeeper 实现集群节点的发现和管理.
 - **Replication**: ClickHouse 支持数据复制, 可以将数据从一个节点复制到其他节点, 提高系统的可用性和数据的容错性.
 
-
 ### MergeTree
 MergeTree 是 ClickHouse 最有特色、功能最强大的表引擎, 实现了数据的 partitioning、replication、mutation、merge 并在 merge 基础上的 replace、aggregation. 
 
@@ -45,12 +44,12 @@ SSTable(Sorted String Table)是排序字符串表的简称, 它是一个高效�
 ClickHouse 的索引有 Sparse Index、Skip Indexes
 - Sparse Index: 稀疏索引针对表中部分数据建立索引项目, 为每个表中数据块建立一个索引项. 
 - Skip Indexes: ClickHouse 提供了跳数索引能够显著的提高查询速度.
+
 ## 性能
 相比于 MySQL、InfluxDB, ClickHouse 在同样的资源情况导入速度、磁盘占用、查询性能方面都十分突出. 
 - 4c16g 的资源, 官网 6600w 数据集, 导入耗时约 75 秒、磁盘空间 2.7G、全表 count 100 ms、 max/min 186ms、平均值 123ms、方差 113ms.
 - clickhouse 快的原因: 列式存储、数据压缩、向量化执行引擎、多线程和分布式、多样的表引擎(MergeTree)、稀疏索引.
 - clickhouse 缺点: 不支持事务、不支持真删除/更新、分布式能力弱、不支持高并发(建议 QPS 100).
-
 
 ## RocksDB
 RocksDB 是由 facebook 基于 LevelDB 开发的一款提供键值存储与读写功能的 LSM-tree 架构引擎. 用户写入的键值对会先写入键盘上的 WAL(Write Ahead Log), 然后在写入内存中的跳表(SkipList, 这部分结构称作 MemTable).

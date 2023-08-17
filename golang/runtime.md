@@ -103,3 +103,4 @@ golang runtime 的内存分配算法主要源于 c 语言开发的 TCMalloc 算�
 4. [Linux系统之进程状态](https://cloud.tencent.com/developer/article/1568077)
 5. [深入golang runtime的调度](https://zboya.github.io/post/go_scheduler/#go进程的启动)
 6. [图解Go语言内存分配](https://juejin.cn/post/6844903795739082760)
+7. [Golang 内存组件之mspan、mcache、mcentral 和 mheap 数据结构](https://segmentfault.com/a/1190000039815122)

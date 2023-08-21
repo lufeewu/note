@@ -29,3 +29,4 @@ ACID: 指事务的原子性(atomicity)、一致性(consistency)、隔离性(isol
 2. [设计数据密集型应用 - 中文翻译](https://vonng.gitbooks.io/ddia-cn/content/)
 3. [后台必备意识——柔性可用](https://cloud.tencent.com/developer/article/1339887)
 4. [程序世界里的不信任原则](https://cloud.tencent.com/developer/article/1005918)
+5. [高并发系统设计 40 问](https://zq99299.github.io/note-architect/hc/)

@@ -26,6 +26,7 @@ P 帧、B 帧、IDR 关键帧: P 帧表示这一帧和之前的一个关键帧�
 - **多码率**: 同一个视频会存在多个码率, 根据用户的网络环境、视频内容、设备性能自适应码率, 称为码率自适应技术(Adaptive Bitrate Streaming).
 - **moov**: moov atom 定义了时间尺度、时长、显示特性以及用于在电影每个轨道的信息.
 - **极速高清**: 智能识别视频的场景, 根据不同场景进行智能压缩参数选取.
+
 ## ffmpeg
 ffmpeg 是一个处理多媒体内容如视频、音频、字幕和相关元数据的库和工具集合.
 - 库集合: libavcodec、libavformat、libavutil、libavfilter、libavdevice、libswresample、libswscale.

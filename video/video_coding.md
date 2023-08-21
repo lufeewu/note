@@ -8,9 +8,10 @@ h264/h265/266: 视频号压缩标准. 其中 h265 比 h264 压缩效率提升 50
 P 帧、B 帧、IDR 关键帧: P 帧表示这一帧和之前的一个关键帧的差别，解码时需要之前缓存的画面叠加上本帧定义的差别，生成最终画面.B 帧是双向差别帧，B 帧记录的是本帧与前后帧的差别.IDR 帧属于 I 帧，解码器收到 IDR frame 时，将所有的参考帧队列丢弃，是强制刷新帧.
 
 ## 视频质量评价
-- PSNR: Peak signal-to-noise ratio 峰值信噪比, 是一种工程表示用来表示最高的信号量和影响其表示精度的噪声功率的比值.
+- PSNR: Peak signal-to-noise ratio 峰值信噪比, 是一种工程表示用来表示最高的信号量和影响其表示精度的噪声功率的比值. 值越大说明失帧越少.
 - VMAF: Video Multi-method Assessment Fusion, 它借助人类视觉模型以及机器学习来评估视频的质量. [Netflix/vmaf](https://github.com/Netflix/vmaf)
 - SSIM: Structural Similarity Index Measure 是一种预测数字电视、电影图像以及其他类型数字图像或视频的感知质量的方法.
+- MOS: Mean Opinion Score 平均意见分. 是一种主观评估视频质量并给出打分的方式.
 
 ## 音视频优化实践
 视频内容已经成为各大互联网应用标配. 视频播放体验关系到用户停留时长. 下面是一些常见的优化实践方法.
@@ -24,7 +25,7 @@ P 帧、B 帧、IDR 关键帧: P 帧表示这一帧和之前的一个关键帧�
 - **服务质量**: QoS(Quality of Service), 偏向于从客观角度出发, 通过各种参数衡量服务的整体性能. 对短视频 QoS 指标主要有传输延时(transport latency)、编码延时(encode latency)、解码延时(decode latency)、首帧时间(time to first frame)、帧率(frame per second)、秒开率(sec-opening rate)、缓存命中率(cache hit ratio)等
 - **多码率**: 同一个视频会存在多个码率, 根据用户的网络环境、视频内容、设备性能自适应码率, 称为码率自适应技术(Adaptive Bitrate Streaming).
 - **moov**: moov atom 定义了时间尺度、时长、显示特性以及用于在电影每个轨道的信息.
-- **极速高清**: 
+- **极速高清**: 智能识别视频的场景, 根据不同场景进行智能压缩参数选取.
 ## ffmpeg
 ffmpeg 是一个处理多媒体内容如视频、音频、字幕和相关元数据的库和工具集合.
 - 库集合: libavcodec、libavformat、libavutil、libavfilter、libavdevice、libswresample、libswscale.
@@ -78,3 +79,4 @@ SRS 是一个简单、高效、实时的媒体服务, 支持 RTMP、WebRTC、HLS
 9. [SDR - 百度百科](https://baike.baidu.com/item/SDR/22316143)
 10. [音频处理效率测评：audioflux、torchaudio、librosa和essentia库哪个更快？](https://juejin.cn/post/7225856176131293243)
 11. [2022年最新音视频开发面试题集锦](https://zhuanlan.zhihu.com/p/526653246)
+12. [音视频生产关键指标：视频质量优化丨音视频工业实战](https://juejin.cn/post/7181375856290299963)

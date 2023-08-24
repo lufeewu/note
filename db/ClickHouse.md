@@ -59,6 +59,7 @@ RocksDB 是由 facebook 基于 LevelDB 开发的一款提供键值存储与读�
     - Memtable: 内部是一个 key 有序的 SkipList 列表
     - Immutable Memtable: 当 Memtable 的数据占用内存到了一个阈值, LevelDB 会生成新的 log 文件和 MemTable, 原来的 MemTable 变成 Immutable Memtable. Immutable Memtable 会导出磁盘变成新的 SSTable 文件.
     - SkipList: 包含多个指针的链表, 它可以比链表更快速的查询一个有序元素的数据链表.
+    - LSM Tree: 全名 Log Structured-Merge Tree. 它是针对写入速度瓶颈问题提出的, 将随机写变成顺序写. 核心思想是通过对变更进行批量、延迟的处理, 通过归并排序将更新迁移到硬盘上. LevelDB 基于 memtable + sstable 实现 LSM Tree.
     - 写入过程:
         1. 将记录以顺序方式追加到 log 文件末尾, 由于是顺序写入磁盘，效率相对较高
         2. 将 kv 记录插入内存中的 Memtable 中
@@ -66,6 +67,7 @@ RocksDB 是由 facebook 基于 LevelDB 开发的一款提供键值存储与读�
         1. 内存读取: 首先去内存中的 Memtable 中寻找 key-value. 如果 Memtable 中没有，则去 Immutable Memtable 中读取.
         2. 磁盘读取: 若在内存中没有找到指定 key-value, 则去磁盘中的 SSTable 中寻找. 首先从 level 0 的文件中查找, 然后去 level 1 文件中查找, 直到在某层 SSTable 中找到 key-value.
     - Compaction 操作: leveldb 采取 compaction 方式对已有记录进行压缩, 通过这种方式删掉一些不再有效的 KV 数据, 减少数据规模、文件数量等. 从内存中 dump 出的文件称为 level 0 层, 后期整合的为 level i 层.
+![level db LSM Tree 设计](../img/leveldb_structure.png)
 
 ## 参考
 1. [什么是列式存储，一文秒懂](https://juejin.cn/post/6844904118872440840)
@@ -80,3 +82,4 @@ RocksDB 是由 facebook 基于 LevelDB 开发的一款提供键值存储与读�
 10. [常用NoSQL的分析与比较](https://z.itpub.net/article/detail/BD77F3028C01D6157CA9752B628620F5)
 11. [06| LevelDB读操作](https://zhuanlan.zhihu.com/p/458197881)
 12. [leveldb-handbook 基本概念](https://leveldb-handbook.readthedocs.io/zh/latest/basic.html)
+13. [LevelDB之LSM-Tree](https://zouzls.github.io/2016/11/23/LevelDB%E4%B9%8BLSM-Tree/)

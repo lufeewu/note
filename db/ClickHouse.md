@@ -54,6 +54,19 @@ ClickHouse 的索引有 Sparse Index、Skip Indexes
 ## RocksDB
 RocksDB 是由 facebook 基于 LevelDB 开发的一款提供键值存储与读写功能的 LSM-tree 架构引擎. 用户写入的键值对会先写入键盘上的 WAL(Write Ahead Log), 然后在写入内存中的跳表(SkipList, 这部分结构称作 MemTable).
 
++ LevelDB: 一个持久化存储的 Key-Value 型数据持久化存储 C++ 程序库、大部分数据存储在磁盘上、能够处理十亿级规模 key-value 数据
+    - SSTable: 即 Sorted String Table 有序的固化表文件 . LevelDB 的不同层级用很多 SSTable 文件. 分位数据存储区和数据管理区. 由于 key 是有序的, 就可以用二分查找高效的读取磁盘数据了.
+    - Memtable: 内部是一个 key 有序的 SkipList 列表
+    - Immutable Memtable: 当 Memtable 的数据占用内存到了一个阈值, LevelDB 会生成新的 log 文件和 MemTable, 原来的 MemTable 变成 Immutable Memtable. Immutable Memtable 会导出磁盘变成新的 SSTable 文件.
+    - SkipList: 包含多个指针的链表, 它可以比链表更快速的查询一个有序元素的数据链表.
+    - 写入过程:
+        1. 将记录以顺序方式追加到 log 文件末尾, 由于是顺序写入磁盘，效率相对较高
+        2. 将 kv 记录插入内存中的 Memtable 中
+    - 读取过程: 
+        1. 内存读取: 首先去内存中的 Memtable 中寻找 key-value. 如果 Memtable 中没有，则去 Immutable Memtable 中读取.
+        2. 磁盘读取: 若在内存中没有找到指定 key-value, 则去磁盘中的 SSTable 中寻找. 首先从 level 0 的文件中查找, 然后去 level 1 文件中查找, 直到在某层 SSTable 中找到 key-value.
+    - Compaction 操作: leveldb 采取 compaction 方式对已有记录进行压缩, 通过这种方式删掉一些不再有效的 KV 数据, 减少数据规模、文件数量等. 从内存中 dump 出的文件称为 level 0 层, 后期整合的为 level i 层.
+
 ## 参考
 1. [什么是列式存储，一文秒懂](https://juejin.cn/post/6844904118872440840)
 2. [github - ClickHouse/ClickHouse](https://github.com/ClickHouse/ClickHouse)
@@ -64,3 +77,6 @@ RocksDB 是由 facebook 基于 LevelDB 开发的一款提供键值存储与读�
 7. [CSDN - 密集索引（dense index）和稀疏索引（sparse index）](https://blog.csdn.net/tuning_optmization/article/details/114361513)
 8. [HBase|ClickHouse|MongoDB都在用LSM-Tree存储原理](https://blog.csdn.net/huzechen/article/details/107478781)
 9. [RocksDB 简介](https://docs.pingcap.com/zh/tidb/dev/rocksdb-overview)
+10. [常用NoSQL的分析与比较](https://z.itpub.net/article/detail/BD77F3028C01D6157CA9752B628620F5)
+11. [06| LevelDB读操作](https://zhuanlan.zhihu.com/p/458197881)
+12. [leveldb-handbook 基本概念](https://leveldb-handbook.readthedocs.io/zh/latest/basic.html)

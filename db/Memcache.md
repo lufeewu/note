@@ -15,3 +15,4 @@ Memcached 是一个单进程多线程模型的缓存数据库, 它的集群主�
 ## 参考
 1. [memcached介绍与它的工作原理](https://blog.51cto.com/u_15105742/5282807)
 2. [内存分配机制Slab Allocation](https://www.cnblogs.com/douJiangYouTiao888/p/6267569.html)
+3. [memcached分布式原理与实现](https://juejin.cn/post/6844903665875025933)

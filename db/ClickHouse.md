@@ -67,6 +67,11 @@ RocksDB 是由 facebook 基于 LevelDB 开发的一款提供键值存储与读�
         1. 内存读取: 首先去内存中的 Memtable 中寻找 key-value. 如果 Memtable 中没有，则去 Immutable Memtable 中读取.
         2. 磁盘读取: 若在内存中没有找到指定 key-value, 则去磁盘中的 SSTable 中寻找. 首先从 level 0 的文件中查找, 然后去 level 1 文件中查找, 直到在某层 SSTable 中找到 key-value.
     - Compaction 操作: leveldb 采取 compaction 方式对已有记录进行压缩, 通过这种方式删掉一些不再有效的 KV 数据, 减少数据规模、文件数量等. 从内存中 dump 出的文件称为 level 0 层, 后期整合的为 level i 层.
+        + minor compaction: 是将 Immutable 持久化到 level 0 层的过程.
+        + major compaction: 负责将 sstable 进行合并, 每合并一次, sstable 中的数据就落到更底一层, 数据慢慢被合并到底层 level, 这样的好处是可以清理冗余数据, 节省磁盘空间.
+            - 触发时机: level 0 层的 sstable 文件超过指定个数. level i 层的 sstable size 总大小超过 10^i MB.
+            - compactioon 流程: 选择合适的 level 及 sstable 文件用于合并、根据 key 重叠情况扩大输入文件的集合、多路合并选出的文件集合
+
 ![level db LSM Tree 设计](../img/leveldb_structure.png)
 
 ## 参考

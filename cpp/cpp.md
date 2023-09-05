@@ -226,10 +226,13 @@ coredump 产生的几种可能情况:
 - 堆栈溢出: 超大的局部变量导致堆栈溢出
 - 内存超限
 - 线程超限: 系统线程数超过限制
+- 机器故障: 如 SIGBUG、SIGEMT、SIGIOT 等
 
 coredump 定位方法:
 - 通过 GDB 定位 core 
 - 打印日志
+- 定位代码行: 去编译优化、程序计数器 + addr2line、函数栈修复、无规律 core 栈 AddressSanitizer
+- 定位 core 原因: 信号量确认、异常汇编命令、异常变量、优化变量、异常函数地址
 
 ## 参考
 1. [C++ 继承](https://www.runoob.com/cplusplus/cpp-inheritance.html)

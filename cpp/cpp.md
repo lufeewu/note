@@ -215,6 +215,22 @@ c++ 20 开始正式支持了协程, 提供无栈协程. 新增了关键词及类
     + suspend_always: 空类, 用于指示 await 表达式始终暂停并且不产生值. 成员函数包括 await_ready、await_suspend、await_resume.
     + suspend_never: 空类, 用于指示 await 表达式绝不暂停并且不生产值. 成员函数包括 await_ready、await_suspend、await_resume.
 
+## coredump
+程序 core 是指应用程序无法保持正常 running 状态而发生的崩溃行为, 程序 core 时会生成相关的 core-dump 文件, 是程序崩溃时程序状态的数据备份. core 文件中包含内存、处理器、寄存器、程序计数器、栈指针等状态信息.
+
+coredump 产生的几种可能情况:
+- 内存访问越界: 数组越界、字符串结束符不正常、strcpy 等字符串操作函数读写越界
+- 多线程程序使用线程不安全函数
+- 多线程读写的数据未加锁保护
+- 非法指针: 空指针、
+- 堆栈溢出: 超大的局部变量导致堆栈溢出
+- 内存超限
+- 线程超限: 系统线程数超过限制
+
+coredump 定位方法:
+- 通过 GDB 定位 core 
+- 打印日志
+
 ## 参考
 1. [C++ 继承](https://www.runoob.com/cplusplus/cpp-inheritance.html)
 2. [C++ 虚函数和纯虚函数的区别](https://www.runoob.com/w3cnote/cpp-virtual-functions.html)
@@ -223,3 +239,4 @@ c++ 20 开始正式支持了协程, 提供无栈协程. 新增了关键词及类
 5. [C++ 20 协程 Coroutine之剖析](https://www.51cto.com/article/718493.html)
 6. [C++20 新特性 协程 Coroutines(1)](https://zhuanlan.zhihu.com/p/349210290)
 7. [渡劫 C++ 协程](https://github.com/bennyhuo/cppcoroutines)
+8. [如何快速定位程序Core？](https://developer.baidu.com/article/detail.html?id=293651)

@@ -5,8 +5,12 @@ kubernetes 已经成为容器云平台的标准，它提供自动部署、扩充
 
 ## 基本概念
 + 容器
-    - linux namespace、linux cgroups、rootfs
-    - 容器运行时、容器镜像
+    - linux namespace: Mount 文件系统挂载隔离、UTS 主机名和域名信息隔离、IPC 进程间通信隔离、PID 进程 ID 隔离、Network 隔离网络资源、User 隔离用户和用户组
+    - linux cgroups: /sys/fs/cgroup
+    - linux rootfs: linux 的根文件系统, 它是内核启动时所挂载的第一个文件系统。
+    - Union File System 联合文件系统: 主要是将多个不同的目录联合挂载到同一个目录。
+    - Aufs: 即 Another(Advance) UnionFS
+    - overlay 技术: /var/lib/docker
 + kubeadm
     - kubeadm init
     - kubeadm join
@@ -33,7 +37,7 @@ kubernetes 已经成为容器云平台的标准，它提供自动部署、扩充
 停止等待时间(preStop Hook): k8s 中为了确保优雅停止，停止 pod 进程前，先等待网关或服务注册中心删除这个服务，使得流量不会受到影响，达成优雅停止。配置 preStop Hook, 使得 Pod 真正销毁前先 sleep 一段时间，留出时间给 Endpoint controller 和 kube-proxy 更新 Endpoint 和转发规则。
 CPU/内存资源分配: 容器 pod 分配的可用资源。
 容器健康度检查: 用于检测容器是否存活，如果容器存活检查失败，会对容器执行重启。就绪检查、端口检查、HTTP 请求检查、执行命令检查检查。
-实例数量: kubernetes 中, 一个业务的 pod 数量.
+实例数量: kubernetes 中, 一个业务的 pod 数量。
 Service: 一组 pod 进行负载均衡, k8s 提供默认的 service , 也可以考虑其它的服务注册、发现、负载均衡的组件支持。
 
 
@@ -48,6 +52,40 @@ kubernetes 核心组件如下:
 - Kube-proxy: 负责为 Service 提供 Cluster 内部的服务发现和负载均衡.
 <img src="./img/k8s-core-packages.png">
 
+Workloads:
+- ReplicaSet: 容器副本
+- Deployment: 常规作业
+- DaemonSet: Daemon 作业
+- StatefulSet: 有状态任务
+- Job: 一次性任务
+- CronJob: 定时任务
+
+
+## CRD 
+Custom Resource Definition 是 k8s 中的特殊资源, 它相当于 k8s 中的一个数据库表. 是 k8s 为提高可扩展性, 让开发者自定义资源的一种方法.
+
+## Operator
+Operator 可以看成是 CRD 和 Controller 的一种结合机制. Operator 是一种特定于应用的控制器, 可以扩展 Kubernetes API 的功能, 来代表 Kubernetes 用户创建、配置和管理复杂应用的实例.
+
+## 实践问题
+1. k8s 的二次开发 operator、crd、aa 等？
+2. k8s 的开源项目二次开发?
+3. kubelet、containerd、apiserver、coredns 问题处理?
+4. k8s 及存储系统?
+
+## 云原生
+云原生技术生态当前覆盖了容器运行时、网络、存储和集群管理、可观测性、弹性、DevOps、服务网格、无服务架构、数据库、数据仓库等方方面面.
+- GPU 集群
+    + 用 kubernetes、kubeflow、nvidia-docker 可以快速搭建 GPU 集群, 实现 AI 作业调度和 GPU 资源分配
+    + GPU 利用率优化
+    + 分布式扩展性、作业弹性扩展、实时日志、监控、可视化
+- 云原生 AI 平台
+    + 异构资源: 对计算资源如 CPU、GPU、NPU、VPU、FPGA、ASIC, 存储资源 OSS、NAS、CPFS、HDFS, 网络资源 TCP、RDMA 进行抽象
+    + 计算引擎: 将 TensorFlow、Pytorch、Horovod、ONNX、Spark、Flink 等开源或自研的计算引擎标准化
+    
+
 ## 资料
 1. [图解 Kubernetes Pod 创建流程](https://www.yuque.com/baxiaoshi/tyado3/bl6lev)
 2. [kubernetes 最佳实践: 优雅终止](https://imroc.cc/post/202106/graceful-shutdown/)
+3. [CRD 就像 Kubernetes 中的一张表！](https://zhuanlan.zhihu.com/p/260797410)
+4. [摆脱 AI 生产“小作坊”：如何基于 Kubernetes 构建云原生 AI 平台](https://developer.aliyun.com/article/890115)

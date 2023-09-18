@@ -46,6 +46,46 @@ kubernetes 核心组件如下:
 - Kube-proxy: 负责为 Service 提供 Cluster 内部的服务发现和负载均衡.
 <img src="./img/k8s-core-packages.png">
 
+Workloads:
+- ReplicaSet: 容器副本
+- Deployment: 常规作业
+- DaemonSet: Daemon 作业
+- StatefulSet: 有状态任务
+- Job: 一次性任务
+- CronJob: 定时任务
+
+
+## CRD 
+Custom Resource Definition 是 k8s 中的特殊资源, 它相当于 k8s 中的一个数据库表. 是 k8s 为提高可扩展性, 让开发者自定义资源的一种方法.
+- k8s 内置资源
+    + 资源对象: 常用的有 Pod、ReplicaSet、Deployment、Job、Node、Namespace、Service、Label、CustomResourceDefinition 等
+    + 存储对象: Volume、PersistentVolume、Secret、ConfigMap 等
+    + 策略对象: SecurityContext、ResourceQuota、LimitRange 等
+    + 身份对象: ServiceAccount、Role、ClusterRole 等
+![k8s resource](img/k8s_resource.png)
+
+## Operator
+Operator 可以看成是 CRD 和 Controller 的一种结合机制. Operator 是一种特定于应用的控制器, 可以扩展 Kubernetes API 的功能, 来代表 Kubernetes 用户创建、配置和管理复杂应用的实例.
+
+## 实践问题
+1. k8s 的二次开发 operator、crd、aa 等？
+2. k8s 的开源项目二次开发?
+3. kubelet、containerd、apiserver、coredns 问题处理?
+4. k8s 及存储系统?
+
+## 云原生
+云原生技术生态当前覆盖了容器运行时、网络、存储和集群管理、可观测性、弹性、DevOps、服务网格、无服务架构、数据库、数据仓库等方方面面.
+- GPU 集群
+    + 用 kubernetes、kubeflow、nvidia-docker 可以快速搭建 GPU 集群, 实现 AI 作业调度和 GPU 资源分配
+    + GPU 利用率优化
+    + 分布式扩展性、作业弹性扩展、实时日志、监控、可视化
+- 云原生 AI 平台
+    + 异构资源: 对计算资源如 CPU、GPU、NPU、VPU、FPGA、ASIC, 存储资源 OSS、NAS、CPFS、HDFS, 网络资源 TCP、RDMA 进行抽象
+    + 计算引擎: 将 TensorFlow、Pytorch、Horovod、ONNX、Spark、Flink 等开源或自研的计算引擎标准化
+
 ## 资料
 1. [图解 Kubernetes Pod 创建流程](https://www.yuque.com/baxiaoshi/tyado3/bl6lev)
 2. [kubernetes 最佳实践: 优雅终止](https://imroc.cc/post/202106/graceful-shutdown/)
+3. [CRD 就像 Kubernetes 中的一张表！](https://zhuanlan.zhihu.com/p/260797410)
+4. [摆脱 AI 生产“小作坊”：如何基于 Kubernetes 构建云原生 AI 平台](https://developer.aliyun.com/article/890115)
+5. [k8s常见的资源对象使用](https://www.cnblogs.com/cyh00001/p/16555344.html)

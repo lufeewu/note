@@ -16,6 +16,12 @@ Apache Superset 是 Airbnb 开源数据可视化软件. 主要提供了 Dashboar
 - Metabase: 开源 BI 分析工具, 针对业务人员探索数据, 兼容大数据和传统数据库的分析工具.
 - Redash: 是一款开源 BI 工具, 支持快速数据查询与可视化, 具备报警、订阅等功能.
 
+
+## 数据集
+[data.world](https://data.world/datasets/economics) 是一家数据分析和协作平台供应商, 上面有不同专业的人分享不同类型的数据.
+
+
 ## 资料
 1. [深入浅出的实践大数据 DAG 图](https://xie.infoq.cn/article/4d4ab8c6a14577dd8c3ba465d)
-2. 
+2. [bi开源工具排行](https://juejin.cn/s/bi开源工具排行)
+3. [data.world](https://data.world/datasets/economics)

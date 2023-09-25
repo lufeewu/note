@@ -8,6 +8,14 @@
     + 灵活: 提供了极其灵活的数据模型, 可以根据业务变化实时对数据模型进行修改, 数据库的设计者无需计划数据库未来用例的详细信息.
     + 敏捷: 图数据库的数据建模非常直观, 支持测试驱动开发模式, 每次构建可进行功能测试和性能测试, 符合敏捷开发需求, 极大的提升生产和交付效率.
 
+## Superset
+Apache Superset 是 Airbnb 开源数据可视化软件. 主要提供了 Dashboard 和多维分析两大类功能. Superset 支持的数据源包括 CSV、MySQL、Oracle、Redshift、Drill、Hive、Impala、Elasticsearch 等 27 种数据源, 并深度支持 Druid.
+
+类似的开源 BI 软件有:
+- Grafana: 由 go 语言开发的开源数据可视化工具, 主要针对监控与日志分析, 带有告警功能.
+- Metabase: 开源 BI 分析工具, 针对业务人员探索数据, 兼容大数据和传统数据库的分析工具.
+- Redash: 是一款开源 BI 工具, 支持快速数据查询与可视化, 具备报警、订阅等功能.
 
 ## 资料
 1. [深入浅出的实践大数据 DAG 图](https://xie.infoq.cn/article/4d4ab8c6a14577dd8c3ba465d)
+2. 

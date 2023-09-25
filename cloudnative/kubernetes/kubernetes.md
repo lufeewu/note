@@ -64,6 +64,21 @@ Custom Resource Definition 是 k8s 中的特殊资源, 它相当于 k8s 中的�
     + 身份对象: ServiceAccount、Role、ClusterRole 等
 ![k8s resource](img/k8s_resource.png)
 
+下面是一个 crd 资源 demo:
+```
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  name: mydemos.crddemo.k8s.io
+spec:
+  group: crddemo.k8s.io
+  version: v1
+  names:
+    kind: Mydemo
+    plural: mydemos
+  scope: Namespaced
+```
+
 ## Operator
 Operator 可以看成是 CRD 和 Controller 的一种结合机制. Operator 是一种特定于应用的控制器, 可以扩展 Kubernetes API 的功能, 来代表 Kubernetes 用户创建、配置和管理复杂应用的实例.
 

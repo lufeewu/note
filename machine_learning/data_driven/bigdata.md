@@ -19,7 +19,15 @@ Apache Superset 是 Airbnb 开源数据可视化软件. 主要提供了 Dashboar
 ## 数据集
 [data.world](https://data.world/datasets/economics) 是一家数据分析和协作平台供应商, 上面有不同专业的人分享不同类型的数据.
 
+## 数学
+关于数学、统计学、模型等相关知识.
+
+- 性能测试曲线拐点模型: 曲线分三个区域 light load、heavy load、buckle load, 曲线分别表示 Utilization、Throughput、Response Time. 从而分析出系统负载达到最佳用户数的最佳系统效率.
+
+
+
 ## 资料
 1. [深入浅出的实践大数据 DAG 图](https://xie.infoq.cn/article/4d4ab8c6a14577dd8c3ba465d)
 2. [bi开源工具排行](https://juejin.cn/s/bi开源工具排行)
 3. [data.world](https://data.world/datasets/economics)
+4. [性能测试模型之曲线拐点模型——压力曲线分析图](http://www.51testing.com/index.php?action-viewnews-itemid-3719703-php-1)

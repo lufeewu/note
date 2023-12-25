@@ -214,11 +214,17 @@ bazel 是与 Make、Maven、Gradle 类似的开源构建和测试工具. 支持�
 - workspace: 用于指定当前文件夹就是一个 Bazel 的工作区. WORKSPACE 文件总是存在于项目的根目录下.
 - BUILD: BUILD 文件用于告诉 Bazel 怎么构建项目的不同部分。
 - TARGET: 一个 target 指向一系列的源文件和依赖, 一个 target 也可以指向别的 target.
-- name: 强制属性, target 的唯一名称.
-- srcs: 可选属性, 表示源文件.
-- hdrs: 此预编译库发布的将由源文件直接添加到相关规则中的头文件列表.
-- visibility: 规则可见性, 有 private 表示包私有, public 对所有包可用, 默认为 private.
-
+- 规则: 包括 cc_binary、cc_import、cc_library、cc_proto_library、cc_shared_library、fdo_prefetch_hints、fdo_profile、propeller_optimize、cc_test、cc_toolchain、cc_toolchain_suite
+- cc_binary: 主要属性如下
+    + name: 强制属性, target 的唯一名称.
+    + srcs: 可选属性, 表示源文件.
+    + deps: 要链接到二进制目标的其他库的列表.
+    + includes: 要添加到编译行中的定义列表.
+    + visibility: 规则可见性, 有 private 表示包私有, public 对所有包可用, 默认为 private.
+- cc_library: 主要属性如下
+    + name: target 的唯一名称。
+    + deps: 要链接到二进制目标的其他库的列表.
+    + hdrs: 此预编译库发布的将由源文件直接添加到相关规则中的头文件列表.
 
 ## coroutine 
 c++ 20 开始正式支持了协程, 提供无栈协程. 新增了关键词及类型.

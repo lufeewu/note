@@ -20,6 +20,18 @@ sql 操作实践.
 - **offset**: 用于指定跳过的记录条数, 单独使用可能不起作用
 
 
+
+## inner join
+利用 inner join , 可以在通用字段中匹配时从两个表合并记录
+
+    select 
+        a.feedid, a.flag as v0, a.duration as v0_duration, 
+        b.flag as v1,b.duration as v1_duration 
+    from 
+        test a inner join test b on a.feedid = b.feedid 
+    where a.flag = 'V0' and b.flag = 'V1';
+
+
 ## 参考
 1. [CSDN - 数据库（第一范式，第二范式，第三范式](https://blog.csdn.net/Dream_angel_Z/article/details/45175621)
 2. [SELECT INTO 敘述句](https://www.fooish.com/sql/select-into.html)

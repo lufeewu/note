@@ -210,7 +210,15 @@ c++ 将程序分为 5 个区, 分别是堆、栈、自由存储区、全局/静�
 
 
 ## bazel 库管理
-bazel 是与 Make、Maven、Gradle 类似的开源构建和测试工具. 支持构建 c++、java、Android、iOS 项目.
+bazel 是与 Make、Maven、Gradle 类似的开源构建和测试工具. 支持构建 c++、java、Android、iOS 项目. Bazel 基于工作区 workspace 概念.
+- workspace: 用于指定当前文件夹就是一个 Bazel 的工作区. WORKSPACE 文件总是存在于项目的根目录下.
+- BUILD: BUILD 文件用于告诉 Bazel 怎么构建项目的不同部分。
+- TARGET: 一个 target 指向一系列的源文件和依赖, 一个 target 也可以指向别的 target.
+- name: 强制属性, target 的唯一名称.
+- srcs: 可选属性, 表示源文件.
+- hdrs: 此预编译库发布的将由源文件直接添加到相关规则中的头文件列表.
+- visibility: 规则可见性, 有 private 表示包私有, public 对所有包可用, 默认为 private.
+
 
 ## coroutine 
 c++ 20 开始正式支持了协程, 提供无栈协程. 新增了关键词及类型.
@@ -256,3 +264,5 @@ GDB 是由 GND 开源组织发布、UNIX/LINUX 操作系统下的、基于命令
 6. [C++20 新特性 协程 Coroutines(1)](https://zhuanlan.zhihu.com/p/349210290)
 7. [渡劫 C++ 协程](https://github.com/bennyhuo/cppcoroutines)
 8. [如何快速定位程序Core？](https://developer.baidu.com/article/detail.html?id=293651)
+9. [bazel入门](https://htl2018.github.io/2020/04/05/bazel入门/)
+10. [Bazel C/C++ 规则 ](https://bazel.build/reference/be/c-cpp?hl=zh-cn)

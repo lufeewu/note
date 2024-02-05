@@ -6,9 +6,9 @@ face_recognition [github.com/ageitgey/face_recognition](github.com/ageitgey/face
 
 ### 安装
 1. brew install cmake
-2. pip3 install face_recognition
-3. brew install opencv
-
+2. brew install opencv
+3. pip3 install face_recognition
+4. pip3 install opencv-python
 
 ## 参考
 1. [六个优秀的开源人脸识别项目](https://www.51cto.com/article/770027.html)

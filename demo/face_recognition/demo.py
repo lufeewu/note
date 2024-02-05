@@ -7,20 +7,25 @@ import time
 video_capture = cv2.VideoCapture(0)
 
 # Load a sample picture and learn how to recognize it.
-lufee_image = face_recognition.load_image_file("/Users/leifwu/workspaces/resources/lufee.jpg")
-lufee_face_encoding = face_recognition.face_encodings(lufee_image)[0]
+pilatus_image = face_recognition.load_image_file("/Users/pilatus/workspaces/resources/pilatus.png")
+pilatus_face_encoding = face_recognition.face_encodings(pilatus_image)[0]
+
+katherine_image = face_recognition.load_image_file("/Users/pilatus/workspaces/resources/katherine.png")
+katherine_face_encoding = face_recognition.face_encodings(katherine_image)[0]
 
 # Load a second sample picture and learn how to recognize it.
-biden_image = face_recognition.load_image_file("/Users/leifwu/workspaces/resources/biden.jpg")
+biden_image = face_recognition.load_image_file("/Users/pilatus/workspaces/resources/biden.jpg")
 biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
 
 # Create arrays of known face encodings and their names
 known_face_encodings = [
-    lufee_face_encoding,
+    pilatus_face_encoding,
+    katherine_face_encoding,
     biden_face_encoding
 ]
 known_face_names = [
-    "lufee",
+    "pilatus",
+    "katherine",
     "Joe Biden"
 ]
 

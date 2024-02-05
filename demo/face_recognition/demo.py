@@ -7,8 +7,11 @@ import time
 video_capture = cv2.VideoCapture(0)
 
 # Load a sample picture and learn how to recognize it.
-pilatus_image = face_recognition.load_image_file("/Users/pilatus/workspaces/resources/pilatus.jpg")
+pilatus_image = face_recognition.load_image_file("/Users/pilatus/workspaces/resources/pilatus.png")
 pilatus_face_encoding = face_recognition.face_encodings(pilatus_image)[0]
+
+katherine_image = face_recognition.load_image_file("/Users/pilatus/workspaces/resources/katherine.png")
+katherine_face_encoding = face_recognition.face_encodings(katherine_image)[0]
 
 # Load a second sample picture and learn how to recognize it.
 biden_image = face_recognition.load_image_file("/Users/pilatus/workspaces/resources/biden.jpg")
@@ -17,10 +20,18 @@ biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
 # Create arrays of known face encodings and their names
 known_face_encodings = [
     pilatus_face_encoding,
+<<<<<<< HEAD
+=======
+    katherine_face_encoding,
+>>>>>>> 045c999 (feat: 增加 cv 项目)
     biden_face_encoding
 ]
 known_face_names = [
     "pilatus",
+<<<<<<< HEAD
+=======
+    "katherine",
+>>>>>>> 045c999 (feat: 增加 cv 项目)
     "Joe Biden"
 ]
 

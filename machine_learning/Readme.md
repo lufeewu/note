@@ -41,6 +41,18 @@ Transformer 是一个利用注意力机制来提高模型训练速度的模型, 
 + 因果关系阶梯: 关联和预测、干预、反事实推理. 其中干预常用的方法是 AB test, 主要维度有 ATE、CATE、ITE .
 + 因果推断流派: 潜在因果模型、因果图模型、计量经济学方法, 其中因果模型和因果图模型是互联网数据分析的主流的两个流派.
 
+## prompt 
+prompt 是指在使用机器学习模型时为输入添加的一段文本或指令. 目的是为了引导模型生成更准、更有针对性的输出. 它可以是一个问题、一段描述、一种格式化的输入.
+
+## 神经网络
+神经网络是一种模仿生物神经网络的结构和功能的数学模型或计算模型.
+### 神经元
+神经元是构成神经网络的基本元素.
+### 感知机
+感知机是由两层神经元构成的.
+
+### 
+
 ## 题目
 1. LR 推导、求导、梯度更新
 2. SVM 原形式、对偶形式
@@ -61,3 +73,4 @@ Transformer 是一个利用注意力机制来提高模型训练速度的模型, 
 6. [BERT](https://paddlepedia.readthedocs.io/en/latest/tutorials/pretrain_model/bert.html)
 7. [知乎 - 十分钟理解Transformer](https://zhuanlan.zhihu.com/p/82312421)
 8. [知乎 - 双重差分法（DID）介绍](https://zhuanlan.zhihu.com/p/48952513)
+9. [维基百科 - 人工神经网络](https://zh.wikipedia.org/wiki/人工神经网络)

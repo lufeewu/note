@@ -1,11 +1,18 @@
 # 简介
-目标追踪相关.
+深度学习, 目标追踪相关.
 
 ## 目标追踪
 通过 dlib 提供的算法库, 可以训练目标追踪模型. 然后从视频流中对目标进行追踪. 已经训练好的 demo 可以参考 [github - dlib-object-tracking](https://github.com/LaggyHammer/dlib-object-tracking).
 
 ## Caffe 框架
 [caffe](https://caffe.berkeleyvision.org/) 是一个深度学习框架, 它具有易于上手、速度快、模块化的特性.
+
+### 使用
+在 Mac M2 上可以通过如下命令在 docker 运行: 
+    
+    docker run --platform linux/amd64 -ti bvlc/caffe:cpu caffe --version
+
+可以参考 [Training LeNet on MNIST with Caffe](https://caffe.berkeleyvision.org/gathered/examples/mnist.html) 训练 LeNet 模型.
 
 ## OpenCV 
 在 OpenCV 的 3.4 版本中支持了多种深度学习框架, 包括 Caffe、Tensorflow、torch/pytorch、darknet 等. OpenCV 给出了常见神经网络的 C++ 和 Python 接口.
@@ -24,6 +31,14 @@
 - 隐藏层: 输入层处理数据并将其传递到神经网络中的更远层.
 - 输出层: 输出层由输出数据的节点组成. 输出 "是" 或 "否" 答案的深度学习模型在输出层中只有两个节点.
 
+### LeNet 
+LeNet 是最早的卷积神经网络之一, 主要用于识别手写数字和机器印刷字符. 算法通过连续使用卷积和池化层的组合提取图像特征.
+
+在泛函分析中, 卷积(convolution)是透过两个函数 f 和 g 生成第三个函数的一种数学算子, 表征函数 f 与经过翻转和平移的 g 的乘积函数所围成的曲边梯形的面积. 如果将参加卷积的一个函数看作区间的指示函数，卷积还可以被看作是”移动平均“的推广.
+
+## MINIST 数据集
+MNIST(Modified National Institute of Standards and Technology database)是一个大型手写数字数据库, 常用于训练各种图像处理系统和机器学习模型. 它被广泛用于训练和评估图像分类任务中的深度学习模型, 如卷积神经网络(CNN)、支持向量机(SVM) 和其它各种机器学习算法.
+
 ## 参考
 1. [计算机视觉项目: 用dlib进行单目标跟踪](https://www.atyun.com/31701.html)
 2. [github - dlib ](https://github.com/davisking/dlib)
@@ -33,3 +48,7 @@
 6. [机器学习周志华 pdf](https://github.com/Mikoto10032/DeepLearning/blob/master/books/机器学习周志华.pdf)
 7. [aws - 什么是深度学习](https://aws.amazon.com/cn/what-is/deep-learning)
 8. [Caffe - Layers](https://caffe.berkeleyvision.org/tutorial/layers.html)
+9. [Caffe - docker](https://github.com/BVLC/caffe/tree/master/docker)
+10. [MNIST数据集](https://docs.ultralytics.com/zh/datasets/classify/mnist/)
+11. [LeNet](https://paddlepedia.readthedocs.io/en/latest/tutorials/computer_vision/classification/LeNet.html)
+12. [Gradient-based learn- ing applied to document recognition](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf)

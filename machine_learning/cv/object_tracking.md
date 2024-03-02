@@ -14,6 +14,10 @@
 
 可以参考 [Training LeNet on MNIST with Caffe](https://caffe.berkeleyvision.org/gathered/examples/mnist.html) 训练 LeNet 模型.
 
+### python 库
+提供了 python 的 caffe 库, 可以用于训练模型, 使用模型推理.
+- caffe.Classifier 用于分类 
+
 ## OpenCV 
 在 OpenCV 的 3.4 版本中支持了多种深度学习框架, 包括 Caffe、Tensorflow、torch/pytorch、darknet 等. OpenCV 给出了常见神经网络的 C++ 和 Python 接口.
 

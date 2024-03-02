@@ -54,6 +54,9 @@ prompt 是指在使用机器学习模型时为输入添加的一段文本或指�
 ### LMDB
 LMDB(Lightning Memory-Mapped Database), 闪存映射嵌入式数据库. 是内存效率极高的数据库. 具有纯内存数据库的读取性能, 也保留了磁盘数据库的持久性. 训练模型数据集 MNIST 从 LMDB 数据库里读取图像数据 data 和标签数据 label.
 
+### Datum
+Datum 提供了创建、读取 tfrecord 数据集作为 tf.data.Datasets 的 api 集合.
+
 ## 题目
 1. LR 推导、求导、梯度更新
 2. SVM 原形式、对偶形式

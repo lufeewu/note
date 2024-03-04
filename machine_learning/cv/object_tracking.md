@@ -14,6 +14,11 @@
 
 可以参考 [Training LeNet on MNIST with Caffe](https://caffe.berkeleyvision.org/gathered/examples/mnist.html) 训练 LeNet 模型.
 
+### web demo
+提供 bvlc_reference_caffenet 模型, 为图片进行分类. 支持 1000+ 类目.
+- ImageNet: 是一个计算机视觉数据集, 由斯坦福大学的李飞飞教授创建. 含 1000w+ 图片 2w+ Synet 索引.
+- ILSVRC: ImageNet Large Scale Visual Recognition Challenge (ILSVRC) 使用 ImageNet 的一个子集, 基于 ImageNet 数据集的 1000 个类别的比赛. 
+
 ### python 库
 提供了 python 的 caffe 库, 可以用于训练模型, 使用模型推理.
 - caffe.Classifier 用于分类 
@@ -56,3 +61,5 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 10. [MNIST数据集](https://docs.ultralytics.com/zh/datasets/classify/mnist/)
 11. [LeNet](https://paddlepedia.readthedocs.io/en/latest/tutorials/computer_vision/classification/LeNet.html)
 12. [Gradient-based learn- ing applied to document recognition](http://yann.lecun.com/exdb/publis/pdf/lecun-01a.pdf)
+13. [caffe - Web Demo](https://caffe.berkeleyvision.org/gathered/examples/web_demo.html)
+14. [ImageNet Classification with Deep Convolutional Neural Networks](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)

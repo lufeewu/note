@@ -15,7 +15,7 @@
 可以参考 [Training LeNet on MNIST with Caffe](https://caffe.berkeleyvision.org/gathered/examples/mnist.html) 训练 LeNet 模型.
 
 ### web demo
-提供 bvlc_reference_caffenet 模型, 为图片进行分类. 支持 1000+ 类目.
+提供 bvlc_reference_caffenet 模型, 该模型是由 AlexNet 模型改写. 为图片进行分类. 支持 1000+ 类目.
 - ImageNet: 是一个计算机视觉数据集, 由斯坦福大学的李飞飞教授创建. 含 1000w+ 图片 2w+ Synet 索引.
 - ILSVRC: ImageNet Large Scale Visual Recognition Challenge (ILSVRC) 使用 ImageNet 的一个子集, 基于 ImageNet 数据集的 1000 个类别的比赛. 
 
@@ -45,6 +45,10 @@ LeNet 是最早的卷积神经网络之一, 主要用于识别手写数字和机
 
 在泛函分析中, 卷积(convolution)是透过两个函数 f 和 g 生成第三个函数的一种数学算子, 表征函数 f 与经过翻转和平移的 g 的乘积函数所围成的曲边梯形的面积. 如果将参加卷积的一个函数看作区间的指示函数，卷积还可以被看作是”移动平均“的推广.
 
+### AlexNet
+AlexNet 是一个卷积神经网络, 它是首个用于图像分类的深层卷积神经网络.
+AlexNet 包含八层, 前五层是卷积层, 之后一些是最大池化层, 最后三层是全连接层. 它使用了非饱和的 ReLU 激活函数, 显示出比 tanh 和 sigmod 更好的训练性能.
+
 ## MINIST 数据集
 MNIST(Modified National Institute of Standards and Technology database)是一个大型手写数字数据库, 常用于训练各种图像处理系统和机器学习模型. 它被广泛用于训练和评估图像分类任务中的深度学习模型, 如卷积神经网络(CNN)、支持向量机(SVM) 和其它各种机器学习算法.
 
@@ -64,3 +68,4 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 13. [caffe - Web Demo](https://caffe.berkeleyvision.org/gathered/examples/web_demo.html)
 14. [ImageNet Classification with Deep Convolutional Neural Networks](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)
 15. [caffemodel](http://dl.caffe.berkeleyvision.org/)
+16. [【图像分类】 一文读懂AlexNet](https://juejin.cn/post/7012922205965287432)

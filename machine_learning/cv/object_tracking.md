@@ -41,7 +41,7 @@
 - 输出层: 输出层由输出数据的节点组成. 输出 "是" 或 "否" 答案的深度学习模型在输出层中只有两个节点.
 
 ### CNN 
-卷积神经网络(CNN, Convolutional Neural Network) 是一种前馈神经网络, 它的神经元可以响应一部分覆盖范围内, 对大型图像处理有出色表现. 卷积神经网络在图像和语音识别方面的效果较好. 经典的 CNN 网络模型有 LeNet、AlexNet、VGG、GoogLeNet、ResNet、DenseNet. 
+卷积神经网络(CNN, Convolutional Neural Network) 是一种前馈神经网络, 它的神经元可以响应一部分覆盖范围内, 对大型图像处理有出色表现. 卷积神经网络在图像和语音识别方面的效果较好. 经典的 CNN 网络模型有 LeNet、AlexNet、VGG、GoogLeNet、ResNet、DenseNet. CNN 由卷积层
 
 #### LeNet 
 LeNet 是最早的卷积神经网络之一, 主要用于识别手写数字和机器印刷字符. 算法通过连续使用卷积和池化层的组合提取图像特征.
@@ -53,7 +53,13 @@ AlexNet 是一个卷积神经网络, 它是首个用于图像分类的深层卷�
 AlexNet 包含八层, 前五层是卷积层, 之后一些是最大池化层, 最后三层是全连接层. 它使用了非饱和的 ReLU 激活函数, 显示出比 tanh 和 sigmod 更好的训练性能.
 
 ### Transformer
-Transformer(变换器) 是一种采用自注意力机制的深度学习模型, 这一机制可以按输入数据各部分重要性的不同而分配不同的权重. 模型主要用于自然语言处理(NLP) 和计算视觉(CV)领域. Transformer 模型在 2017 年由谷歌大脑的一个团队推出, 并逐步取代了 LSTM 等 RNN 模型成为了 NLP 问题的首选模型.
+Transformer(变换器) 是一种采用自注意力机制的深度学习模型, 这一机制可以按输入数据各部分重要性的不同而分配不同的权重. 模型主要用于自然语言处理(NLP)和计算视觉(CV)领域. Transformer 模型在 2017 年由谷歌大脑的一个团队推出, 并逐步取代了 LSTM 等 RNN 模型成为了 NLP 问题的首选模型.
+
+
+### 激活函数
+激活函数用于为神经网络增加非线性因素, 解决线性模型表达能力不足的缺陷.
+- sigmoid: 取值 (0,1), 单调连续, 一般用于隐藏层和二分类的输出层.
+- softmax: 通常是位于多分类任务的激活函数, 作用是将 CNN 的输出映射到一个概率分布, 使得每个概率值都在 (0, 1) 之间, 且所有类别的概率和为 1. 指数的 softmax 函数可以将差距大的数值拉的更大, 但可能导致计算溢出.
 
 ## MINIST 数据集
 MNIST(Modified National Institute of Standards and Technology database)是一个大型手写数字数据库, 常用于训练各种图像处理系统和机器学习模型. 它被广泛用于训练和评估图像分类任务中的深度学习模型, 如卷积神经网络(CNN)、支持向量机(SVM) 和其它各种机器学习算法.
@@ -77,3 +83,5 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 15. [caffemodel](http://dl.caffe.berkeleyvision.org/)
 16. [【图像分类】 一文读懂AlexNet](https://juejin.cn/post/7012922205965287432)
 17. [Model Zoo](https://github.com/BVLC/caffe/wiki/Model-zoo)
+18. [深度学习之快速理解卷积层](https://zhuanlan.zhihu.com/p/59917842)
+19. [一文详解Softmax函数](https://zhuanlan.zhihu.com/p/105722023)

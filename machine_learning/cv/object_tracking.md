@@ -32,7 +32,7 @@
 + .prototxt 文件: 定义每层的结构信息
     - layer type: caffe 神经网络层 type 的分类有 Vision、Recurrent、Common、Normalization、Activation、Neuron、Utility、Loss 等, 包含 LeRU、ReLU、Convolution、Premute、Flatten、PriorBox、Concat、Reshape、Softmax、DetectionOutput 等类型的神经网络层.
     - bottom/top: 输入输出数据.
-+ caffeModel: caffe 模型文件, 可以用来进行图像分类、目标检测、语音识别、自然语言处理、模型剪枝与压缩等. [caffemodel](http://dl.caffe.berkeleyvision.org/) 可以下载开源模型.
++ caffeModel: caffe 模型文件, 可以用来进行图像分类、目标检测、语音识别、自然语言处理、模型剪枝与压缩等. [caffemodel](http://dl.caffe.berkeleyvision.org/) 可以下载开源模型. caffe 提供了许多训练好的 caffe_model, 在 [Model Zoo](https://github.com/BVLC/caffe/wiki/Model-zoo) 里管理.
 
 ### 深度学习
 深度学习是仿照人脑建模的神经网络. 深度学习神经网络(或人工神经网络)是由计算机内部协同工作的多层人工神经元组成的. 深度学习是机器学习的子集, 是为了提高传统机器学习技术的效率.
@@ -69,3 +69,4 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 14. [ImageNet Classification with Deep Convolutional Neural Networks](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)
 15. [caffemodel](http://dl.caffe.berkeleyvision.org/)
 16. [【图像分类】 一文读懂AlexNet](https://juejin.cn/post/7012922205965287432)
+17. [Model Zoo](https://github.com/BVLC/caffe/wiki/Model-zoo)

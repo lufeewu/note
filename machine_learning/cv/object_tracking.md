@@ -55,7 +55,6 @@ AlexNet 包含八层, 前五层是卷积层, 之后一些是最大池化层, 最
 ### Transformer
 Transformer(变换器) 是一种采用自注意力机制的深度学习模型, 这一机制可以按输入数据各部分重要性的不同而分配不同的权重. 模型主要用于自然语言处理(NLP)和计算视觉(CV)领域. Transformer 模型在 2017 年由谷歌大脑的一个团队推出, 并逐步取代了 LSTM 等 RNN 模型成为了 NLP 问题的首选模型.
 
-
 ### 激活函数
 激活函数用于为神经网络增加非线性因素, 解决线性模型表达能力不足的缺陷.
 - sigmoid: 取值 (0,1), 单调连续, 一般用于隐藏层和二分类的输出层.
@@ -63,7 +62,6 @@ Transformer(变换器) 是一种采用自注意力机制的深度学习模型, �
 
 ## MINIST 数据集
 MNIST(Modified National Institute of Standards and Technology database)是一个大型手写数字数据库, 常用于训练各种图像处理系统和机器学习模型. 它被广泛用于训练和评估图像分类任务中的深度学习模型, 如卷积神经网络(CNN)、支持向量机(SVM) 和其它各种机器学习算法.
-
 
 ## 参考
 1. [计算机视觉项目: 用dlib进行单目标跟踪](https://www.atyun.com/31701.html)
@@ -85,3 +83,5 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 17. [Model Zoo](https://github.com/BVLC/caffe/wiki/Model-zoo)
 18. [深度学习之快速理解卷积层](https://zhuanlan.zhihu.com/p/59917842)
 19. [一文详解Softmax函数](https://zhuanlan.zhihu.com/p/105722023)
+20. [凯斯西储（CWRU）数据集解读并将数据集划分为10分类（含代码）](https://zhuanlan.zhihu.com/p/437791143)
+21. [【论文解读】Transformer: Attention is all you need](https://zhuanlan.zhihu.com/p/343751830)

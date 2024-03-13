@@ -60,6 +60,9 @@ Transformer(变换器) 是一种采用自注意力机制的深度学习模型, �
 - sigmoid: 取值 (0,1), 单调连续, 一般用于隐藏层和二分类的输出层.
 - softmax: 通常是位于多分类任务的激活函数, 作用是将 CNN 的输出映射到一个概率分布, 使得每个概率值都在 (0, 1) 之间, 且所有类别的概率和为 1. 指数的 softmax 函数可以将差距大的数值拉的更大, 但可能导致计算溢出.
 
+### 损失函数
+损失函数或成本函数是指一种将一个事件映射到一个表达与其事件相关的经济成本或机会成本的实数上的一种函数.
+
 ## MINIST 数据集
 MNIST(Modified National Institute of Standards and Technology database)是一个大型手写数字数据库, 常用于训练各种图像处理系统和机器学习模型. 它被广泛用于训练和评估图像分类任务中的深度学习模型, 如卷积神经网络(CNN)、支持向量机(SVM) 和其它各种机器学习算法.
 
@@ -85,3 +88,4 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 19. [一文详解Softmax函数](https://zhuanlan.zhihu.com/p/105722023)
 20. [凯斯西储（CWRU）数据集解读并将数据集划分为10分类（含代码）](https://zhuanlan.zhihu.com/p/437791143)
 21. [【论文解读】Transformer: Attention is all you need](https://zhuanlan.zhihu.com/p/343751830)
+22. [wikipedia - 损失函数](https://zh.wikipedia.org/zh-cn/损失函数)

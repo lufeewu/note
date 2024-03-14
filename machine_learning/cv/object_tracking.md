@@ -32,39 +32,8 @@
 + .prototxt 文件: 定义每层的结构信息
     - layer type: caffe 神经网络层 type 的分类有 Vision、Recurrent、Common、Normalization、Activation、Neuron、Utility、Loss 等, 包含 LeRU、ReLU、Convolution、Premute、Flatten、PriorBox、Concat、Reshape、Softmax、DetectionOutput 等类型的神经网络层.
     - bottom/top: 输入输出数据.
-+ caffeModel: caffe 模型文件, 可以用来进行图像分类、目标检测、语音识别、自然语言处理、模型剪枝与压缩等. [caffemodel](http://dl.caffe.berkeleyvision.org/) 可以下载开源模型. caffe 提供了许多训练好的 caffe_model, 在 [Model Zoo](https://github.com/BVLC/caffe/wiki/Model-zoo) 里管理.
++ caffeModel: caffe 模型文件, 可以用来进行图像分类、目标检测、语音识别、自然语言处理、模型剪枝与压缩等. [caffemodel](http://dl.caffe.berkeleyvision.org/) 可以下载开源模型. caffe 提供了许多训练好的 caffe_model, 在 [Model Zoo](https://github.com/BVLC/caffe/wiki/Model-zoo)里管理.
 
-## 深度学习
-深度学习是仿照人脑建模的神经网络. 深度学习神经网络(或人工神经网络)是由计算机内部协同工作的多层人工神经元组成的. 深度学习是机器学习的子集, 是为了提高传统机器学习技术的效率.
-- 输入层: 人工神经网络有几个向其输入数据的节点. 这些节点构成了系统的输入层.
-- 隐藏层: 输入层处理数据并将其传递到神经网络中的更远层.
-- 输出层: 输出层由输出数据的节点组成. 输出 "是" 或 "否" 答案的深度学习模型在输出层中只有两个节点.
-
-### CNN 
-卷积神经网络(CNN, Convolutional Neural Network) 是一种前馈神经网络, 它的神经元可以响应一部分覆盖范围内, 对大型图像处理有出色表现. 卷积神经网络在图像和语音识别方面的效果较好. 经典的 CNN 网络模型有 LeNet、AlexNet、VGG、GoogLeNet、ResNet、DenseNet. CNN 由卷积层
-
-#### LeNet 
-LeNet 是最早的卷积神经网络之一, 主要用于识别手写数字和机器印刷字符. 算法通过连续使用卷积和池化层的组合提取图像特征.
-
-在泛函分析中, 卷积(convolution)是透过两个函数 f 和 g 生成第三个函数的一种数学算子, 表征函数 f 与经过翻转和平移的 g 的乘积函数所围成的曲边梯形的面积. 如果将参加卷积的一个函数看作区间的指示函数，卷积还可以被看作是”移动平均“的推广.
-
-#### AlexNet
-AlexNet 是一个卷积神经网络, 它是首个用于图像分类的深层卷积神经网络.
-AlexNet 包含八层, 前五层是卷积层, 之后一些是最大池化层, 最后三层是全连接层. 它使用了非饱和的 ReLU 激活函数, 显示出比 tanh 和 sigmod 更好的训练性能.
-
-### Transformer
-Transformer(变换器) 是一种采用自注意力机制的深度学习模型, 这一机制可以按输入数据各部分重要性的不同而分配不同的权重. 模型主要用于自然语言处理(NLP)和计算视觉(CV)领域. Transformer 模型在 2017 年由谷歌大脑的一个团队推出, 并逐步取代了 LSTM 等 RNN 模型成为了 NLP 问题的首选模型.
-
-### 激活函数
-激活函数用于为神经网络增加非线性因素, 解决线性模型表达能力不足的缺陷.
-- sigmoid: 取值 (0,1), 单调连续, 一般用于隐藏层和二分类的输出层.
-- softmax: 通常是位于多分类任务的激活函数, 作用是将 CNN 的输出映射到一个概率分布, 使得每个概率值都在 (0, 1) 之间, 且所有类别的概率和为 1. 指数的 softmax 函数可以将差距大的数值拉的更大, 但可能导致计算溢出.
-
-### 损失函数
-损失函数或成本函数是指一种将一个事件映射到一个表达与其事件相关的经济成本或机会成本的实数上的一种函数.
-
-## MINIST 数据集
-MNIST(Modified National Institute of Standards and Technology database)是一个大型手写数字数据库, 常用于训练各种图像处理系统和机器学习模型. 它被广泛用于训练和评估图像分类任务中的深度学习模型, 如卷积神经网络(CNN)、支持向量机(SVM) 和其它各种机器学习算法.
 
 ## 参考
 1. [计算机视觉项目: 用dlib进行单目标跟踪](https://www.atyun.com/31701.html)
@@ -82,10 +51,3 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 13. [caffe - Web Demo](https://caffe.berkeleyvision.org/gathered/examples/web_demo.html)
 14. [ImageNet Classification with Deep Convolutional Neural Networks](https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html)
 15. [caffemodel](http://dl.caffe.berkeleyvision.org/)
-16. [【图像分类】 一文读懂AlexNet](https://juejin.cn/post/7012922205965287432)
-17. [Model Zoo](https://github.com/BVLC/caffe/wiki/Model-zoo)
-18. [深度学习之快速理解卷积层](https://zhuanlan.zhihu.com/p/59917842)
-19. [一文详解Softmax函数](https://zhuanlan.zhihu.com/p/105722023)
-20. [凯斯西储（CWRU）数据集解读并将数据集划分为10分类（含代码）](https://zhuanlan.zhihu.com/p/437791143)
-21. [【论文解读】Transformer: Attention is all you need](https://zhuanlan.zhihu.com/p/343751830)
-22. [wikipedia - 损失函数](https://zh.wikipedia.org/zh-cn/损失函数)

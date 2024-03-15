@@ -55,3 +55,4 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 8. [【论文解读】Transformer: Attention is all you need](https://zhuanlan.zhihu.com/p/343751830)
 9. [wikipedia - 损失函数](https://zh.wikipedia.org/zh-cn/损失函数)
 10. [Convolution Layer](https://caffe.berkeleyvision.org/tutorial/layers/convolution.html)
+11. [卷积（Convolution）](https://paddlepedia.readthedocs.io/en/latest/tutorials/CNN/convolution_operator/Convolution.html)

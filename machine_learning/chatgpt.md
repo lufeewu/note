@@ -11,6 +11,9 @@
 - Belle: BE Large Language model Engine 开源中文对话大模型. [LianjiaTechBelle](https://github.com/LianjiaTech/BELLE)
 - LoRA: Low-Rank Adaptation of Large Language Models. [microsoft/LoRA](https://github.com/microsoft/LoRA)
 
+## LLM
+大型语言模型(LLM, Large Language Model)是基于大数据进行预训练的超大型深度学习模型. 底层转换器是一组神经网络, 这些神经网络由具有自注意力功能的编码器和解码器组成.
 
 ## 参考
-1. (wikipedia - ChatGPT)[https://zh.wikipedia.org/zh-tw/ChatGPT]
+1. [wikipedia - ChatGPT](https://zh.wikipedia.org/zh-tw/ChatGPT)
+2. [什么是大型语言模型？](https://aws.amazon.com/cn/what-is/large-language-model/)

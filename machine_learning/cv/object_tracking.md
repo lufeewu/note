@@ -34,6 +34,12 @@
     - bottom/top: 输入输出数据.
 + caffeModel: caffe 模型文件, 可以用来进行图像分类、目标检测、语音识别、自然语言处理、模型剪枝与压缩等. [caffemodel](http://dl.caffe.berkeleyvision.org/) 可以下载开源模型. caffe 提供了许多训练好的 caffe_model, 在 [Model Zoo](https://github.com/BVLC/caffe/wiki/Model-zoo)里管理.
 
+### 架构与原理
+Caffe 框架有 5 个组件, Blob、Solver、Net、Layer、Proto.
+- Solver: 它协调整个模型的运行, 主要作用是交替调用前向(forward)和后向(backward)算法来更新参数, 从而最小化 loss, 是一种迭代的优化算法. 
+- Blob: Blob 是 caffe 中的基础数据结构, 主要作用是存储和传输数据, 隐藏 CPU 和 GPU 之间的数据同步的细节.
+- Net: Net 是由一些列层组成的有向无环图 DAG, 一个典型的 Net 从 data layer 开始, 从 loss layer 结束.
+- Layer: layer 层主要定义三种运算, setup、forward 和 backward, 在 layer 内部主要是正向传导(forward)和反向传导(backward).
 
 ## 参考
 1. [计算机视觉项目: 用dlib进行单目标跟踪](https://www.atyun.com/31701.html)

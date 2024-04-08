@@ -2,7 +2,7 @@
 机器学习、深度学习相关知识.
 
 ## 概念
-Tensor: 张量，深度学习的基本元素，类似高维度向量. 
+Tensor: 张量，深度学习的基本元素，类似高维度向量
 derivative: 模型导数
 gradient: 梯度
 optimizer: 优化器，如 sgd、adam、rmsprop
@@ -20,7 +20,7 @@ loss function: 损失函数是将随机事件或有关随机变量的取值映�
 - True Positive(真正, TP): 将正类预测为正类数.
 - True Negative(真负, TN): 将负类预测为负类数.
 - False Positive(假正, FP): 将负类预测为正类数 → 误报(Type I error).
-- False Negative(假负 , FN): 将正类预测为负类数 → 漏报(Type II error).
+- False Negative(假负, FN): 将正类预测为负类数 → 漏报(Type II error).
 - 精确率: P = TP/(TP+FP)
 - 准确率: ACC = (TP+TN)/(TP+TN+FP+FN)
 - 召回率: R = TP/(TP+FN)

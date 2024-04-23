@@ -52,6 +52,23 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 无监督学习, 是指提供算法输入数据, 而没有任何已标记的输出数据, 然后算法自行识别数据内部和数据之间的模式与关系. 集群、关联规则学习、概率密度、降维都是无监督学习.
 半监督学习, 将有监督学习和无监督学习技术同时应用于常见问题. 半监督学习的应用有欺诈识别、情绪分析、文档分类等.
 
+## 文本分类
+文本分类是机器学习的一种类型, 用于将文本文档或子句分类为预定义的类或类别. 它会分析文本的内容和含义, 然后使用文本标注为文本分配最合适的标签. 
+
+常见的文本分类算法有:
+- k 临近
+- 决策树
+- 多层感知器
+- 朴素贝叶斯
+- 逻辑回归
+- 支持向量机
+- 随机森林
+- AdaBoost
+- lightGBM
+- xgBoost
+- 前馈神经网络
+- LSTM
+
 ## 参考文献
 1. [百度百科 - ReLU 函数](https://baike.baidu.com/item/ReLU%20函数/22689567)
 2. [CNN基础知识——卷积（Convolution）、填充（Padding）、步长(Stride)](https://zhuanlan.zhihu.com/p/77471866)

@@ -85,3 +85,4 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 11. [卷积（Convolution）](https://paddlepedia.readthedocs.io/en/latest/tutorials/CNN/convolution_operator/Convolution.html)
 12. [ResNet-101 卷积神经网络](https://ww2.mathworks.cn/help/deeplearning/ref/resnet101.html)
 13. [你必须要知道CNN模型：ResNet](https://zhuanlan.zhihu.com/p/31852747)
+13. [10. 注意力机制](https://zh.d2l.ai/chapter_attention-mechanisms/index.html)

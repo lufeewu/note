@@ -29,6 +29,8 @@ BertTokenizer 是基于 BasicTokenizer 和 WordPieceTokenizer 的分词器.
 ### keras.Model
 kreas.Model 全功能模型类, 由层组成, 它可以训练、评估、加载、保存, 甚至在多台机器上进行训练.
 
+### 余弦相似性
+余弦相似性通过测量两个向量的夹角的余弦值来度量它们之间的相似性. 余弦相似度常用于高维正空间. 在信息检索中, 每个词被赋予不同的维度, 一个文档由一个向量表示, 各个维度上的值对应于词项在文档中出现的频率, 余弦相似度则可以给出两篇文档在主题方面的相似度. 余弦相似度也常用于文本挖掘的文件比较. 
 
 ## Tensorflow Hub
 Tensorflow Hub 是一个包含经过训练的机器学习模型的代码库, 模型稍作调整便可以部署到任何设备上. 只需要几行代码即可重复经过训练的模型, 例如 BERT 和 Faster R-CNN.
@@ -51,3 +53,4 @@ Tensorflow Hub 是一个包含经过训练的机器学习模型的代码库, 模
 6. [BertTokenizer](https://huggingface.co/transformers/v3.0.2/model_doc/bert.html#berttokenizer)
 7. [transformer 中 tokenizer 的那些事](https://www.cnblogs.com/carolsun/p/16903276.html)
 8. [keras_模型](https://www.tensorflow.org/guide/intro_to_modules?hl=zh-cn)
+9. [BERT Embeddings with TensorFlow 2.0 Example](https://www.kaggle.com/code/sameerpixelbot/bert-embeddings-with-tensorflow-2-0-example/notebook)

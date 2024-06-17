@@ -71,6 +71,13 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 - Transformer: 是一种基于自注意力机制的模型, 它在处理序列数据时表现出色, 特别是在机器翻译和文本分类任务中.
 - BERT: 是一种预训练的深度双向表示模型, 在多种 NLP 任务上取得了突破性的性能.
 
+## 注意力机制
+视觉注意力机制是人类大脑所特有的大脑信号处理机制. 人类视觉通过快速扫描全局图像, 获得需要重点关注的区域, 然后对该区域投入更多注意力资源, 以获取更多所需关注目标的细节信息, 并抑制其他无用信息. 深度学习中的注意力机制本质上和人类选择性视觉注意力机制类似, 目的是从众多信息中选择对当前任务目标更关键的信息.
+
+- Encoder-Decoder 框架: 一种深度学习领域的研究模式, 是一类算法的统称. Encoder 是编码器, 作用是将现实问题转化为数学问题. Decoder 又称作解码器, 作用是求解数学问题, 并转化为现实世界的解决方案.
+- Soft Attention 模型: 在求注意力分配概率分布的时候, 对于输入句子 X 中任意一个单词都给出概率, 是一个概率分布.
+
+
 ## 参考文献
 1. [百度百科 - ReLU 函数](https://baike.baidu.com/item/ReLU%20函数/22689567)
 2. [CNN基础知识——卷积（Convolution）、填充（Padding）、步长(Stride)](https://zhuanlan.zhihu.com/p/77471866)
@@ -85,4 +92,6 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 11. [卷积（Convolution）](https://paddlepedia.readthedocs.io/en/latest/tutorials/CNN/convolution_operator/Convolution.html)
 12. [ResNet-101 卷积神经网络](https://ww2.mathworks.cn/help/deeplearning/ref/resnet101.html)
 13. [你必须要知道CNN模型：ResNet](https://zhuanlan.zhihu.com/p/31852747)
-13. [10. 注意力机制](https://zh.d2l.ai/chapter_attention-mechanisms/index.html)
+13. [注意力机制](https://zh.d2l.ai/chapter_attention-mechanisms/index.html)
+14. [深度学习中的注意力模型（2017版）](https://zhuanlan.zhihu.com/p/37601161)
+15. [Encoder-Decoder 和 Seq2Seq](https://easyai.tech/ai-definition/encoder-decoder-seq2seq/)

@@ -36,8 +36,25 @@ folly(Facebook Opensource Library) 是 facebook 基于 c++ 14 开源的 c++ 库,
 ## spasehash
 google 开源的[稀疏索引 sparsehash](https://github.com/sparsehash/sparsehash). 是一个非常节省内存的 hash_map 实现, 每个 entry 只有 2 bit 的开销.
 
+## openssl
+openssl 是一个加密及 SSL/TLS 工具集.
+- OpenSSL EVP: evp 函数提供高水平 openssl 加密算法.
+- AES_GCM_256 加密算法: GCM (即 Galois/Counter Mode)模式本质上是 AES 模式加上 GMAC(Galois Message Authentication Code, 伽罗华消息认证码)进行哈希计算的一种组合模式. GCM 模式可以提供对消息的加密和完整性校验.
+
+### openssl/evp.h 
+通过 openssl/evp.h 提供的加密函数可以进行 aes 等加密操作.
+- EVP_CIPHER_CTX_new: 创建加密的 context.
+- EVP_EncryptInit_ex: 设置加密 context、加密类型、密钥等.
+- EVP_CIPHER_CTX_ctrl: 设置可用的各类加密模式.
+- EVP_EncryptUpdate: 将输入的字节加密并写到输出中. 函数可以被多次调用用于加密连续块状的数据.
+- EVP_EncryptFinal_ex:
+- EVP_CIPHER_CTX_free:
+
+
 ## 参考
 1. [facebook/folly](github.com/facebook/folly)
 2. [folly学习心得](https://blog.csdn.net/thanklife/article/details/80117429)
 3. [稀疏索引 sparsehash](https://github.com/sparsehash/sparsehash)
 4. [Google Sparse Hash](https://goog-sparsehash.sourceforge.net/)
+5. [EVP_aes_256_gcm](https://www.openssl.org/docs/manmaster/man3/EVP_aes_256_gcm.html)
+6. [aesgcm](https://github.com/majek/openssl/blob/master/demos/evp/aesgcm.c)

@@ -51,9 +51,8 @@ openssl 是一个加密及 SSL/TLS 工具集.
 - EVP_EncryptInit_ex: 设置加密 context、加密类型、密钥等.
 - EVP_CIPHER_CTX_ctrl: 设置可用的各类加密模式.
 - EVP_EncryptUpdate: 将输入的字节加密并写到输出中. 函数可以被多次调用用于加密连续块状的数据.
-- EVP_EncryptFinal_ex:
-- EVP_CIPHER_CTX_free:
-
+- EVP_EncryptFinal_ex: 对最终数据进行加密. 它使用标准块填充.
+- EVP_CIPHER_CTX_free: 清楚密码上下文中的所有信息并释放与其关联的任何已分配内存, 包含 ctx 本身.
 
 
 ## 参考

@@ -77,7 +77,6 @@ MNIST(Modified National Institute of Standards and Technology database)是一个
 - Encoder-Decoder 框架: 一种深度学习领域的研究模式, 是一类算法的统称. Encoder 是编码器, 作用是将现实问题转化为数学问题. Decoder 又称作解码器, 作用是求解数学问题, 并转化为现实世界的解决方案.
 - Soft Attention 模型: 在求注意力分配概率分布的时候, 对于输入句子 X 中任意一个单词都给出概率, 是一个概率分布.
 
-
 ## 参考文献
 1. [百度百科 - ReLU 函数](https://baike.baidu.com/item/ReLU%20函数/22689567)
 2. [CNN基础知识——卷积（Convolution）、填充（Padding）、步长(Stride)](https://zhuanlan.zhihu.com/p/77471866)

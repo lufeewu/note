@@ -6,7 +6,7 @@ libco 是微信开源的 c++ 协程库。2013 年开源在 github 上 https://gi
 ![进程切换](../img/process_switch.png)
 
 ## libco demo
-多线程并发模式中，经典的模型就是生产者消费者问题。下面是使用 libco 的 协程处理生产者消费者问题的样例代码。代码来自 https://github.com/tencent-wechat/libco/blob/master/example_cond.cpp
+多线程并发模式中，经典的模型就是生产者消费者问题。下面是使用 libco 的协程处理生产者消费者问题的样例代码。代码来自 https://github.com/tencent-wechat/libco/blob/master/example_cond.cpp
 
         struct stTask_t {
             int id;

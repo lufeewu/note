@@ -24,7 +24,7 @@ folly(Facebook Opensource Library) 是 facebook 基于 c++ 14 开源的 c++ 库,
 - Memory: 与 Malloc 一起用于内存分配.
 - MPMCQueue: 是一个高性能有界并发队列, 支持多生产者、多消费者, 并支持阻塞.
 - PackedSyncPtr: 高度专业化的数据结构, 包含一个指针、1 bit 自旋锁和 15 bit 填充位.
-- Poly: 是一个类模板, 可以使定义类型擦除多态对象包装器相对容易。
+- Poly: 是一个类模板, 可以使定义类型擦除多态对象包装器相对容易.
 - Preprocessor: 预处理设施.
 - Random: 用于使用时间和 pid 产生随机数种子.
 - Range: 类似 boost 的随机访问数据包装类.

@@ -36,3 +36,4 @@
 ## 参考
 1. [Linux 为什么多进程能够读写正在删除的文件](https://blog.csdn.net/weiwangchao_/article/details/94578327)
 2. [计算机操作系统 - 内存管理](https://github.com/CyC2018/CS-Notes/blob/master/notes/计算机操作系统%20-%20内存管理.md)
+3. [操作系统 虚拟内存 、分段、分页的理解](https://www.cnblogs.com/myseries/p/12487211.html)

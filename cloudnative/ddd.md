@@ -4,3 +4,4 @@
 ## AI 
 ## 参考
 1. [Eric Evans 提倡在领域驱动设计中实验大语言模型](https://www.infoq.cn/article/miepyu9zscchoyzfqe2h)
+2. [DDD领域驱动设计理论](https://tech.dewu.com/article?id=113)

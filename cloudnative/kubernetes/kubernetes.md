@@ -9,6 +9,8 @@ kubernetes 已经成为容器云平台的标准，它提供自动部署、扩充
     - Union File System 联合文件系统: 主要是将多个不同的目录联合挂载到同一个目录。
     - Aufs: 即 Another(Advance) UnionFS
     - overlay 技术: /var/lib/docker
+    - linux namespace、linux cgroups、rootfs
+    - 容器运行时、容器镜像
 + kubeadm
     - kubeadm init
     - kubeadm join
@@ -35,7 +37,11 @@ kubernetes 已经成为容器云平台的标准，它提供自动部署、扩充
 停止等待时间(preStop Hook): k8s 中为了确保优雅停止，停止 pod 进程前，先等待网关或服务注册中心删除这个服务，使得流量不会受到影响，达成优雅停止。配置 preStop Hook, 使得 Pod 真正销毁前先 sleep 一段时间，留出时间给 Endpoint controller 和 kube-proxy 更新 Endpoint 和转发规则。
 CPU/内存资源分配: 容器 pod 分配的可用资源。
 容器健康度检查: 用于检测容器是否存活，如果容器存活检查失败，会对容器执行重启。就绪检查、端口检查、HTTP 请求检查、执行命令检查检查。
+<<<<<<< HEAD
 实例数量: kubernetes 中, 一个业务的 pod 数量。
+=======
+实例数量: kubernetes 中, 一个业务的 pod 数量.
+>>>>>>> ed00d2a258211fee5bff80715bf803afb2703648
 Service: 一组 pod 进行负载均衡, k8s 提供默认的 service , 也可以考虑其它的服务注册、发现、负载均衡的组件支持。
 
 
@@ -107,4 +113,8 @@ Operator 可以看成是 CRD 和 Controller 的一种结合机制. Operator 是�
 2. [kubernetes 最佳实践: 优雅终止](https://imroc.cc/post/202106/graceful-shutdown/)
 3. [CRD 就像 Kubernetes 中的一张表！](https://zhuanlan.zhihu.com/p/260797410)
 4. [摆脱 AI 生产“小作坊”：如何基于 Kubernetes 构建云原生 AI 平台](https://developer.aliyun.com/article/890115)
+<<<<<<< HEAD
 5. [k8s常见的资源对象使用](https://www.cnblogs.com/cyh00001/p/16555344.html)
+=======
+5. [k8s常见的资源对象使用](https://www.cnblogs.com/cyh00001/p/16555344.html)
+>>>>>>> ed00d2a258211fee5bff80715bf803afb2703648

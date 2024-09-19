@@ -20,24 +20,12 @@ biden_face_encoding = face_recognition.face_encodings(biden_image)[0]
 # Create arrays of known face encodings and their names
 known_face_encodings = [
     pilatus_face_encoding,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
     katherine_face_encoding,
->>>>>>> 045c999 (feat: 增加 cv 项目)
->>>>>>> ed00d2a258211fee5bff80715bf803afb2703648
     biden_face_encoding
 ]
 known_face_names = [
     "pilatus",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
     "katherine",
->>>>>>> 045c999 (feat: 增加 cv 项目)
->>>>>>> ed00d2a258211fee5bff80715bf803afb2703648
     "Joe Biden"
 ]
 

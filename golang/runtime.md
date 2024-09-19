@@ -61,6 +61,9 @@ Coroutine 轻量级线程, 它的切换完全在用户态进行, 相比线程、
 
 - 进程控制原语: 建立、撤销、等待、唤醒
 - 进程状态: D(TASK_UNINTERRUPTIBLE) 不可中断睡眠状态、R(TASK_RUNNING) 可执行状态、S(TASK_INTERRUPTIBLE) 可中断的睡眠状态、T/t(TASK_STOPPED or TASK_TRACED) 暂停状态或跟踪状态、X(TASK_DEAD - EXIT_DEAD) 退出状态，进程即将被销毁、Z(TASK_DEAD - EXIT_ZOMBIE) 退出状态，进程成为僵尸进程
+- 抢占式: 
+- sysmon: 
+- 非内联函数: 
 
 ## pprof
 gcBgMarkWorker
@@ -104,3 +107,7 @@ golang runtime 的内存分配算法主要源于 c 语言开发的 TCMalloc 算�
 5. [深入golang runtime的调度](https://zboya.github.io/post/go_scheduler/#go进程的启动)
 6. [图解Go语言内存分配](https://juejin.cn/post/6844903795739082760)
 7. [Golang 内存组件之mspan、mcache、mcentral 和 mheap 数据结构](https://segmentfault.com/a/1190000039815122)
+8. [Go内存分配那些事，就这么简单](https://github.com/0voice/Introduction-to-Golang/blob/main/文章/Go内存分配那些事，就这么简单！.md)
+9. [Goroutine 调度过程](https://qiankunli.github.io/2020/11/10/goroutine_scheduler_2.html)
+10. [因goroutine运行时间过长而发生的抢占调度（21）](https://cloud.tencent.com/developer/article/1450290)
+11. [go-GMP 协程切换时机 和 协程实战](https://www.cnblogs.com/studyios/p/17868145.html)

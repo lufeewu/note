@@ -18,3 +18,4 @@
 8. [DDD领域驱动设计落地实践（十分钟看完，半小时落地）](https://www.cnblogs.com/dennyzhangdd/p/14376904.html#_label2_0)
 9. [领域模型、贫血模型与充血模型：概念与实践](https://cloud.baidu.com/article/3167078)
 10. [字节面试：请说一下DDD的流程，用电商系统为场景](https://www.cnblogs.com/crazymakercircle/p/17827728.html)
+11. [07 | DDD 分层架构：有效降低层与层之间的依赖](https://zq99299.github.io/note-book2/ddd/02/02.html)

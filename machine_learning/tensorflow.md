@@ -18,6 +18,7 @@ keras 是一个用 python 编写的开源神经网络库.
 ## Bert
 Bidirectional Encoder Representation from Transformers 是 2018 年 Google AI 研究院提出的预训练模型, 使用的是多层 Transformer 结构. 
 
+
 ### Tokenizer
 Tokenizer 标记器, 目标是将文本转换为模型可以处理的数据, 模型只能处理数字, 因此 Tokenizer 需要将文本输入转换为数字输入.
 
@@ -54,3 +55,4 @@ Tensorflow Hub 是一个包含经过训练的机器学习模型的代码库, 模
 7. [transformer 中 tokenizer 的那些事](https://www.cnblogs.com/carolsun/p/16903276.html)
 8. [keras_模型](https://www.tensorflow.org/guide/intro_to_modules?hl=zh-cn)
 9. [BERT Embeddings with TensorFlow 2.0 Example](https://www.kaggle.com/code/sameerpixelbot/bert-embeddings-with-tensorflow-2-0-example/notebook)
+10. [BERT模型实战之多文本分类（附源码）](https://cloud.tencent.com/developer/article/2033378)

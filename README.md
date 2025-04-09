@@ -78,3 +78,6 @@
 ../mmfindercdnmqworker_tools transcode 14211607957636319384 20
 ../mmfindercdnmqworker_tools transcode 14211607494520871194 20
 ../mmfindercdnmqworker_tools transcode 14211607526240950303 20
+
+
+http://findercdn.video.qq.com/251/20302/stodownload?encfilekey=rjD5jyTuFrIpZ2ibE8T7YmwgiahniaXswqzwkXKUJ7KPmNBaIY0pNVDCibaphUeRgMekI5fVD4ChEAHzTCEY2pibXs5TDQ9Rx9TsHZibn4G83iaq46eQfudO7hBgA&token=ic1n0xDG6aw8ZBgUMgHQqfsibbHoakZicicibyvUzYBeDIPibx5LibfAHnhQt8iaV1j4IqQaDwUiazdhicCy5G8tu8OB6yZQia1bGmLed65o8hPA6UGnzvTticGQUexRdsZGzfriaXdVE&idx=1&dotrans=0&hy=SH&m=&uzid=2&basedata=CAESBnhXVDE1NhoGeFdUMTU2GgZ4V1QxNTcaBnhXVDE1OCIA&sign=MgK_El0KOUprCyBZtrScLwtEflzbaKmG9a4eGDAuapYSkh3FqHtj6-pPeOaLOQcnFmmeKPuKR2TlYQGd5EYNCg.,;:&X-snsvideoflag=xWT156

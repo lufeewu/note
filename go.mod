@@ -13,7 +13,7 @@ require (
 	github.com/emicklei/go-restful v2.15.0+incompatible
 	github.com/fsnotify/fsnotify v1.4.9
 	github.com/gin-gonic/autotls v0.0.3
-	github.com/gin-gonic/gin v1.7.3
+	github.com/gin-gonic/gin v1.9.0
 	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/jinzhu/gorm v1.9.16

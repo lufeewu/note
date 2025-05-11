@@ -38,5 +38,5 @@ Agent 不仅具备语言理解能力和生成能力, 还可以利用工具, 如�
 2. [什么是大型语言模型？](https://aws.amazon.com/cn/what-is/large-language-model/)
 3. [ollama 使用自己的微调模型](https://blog.csdn.net/spiderwower/article/details/138755776)
 4. [一文看懂：MCP(大模型上下文协议)](https://zhuanlan.zhihu.com/p/27327515233)
-5. [从零到手搓一个Agent：AI Agents新手入门精通（一）](https://cloud.tencent.com/developer/article/2487274)
+5. [从零到手搓一个Agent: AI Agents新手入门精通（一）](https://cloud.tencent.com/developer/article/2487274)
 6. [Awesome MCP Servers](https://github.com/punkpeye/awesome-mcp-servers)

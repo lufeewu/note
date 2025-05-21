@@ -5,6 +5,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 import soundfile as sf
 from moviepy import VideoFileClip
+import pandas as pd
+
+def saveCSV(time, y, path, filename):
+    # 创建一个DataFrame来存储时间和幅度数据
+    df = pd.DataFrame({
+        'Time (s)': time,
+        'Amplitude': y
+    })
+
+    # 将DataFrame保存为.csv文件
+    df.to_csv(path + filename + '_data.csv', index=False)
 
 def analyAudio(path, filename):
     # 加载音频文件
@@ -14,13 +25,27 @@ def analyAudio(path, filename):
 
     y, sr = librosa.load(path + filename + ".wav", sr=None)
 
+    # 1. 存储波形图数据
+    # 提取时间轴数据
+    time = np.arange(0, len(y)) / sr
+    # 打印一些基本信息
+    print(f"采样率: {sr} samples/s")
+    print(f"音频长度: {len(y)/sr:.2f} seconds")
+    saveCSV(time, y, path, filename + "_waveform")
+
+
     # 1. 绘制波形图
     plt.figure(figsize=(14, 5))
     librosa.display.waveshow(y, sr=sr)
     plt.title(filename + ' waveform')
-    plt.ylim(-0.3, 0.3)
+    plt.ylim(-0.4, 0.4)
     plt.savefig(path + filename + "_waveform.png")
-    print("end waveform draw!")
+    print("end waveform draw 1!")
+
+    plt.title(filename + ' wide waveform')
+    plt.ylim(-1, 1)
+    plt.savefig(path + filename + "_wide_waveform.png")
+    print("end waveform draw 2!")
 
     # 2.绘制频谱图
     # 计算短时傅里叶变换（STFT）

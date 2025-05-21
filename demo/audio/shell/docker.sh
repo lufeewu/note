@@ -1,0 +1,1 @@
+docker run -it -v /Users/leifwu/workspaces/note/demo/audio:/demo --cpus 2 --memory 16g ubuntu-py /bin/bash

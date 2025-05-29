@@ -12,6 +12,24 @@ import subprocess
 import json
 import os
 import re
+import pyloudnorm as pyln
+
+
+def calculate_audio_rms(filepath):
+    # 加载音频文件（会自动转为单声道）
+    y, sr = librosa.load(filepath, sr=None)  # sr=None 表示保留原始采样率
+
+    # 计算 RMS
+    rms = np.sqrt(np.mean(y**2))
+    return rms
+
+def calculate_audio_std(filepath):
+    # 加载音频文件（会自动转为单声道）
+    y, sr = librosa.load(filepath, sr=None)  # sr=None 表示保留原始采样率
+
+    # 计算 RMS
+    std_dev = np.std(y)
+    return std_dev
 
 def getaudioloudness_overtime(filepath):
     """
@@ -53,7 +71,7 @@ def getaudioloudness_overtime(filepath):
     return np.array(times), np.array(loudness)
 
 
-def pltaudioloudness_overtime(path, filename):
+def pltaudioloudness_overtime_tmp(path, filename):
     """
     绘制响度随时间变化的折线图
     """
@@ -74,6 +92,60 @@ def pltaudioloudness_overtime(path, filename):
     plt.tight_layout()
     # plt.show()
     plt.savefig(path + filename.split('.')[0] + "_loudness_spectrogram.png")
+
+def pltaudioloudness_overtime(path, filename):
+
+    # 加载音频文件
+    filepath = path + filename  # 替换为你的音频路径
+    data, rate = librosa.load(filepath, sr=None, mono=False)
+
+    # 如果是立体声，则转为双通道 NumPy 数组
+    if data.ndim == 1:
+        data = np.expand_dims(data, axis=0)  # 单声道 -> (1, samples)
+    else:
+        data = data.T  # 确保 shape 是 (samples, channels)
+
+    # 创建 Loudness Meter（符合 ITU-R BS.1770 标准）
+    meter = pyln.Meter(rate)
+
+    # 计算整体响度（用于参考）
+    overall_loudness = meter.integrated_loudness(data)
+    print(f"整体响度（Integrated Loudness）: {overall_loudness:.2f} LUFS")
+
+    # 分帧计算瞬时响度（Momentary Loudness，每400ms一帧）
+    window_size = int(0.4 * rate)  # 400ms
+    hop_size = window_size // 2     # 50% 重叠
+
+    momentary_loudness = []
+
+    for start in range(0, data.shape[0], hop_size):
+        end = start + window_size
+        if end > data.shape[0]:
+            break
+        segment = data[start:end]
+        loudness = meter.integrated_loudness(segment)
+        if loudness == -np.inf:
+            continue
+        momentary_loudness.append(loudness)
+
+    # 时间轴生成
+    times = np.arange(len(momentary_loudness)) * hop_size / rate
+
+    loudness_std = np.std(momentary_loudness)
+    print(f"响度标准差 std: {loudness_std:.2f}")
+
+    # 绘制响度图
+    plt.figure(figsize=(12, 6))
+    plt.plot(times, momentary_loudness, label="Momentary Loudness (LUFS), std: %.3f" % loudness_std, color='blue')
+    plt.axhline(y=overall_loudness, color='red', linestyle='--', label=f"Overall Loudness: {overall_loudness:.2f} LUFS")
+
+    plt.xlabel("time (s)")
+    plt.ylabel("loudness (LUFS)")
+    plt.title(filename.split('.')[0] + ' loudness')
+    plt.grid(True)
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig(path + filename.split('.')[0] + "_loudness_timeline.png")
 
 
 def audioloudness(filepath):
@@ -245,13 +317,54 @@ def genAudio():
 if __name__ == "__main__":
     # genAudio()
 
-    if len(sys.argv) > 2:
-        path = sys.argv[1]
-        filename = sys.argv[2]
+    func = ""
+    if len(sys.argv) > 1:
+        func = sys.argv[1]
+
+    if func == "analy":
+        if len(sys.argv) <= 3:
+            print("less argv, func '%s' need [path] [filename]\n" % func)
+            sys.exit(2)
+        path = sys.argv[2]
+        filename = sys.argv[3]
         print("arg: ", path, filename)
         analyAudio(path, filename)
-        # subaudio(path, filename)
-        # audioloudness(path+filename)
-        # pltaudioloudness_overtime(path, filename)
+    elif func == "subaudio":
+        if len(sys.argv) <= 3:
+            print("less argv, func '%s' need [path] [filename]\n" % func)
+            sys.exit(2)
+        path = sys.argv[2]
+        filename = sys.argv[3]
+        subaudio(path, filename)
+    elif func == "audioloudness":
+        if len(sys.argv) <= 2:
+            print("less argv, func '%s' need [fullpath]\n" % func)
+            sys.exit(2)
+        fullfilepath = sys.argv[2]
+        audioloudness(fullfilepath)
+    elif func == "pltloudness":
+        if len(sys.argv) <= 3:
+            print("less argv, func '%s' need [path] [filename]\n" % func)
+            sys.exit(2)
+        path = sys.argv[2]
+        filename = sys.argv[3]
+        print("arg: ", path, filename)
+        pltaudioloudness_overtime(path, filename)
+    elif func == "rms":
+        if len(sys.argv) <= 2:
+            print("less argv, func '%s' need [fullpath]\n" % func)
+            sys.exit(2)
+        fullfilepath = sys.argv[2]
+        rms = calculate_audio_rms(fullfilepath)
+        print("file '%s' rms is %f" % (fullfilepath, rms))
+    elif func == "std":
+        if len(sys.argv) <= 2:
+            print("less argv, func '%s' need [fullpath]\n" % func)
+            sys.exit(2)
+        fullfilepath = sys.argv[2]
+        std_dev = calculate_audio_std(fullfilepath)
+        print("file '%s' std is %f" % (fullfilepath, std_dev))
+    else:
+        print("func '%s' not found \n" % func)
 
 

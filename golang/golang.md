@@ -107,7 +107,8 @@ dep status
 
 + panic、defer、recover
     + panic
-        + index out of rang
+        + 场景系统 panic 原因: 数组越界、空指针引用、断言失败、map 操作错误、除数为 0、调用未实现的方法、通道 chan 操作错误、goroutine 竞争资源导致死锁、非线程安全操作如 map、内存不足
+        + 数组越界 index out of rang
         + runtime error: index out of ra...
         + exit status 2
         + 从 panic 被引发到程序终止运行的大致过程是什么？
@@ -136,7 +137,8 @@ dep status
     + go 语言标准库代码用法
     + 单元测试、API 测试、集成测试、灰度测试
 
-+ 互斥锁 sync.Mutex、sync.RWMutex
++ 互斥锁 sync.Mutex、sync.
+    + 互斥锁保证任何时刻只有一个 goroutine 可以访问共享资源。读写锁则允许多个 goroutine 同时读取共享资源，写操作是互斥的。
     + 竞态条件 (race condition)
     + 同步、临界区（critical section）、互斥量（mutual exclusion）
     + lock、unlock、deadlock

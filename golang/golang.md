@@ -317,9 +317,6 @@ dep status
     <img src="img/pprof.png"> 
     + 如何为基于 HTTP 协议的网络服务添加性能分析接口？（net/http/pprof）
     + runtime/trace 代码包的功用是什么？
-        
-        
-
 
 
 ## 为什么 go 语言没有继承

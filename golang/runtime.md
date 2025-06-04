@@ -60,10 +60,10 @@ n++ 并发安全问题
 Coroutine 轻量级线程, 它的切换完全在用户态进行, 相比线程、进程效率更高. 
 
 - 进程控制原语: 建立、撤销、等待、唤醒
-- 进程状态: D(TASK_UNINTERRUPTIBLE) 不可中断睡眠状态、R(TASK_RUNNING) 可执行状态、S(TASK_INTERRUPTIBLE) 可中断的睡眠状态、T/t(TASK_STOPPED or TASK_TRACED) 暂停状态或跟踪状态、X(TASK_DEAD - EXIT_DEAD) 退出状态，进程即将被销毁、Z(TASK_DEAD - EXIT_ZOMBIE) 退出状态，进程成为僵尸进程
-- 抢占式: 
-- sysmon: 
-- 非内联函数: 
+- 进程状态: D(TASK_UNINTERRUPTIBLE) 不可中断睡眠状态、R(TASK_RUNNING) 可执行状态、S(TASK_INTERRUPTIBLE) 可中断的睡眠状态、T/t(TASK_STOPPED or TASK_TRACED) 暂停状态或跟踪状态、X(TASK_DEAD - EXIT_DEAD) 退出状态，进程即将被销毁、Z(TASK_DEAD - EXIT_ZOMBIE) 退出状态，进程成为僵尸进程.
+- 抢占式: 根据某种原则，暂停执行某个正在执行的进程，将已分配给该进程的处理机制重新分配给另一个进程.
+- sysmon: 是一个监控线程或者是守护线程. 它的主要作用是定期查看 netpoll 有无就绪的任务, 防止 netpoll 阻塞队列中的 goroutine 饥饿. 定期查看是否有 p 长时间(10ms)处于 syscall 状态，有的话释放 p 持有权。定期查看是否有 p 长时间(10ms) 没有调度, 如有则对当前 m 发送信号, 触发基于信号的异步抢占调度.
+- 非内联函数: 在 go 中, 非内联函数是指编译器不会将代码直接嵌入到调用位置的函数.
 
 ## pprof
 gcBgMarkWorker

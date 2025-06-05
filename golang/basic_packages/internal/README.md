@@ -1,21 +1,21 @@
 # 简介
-internal 是 golang 源码的内部 package, . golang 中以 internal 命名的文件夹内部的 API 不可以被外部使用.
+internal 是 golang 源码的内部 package, . golang 中以 internal 命名的文件夹内部的 API 不可以被外部使用.
 
 ## 源码
 总计 18000 多行代码，除去测试代码 13000 多行.
 + internal/bytealg   
-    - 字节切片相关的函数、如比较、计数等      
+    - 字节切片相关的函数、如比较、计数等      
 + internal/cpu   
     - 实现了对处理器特性的检测
 + internal/fmtsort   
     - 提供对 map 的稳定排序机制
-    - 通过 reflect 获取类型及值
+    - 通过 reflect 获取类型及值
     - 通过 sort.Stable() 进行排序 
 + internal/goroot   
     - func IsStandardPackage(goroot, compiler, path string) bool
     - 判断路径是否为标准库        
 + internal/goversion  
-    - golang 版本     
+    - golang 版本     
 + internal/lazyregexp  
     - 对 regexp 的封装
 + internal/lazytemplate    

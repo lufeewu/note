@@ -139,7 +139,7 @@ dep status
 
 + 互斥锁 sync.Mutex、sync.
     + 互斥锁保证任何时刻只有一个 goroutine 可以访问共享资源。读写锁则允许多个 goroutine 同时读取共享资源，写操作是互斥的。
-    + 竞态条件 (race condition)
+    + 竞态条件 (race condition)
     + 同步、临界区（critical section）、互斥量（mutual exclusion）
     + lock、unlock、deadlock
     + time.Ticker
@@ -209,7 +209,7 @@ dep status
     + strings.Builder 和 bytes.Buffer 的 string 方法，哪一个高效？
 
 + **I/O**
-    > io 包中共有简单接口 11 个. 其中读取操作相关的接口 5 个，写入相关的接口 4 个，关闭操作相关的 1 个以及 1 个读写位置设定相关的接口
+    > io 包中共有简单接口 11 个. 其中读取操作相关的接口 5 个，写入相关的接口 4 个，关闭操作相关的 1 个以及 1 个读写位置设定相关的接口
     + strings.Builder 指针类型实现接口包括 io.Writer、io.ByteWriter、fmt.Stringer、io.stringWriter
     + strings.Reader 指针类型实现接口
         - io.Reader

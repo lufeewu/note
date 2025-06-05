@@ -62,6 +62,8 @@ Coroutine 轻量级线程, 它的切换完全在用户态进行, 相比线程、
 - 进程控制原语: 建立、撤销、等待、唤醒
 - 进程状态: D(TASK_UNINTERRUPTIBLE) 不可中断睡眠状态、R(TASK_RUNNING) 可执行状态、S(TASK_INTERRUPTIBLE) 可中断的睡眠状态、T/t(TASK_STOPPED or TASK_TRACED) 暂停状态或跟踪状态、X(TASK_DEAD - EXIT_DEAD) 退出状态，进程即将被销毁、Z(TASK_DEAD - EXIT_ZOMBIE) 退出状态，进程成为僵尸进程.
 - 抢占式: 根据某种原则，暂停执行某个正在执行的进程，将已分配给该进程的处理机制重新分配给另一个进程.
+    + 同步协作调度: 主动用户让权, 可以通过 runtime.Gosched 调用主动让出执行机会. 主动调度弃权则在执行栈分段时, 检查自身抢占标记决定是否继续执行.
+    + 异步抢占式调度: 被动监控抢占, 发生阻塞时，系统监控会抢占并分配给其它协程. 被动 GC 抢占, 垃圾回收 GC 时候会停止 G 转为垃圾回收.
 - sysmon: 是一个监控线程或者是守护线程. 它的主要作用是定期查看 netpoll 有无就绪的任务, 防止 netpoll 阻塞队列中的 goroutine 饥饿. 定期查看是否有 p 长时间(10ms)处于 syscall 状态，有的话释放 p 持有权。定期查看是否有 p 长时间(10ms) 没有调度, 如有则对当前 m 发送信号, 触发基于信号的异步抢占调度.
 - 非内联函数: 在 go 中, 非内联函数是指编译器不会将代码直接嵌入到调用位置的函数.
 
@@ -111,3 +113,4 @@ golang runtime 的内存分配算法主要源于 c 语言开发的 TCMalloc 算�
 9. [Goroutine 调度过程](https://qiankunli.github.io/2020/11/10/goroutine_scheduler_2.html)
 10. [因goroutine运行时间过长而发生的抢占调度（21）](https://cloud.tencent.com/developer/article/1450290)
 11. [go-GMP 协程切换时机 和 协程实战](https://www.cnblogs.com/studyios/p/17868145.html)
+12. [go 语言原本 - 6.8 协作与抢占](https://golang.design/under-the-hood/zh-cn/part2runtime/ch06sched/preemption/)

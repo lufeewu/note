@@ -314,6 +314,11 @@ def genAudio():
     print("440Hz音调的WAV文件已生成")
 
 
+def analyurl(path, filename):
+    analyAudio(path, filename)
+    pltaudioloudness_overtime(path, filename)
+
+
 if __name__ == "__main__":
     # genAudio()
 

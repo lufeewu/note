@@ -12,7 +12,7 @@ ClickHouse 是一个开源列式数据库管理系统(DMBS), 数据在 ClickHous
 - **块流**: 快流用于处理数据.
 - **格式**: 有用于向客户端输出数据的格式等, 如 Pretty、TabSeparated、JsonEachRow 等, 还有行流 IRowInputStream 等.
 - **I/O**: 用于面向字节的输入输出, ReadBuffer、WriteBuffer 抽象类.
-- **表**: 又 IStorage 接口表示, , 如 StorageMergeTree、StorageMemory 等.
+- **表**: 又 IStorage 接口表示, 如 StorageMergeTree、StorageMemory 等.
 - **解析器**: Parsers 是一个手写递归下降解析器, 用于解析查询
 - **解释器**: 负责创建 AST 查询执行流水线.
 - **函数**: 有普通函数和聚合函数. 函数作用在以 block 为单位的数据上, 以实现向量查询执行.

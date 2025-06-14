@@ -13,7 +13,9 @@
 ### 面试题
 
 	for i := 0; i < 10; i++ {
-		go fmt.Print(i, " ")
+		go func(){
+			fmt.Print(i, " ")
+		}
 	}
 
 

@@ -76,7 +76,7 @@ dep status
     + FIFO 队列
     + 副本、复制
     + 缓冲通道、非缓冲通道
-    + 单向通道、双向通道
+    + 单向通道、双向通道
     + 同步、异步
 + goroutine 协程
     + go 语句 
@@ -116,13 +116,13 @@ dep status
             2. 沿着调用栈的反方向传播至顶端, main 函数
             3. go runtime 回收，程序崩溃
             4. 打印 panic 详情
-        + 意外 panic, 主动 panic()函数
+        + 意外 panic, 主动 panic()函数
     + recover
     + deferc
         + 不支持 go 语言内建函数调用
         + 不支持 unsafe 包中的函数的调用表达式
         + 倒序执行、FILO 队列（栈）
-        + 可以在 defer 中引发 panic 么？
+        + 可以在 defer 中引发 panic 么？
 
 + 测试
     + go 程序测试
@@ -140,7 +140,7 @@ dep status
 + 互斥锁 sync.Mutex、sync.
     + 互斥锁保证任何时刻只有一个 goroutine 可以访问共享资源。读写锁则允许多个 goroutine 同时读取共享资源，写操作是互斥的。
     + 竞态条件 (race condition)
-    + 同步、临界区（critical section）、互斥量（mutual exclusion）
+    + 同步、临界区（critical section）、互斥量（mutual exclusion）
     + lock、unlock、deadlock
     + time.Ticker
     + 共享资源（存储、计算、I/O、网络等）
@@ -183,7 +183,7 @@ dep status
     + 并发安全字典对健的类型有要求么？（不支持函数类型、字典类型、切片类型）
     + 怎样保证并发安全字典中的键值类型正确性？
         + 让并发安全字典只能存储某个特定类型的键
-        + 接受动态的类型设置，并在程序运行的时候通过反射操作进行检查（reflect.Type)
+        + 接受动态的类型设置，并在程序运行的时候通过反射操作进行检查(reflect.Type)
     + sync.Map dirty 字段
 
 + Unicode 
@@ -251,7 +251,7 @@ dep status
 
 + bufio ( buffered I/O , 内置缓冲区)
     + Reader
-        - 字段 buf、rd、r、w、err、lastByte、lastRuneSize
+        - 字段 buf、rd、r、w、err、lastByte、lastRuneSize
         - bufio.Reader 类型的读取方法有哪些不同？(4个读取流程代表)
     + Scanner
     + Writer 和 ReadWriter
@@ -287,7 +287,7 @@ dep status
     + net
         - net.Dial(network, address string)
         - network 可选 9 个值: tcp、tcp4、tcp6、udp、udp4、udp6、unix、unixgram、unixpacket
-        - 调用 net.DialTimeout 函数时超过给定的时间意味着什么？
+        - 调用 net.DialTimeout 函数时超过给定的时间意味着什么？
         - net.Dialer 类型 
         - DialContext 方法
         - 怎样在 net.Conn 类型的值上正确地设定针对读操作和写操作的超时时间？
@@ -312,7 +312,7 @@ dep status
     + go test
     + 怎样让程序对 CPU 概要信息进行采样？（runtime/pprof）
         - runtime/pprof.StartCPUProfile
-    + 怎样设定内存概要信息的采样频率？（runtime.MemProfileRate)
+    + 怎样设定内存概要信息的采样频率？(runtime.MemProfileRate)
     + 怎样获取到阻塞概要信息？（SetBlockProfileRate）
     + runtime/pprof.Lookup 函数的正确调用方式是什么？
         - runtime/pprof 6 个预定义概要名称: goroutine、heap、allocs、threadcreate、block、mutex
@@ -340,8 +340,8 @@ dep status
 # TCMalloc
 
 # 垃圾回收
-+ STW (Stop the World): 在标记终止阶段, 会有一个短暂的 STW 阶段, 在这个阶段, 任何剩余的灰色对象会被完成标记, 确保所有存活的对象被标记为黑色.
-+ Mark STW，SWEEP 并行
++ STW (Stop the World): 在标记终止阶段, 会有一个短暂的 STW 阶段, 在这个阶段, 任何剩余的灰色对象会被完成标记, 确保所有存活的对象被标记为黑色.
++ Mark STW，SWEEP 并行
 + 三色标记法
     - 白色对象: 未被垃圾回收器访问过的对象，可能死亡的对象。在 GC 开始时，所有对象都被初始化为白色。
     - 灰色对象: 已被垃圾回收器访问过的对象, 但仍有未被扫描的指针指向白色对象。
@@ -356,7 +356,7 @@ dep status
 > 三色标记法
 1. 所有对象最开始是白色
 2. 从 root 开始找到所有可达对象，标记为灰色，放入待处理队列
-3. 遍历灰色对象队列，将其引用对象标记为灰色放入待处理队列，自身标记为黑色
+3. 遍历灰色对象队列，将其引用对象标记为灰色放入待处理队列，自身标记为黑色
 4. 处理完灰色对象队列，执行清扫工作。
 5. 完成所有对象扫描后，白色对象即为不可达的"垃圾"，将被回收期清除。
 
@@ -388,7 +388,7 @@ dep status
     <img src="../img/routine_thread_process.jpg">
 
 4. 什么是 interface？
-    - interface 是具有一组方法的类型，如果一个类型实现了一个 interface 的所有方法，就说该类型实现了 interface. 
+    - interface 是具有一组方法的类型，如果一个类型实现了一个 interface 的所有方法，就说该类型实现了 interface. 
 
 5. 原子操作有什么好处？
     - 原子操作可以用互斥体完成，但它比互斥体更快，它是 CPU 而非操作系统提供的能力，如

@@ -221,5 +221,4 @@ func ShellSort(list []int) {
 			}
 		}
 	}
-
 }

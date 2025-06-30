@@ -75,8 +75,29 @@ func testB() {
 	wg1.Wait()
 	// time.Sleep(10 * time.Second)
 }
+
+func canPartition(nums []int) bool {
+    sum := 0
+	for _, v := range nums {
+		sum += v
+	}
+	if sum % 2 != 0 {
+		return false
+	}
+	dp := make([]int, sum / 2 + 1)
+	for _, v := range nums {
+		// 按背包从大到小放入, 不会出现背包放放两次情况
+		for i := len(dp) - 1; i >= v ; i-- {
+			if dp[i] < dp[i-v] + v {
+				dp[i] = dp[i-v] + v
+			} 
+		}
+	}
+	return dp[len(dp) - 1] == sum/2
+}
+
 func main() {
-	testB()
+	fmt.Println(canPartition([]int{1, 2, 5}))
 	return
 
 	fmt.Println(f(0), f(1), f(2), f(3), f(4), f(5))

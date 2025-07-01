@@ -55,15 +55,15 @@ func a() {
 	for i := 0; i < 10; i++ {
 		fmt.Println("A:", i)
 	}
-
 }
+
 func b() {
 	defer wg1.Done()
 	for i := 0; i < 10; i++ {
 		fmt.Println("B:", i)
 	}
-
 }
+
 func testB() {
 	// fmt.Println(runtime.NumCPU())
 	// runtime.GOMAXPROCS(12)

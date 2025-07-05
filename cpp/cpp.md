@@ -260,6 +260,9 @@ coredump 定位方法:
 ### gdb 工具
 GDB 是由 GND 开源组织发布、UNIX/LINUX 操作系统下的、基于命令行的、功能强大的程序调试工具. 它支持断点、单步执行、打印变量、观察变量、查看寄存器、查看堆栈等调试手段.
 
+## 火焰图
+
+
 
 ## 参考
 1. [C++ 继承](https://www.runoob.com/cplusplus/cpp-inheritance.html)

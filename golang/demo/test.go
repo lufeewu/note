@@ -149,6 +149,7 @@ func testGoroutine() {
 	curMem := mem.TotalAlloc / 1024 / 1024
 	fmt.Printf("\tTotalAlloc = %v MiB  max goroutine: %d\n", curMem, m)
 }
+
 func testSlice() {
 	// a := []int{1, 3, 4, 5, 6}
 	// a = append(a, 4)
@@ -353,6 +354,7 @@ func race() int {
 	fmt.Println(n) // 输出：未指定
 	return n
 }
+
 func generateParenthesis(n int) []string {
 	if n == 0 {
 		return nil
@@ -560,6 +562,7 @@ func (this *MedianFinder) FindMedian() float64 {
 		return float64(this.MaxHeap[0])
 	}
 }
+
 func lastStoneWeight(stones []int) int {
 	if len(stones) == 0 {
 		return 0
@@ -599,6 +602,7 @@ func circle(n int) int {
 	}
 	return p + 1
 }
+
 func binarySearch(arr []int, target int) int {
 	if len(arr) == 0 {
 		return -1 // 返回下标

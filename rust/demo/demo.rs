@@ -1,3 +1,41 @@
+
+
+fn takes_ownership(some_string: String) {
+    println!("获得所有权: {}", some_string);
+}
+
+fn makes_copy(some_integer: i32) {
+    println!("获得拷贝: {}", some_integer);
+}
+
+
+use std::thread;
+use std::sync::{Arc, Mutex};
+
+/// 并发计数器示例：启动多个线程并安全地累加计数
+fn concurrent_counter() {
+    let counter = Arc::new(Mutex::new(0));
+    let mut handles = vec![];
+
+    for _ in 0..10 {
+        let counter = Arc::clone(&counter);
+        let handle = thread::spawn(move || {
+            for _ in 0..1000 {
+                let mut num = counter.lock().unwrap();
+                *num += 1;
+            }
+        });
+        handles.push(handle);
+    }
+
+    for handle in handles {
+        handle.join().unwrap();
+    }
+
+    println!("并发计数结果: {}", *counter.lock().unwrap());
+}
+
+
 fn main() {
     // 斐波那契数列的前 10 项
     let mut fib = vec![0, 1];
@@ -28,12 +66,4 @@ fn main() {
     // 闭包示例
     let add = |a: i32, b: i32| a + b;
     println!("3 + 4 = {}", add(3, 4));
-}
-
-fn takes_ownership(some_string: String) {
-    println!("获得所有权: {}", some_string);
-}
-
-fn makes_copy(some_integer: i32) {
-    println!("获得拷贝: {}", some_integer);
 }

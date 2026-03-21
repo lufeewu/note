@@ -1,0 +1,30 @@
+#!/bin/bash
+
+usage() {
+  echo "用法: $0 [python|java|go] [目录]"
+  exit 1
+}
+
+if [ $# -lt 1 ]; then
+  usage
+fi
+
+LANG=$1
+DIR=${2:-.}
+
+case "$LANG" in
+  python|py)
+    EXT="py"
+    ;;
+  java)
+    EXT="java"
+    ;;
+  go)
+    EXT="go"
+    ;;
+  *)
+    usage
+    ;;
+esac
+
+find "$DIR" -type f -name "*.$EXT" ! -name "*.pyc" -print0 | xargs -0 cat | wc -l

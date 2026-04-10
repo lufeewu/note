@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&M Fashion Search</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #f8f9fa;
+            --border-color: #e0e0e0;
+            --text-color: #333;
+            --hover-color: #f5f5f5;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            padding-top: 60px;
+            background-color: white;
+            color: var(--text-color);
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background-color: #f8f9fa;  /* Light gray background */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            padding: 0;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #1a1a1a;  /* Slightly darker text for better contrast */
+            white-space: nowrap;
+            width: 250px;
+            padding-left: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .navbar-brand img {
+            height: 24px;  /* Made slightly smaller to match text height */
+            width: auto;
+            object-fit: contain;
+            margin-left: 5px;  /* Add a little space after "by" */
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-right: 25px;
+        }
+
+        .social-links a {
+            color: #1a1a1a;  /* Match brand text color */
+            text-decoration: none;
+            font-size: 20px;
+            transition: color 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .social-links a:hover {
+            color: #007bff;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            padding: 0 25px;
+            height: calc(100vh - 70px);
+            position: fixed;
+            overflow-y: auto;
+            border-right: none;
+            box-shadow: 2px 0 6px rgba(0,0,0,0.04);
+            box-sizing: border-box;
+            top: 70px;
+            left: 0;  /* Ensure fixed position from left */
+        }
+
+        .sidebar h3 {
+            margin: 30px 0;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            padding: 0 40px;
+            width: calc(100% - 250px);
+            box-sizing: border-box;
+            background-color: white;
+            box-shadow: inset 2px 0 6px rgba(0,0,0,0.02);  /* Very subtle inset shadow for main content */
+            min-height: calc(100vh - 70px);  /* Ensure full height */
+        }
+
+        .main-search {
+            width: 100%;
+            padding: 30px 0;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .main-search::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.02), transparent);
+        }
+
+        .main-search input {
+            width: 100%;
+            padding: 15px 25px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+            background-color: var(--secondary-color);
+        }
+
+        .main-search input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background-color: white;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 35px;
+            margin: 30px 0;
+            padding: 0;
+            min-height: 200px;  /* Maintain height during transitions */
+        }
+
+        /* Add media queries for responsiveness */
+        @media (max-width: 1400px) {
+            .results-grid {
+                grid-template-columns: repeat(3, 1fr);  /* 3 columns on smaller screens */
+            }
+        }
+
+        @media (max-width: 1100px) {
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);  /* 2 columns on even smaller screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .results-grid {
+                grid-template-columns: 1fr;  /* 1 column on mobile */
+            }
+        }
+
+        .product-card {
+            text-align: left;
+            border: none;
+            padding: 0;
+            border-radius: 8px;
+            background-color: white;
+            transition: transform 0.3s ease;  /* Slower transition */
+            cursor: pointer;
+            opacity: 0;  /* Start invisible */
+            animation: fadeIn 0.5s ease forwards;  /* Add fade-in animation */
+        }
+
+        /* Add animation delay for each card */
+        .product-card:nth-child(1) { animation-delay: 0s; }
+        .product-card:nth-child(2) { animation-delay: 0.1s; }
+        .product-card:nth-child(3) { animation-delay: 0.2s; }
+        .product-card:nth-child(4) { animation-delay: 0.3s; }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            margin: 0 0 8px 0;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            margin-top: 8px;
+        }
+
+        .facet-group {
+            margin-bottom: 30px;  /* Reduced from 40px */
+            padding-bottom: 20px;  /* Reduced from 25px */
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .facet-group:last-child {
+            border-bottom: none;
+        }
+
+        .facet-title {
+            font-weight: 600;
+            margin-bottom: 12px;  /* Reduced from 15px */
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.7px;
+        }
+
+        .facet-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;  /* Reduced from 15px */
+        }
+
+        .facet-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .facet-option label {
+            font-size: 1rem;
+            cursor: pointer;
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .clear-filters {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .clear-filters:hover {
+            background-color: var(--hover-color);
+        }
+
+        .results-summary {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0;
+            padding: 0;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        #loadMoreBtn {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+            padding: 15px 30px;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        #loadMoreBtn:hover {
+            background-color: var(--hover-color);
+        }
+
+        /* Custom checkbox styles */
+        input[type="checkbox"] {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        input[type="checkbox"]:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        input[type="checkbox"]:checked::after {
+            content: "✓";
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Add smooth scrolling to sidebar */
+        .sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: rgba(0,0,0,0.1);
+            border-radius: 4px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(0,0,0,0.2);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            width: 90%;
+            max-width: 1000px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            color: #666;
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .modal-body {
+            display: flex;
+            gap: 40px;
+            padding: 30px;
+        }
+
+        #modalImage {
+            width: 400px;
+            height: 533px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .modal-details {
+            flex: 1;
+            padding: 20px 0;
+        }
+
+        .modal-details h2 {
+            margin: 0 0 20px 0;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .modal-details p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .modal-body {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            #modalImage {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .product-meta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .availability {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .availability.in-stock {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .availability.out-of-stock {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+
+        .product-info {
+            background-color: var(--secondary-color);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .info-row {
+            display: flex;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-row .label {
+            width: 100px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .description h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-brand">
+            <img src="/static/hnmlogo.png" alt="H&M Logo" style="height: 40px; margin-right: 10px;">
+            Fashion Search with 
+            <img src="/static/logo.png" alt="LanceDB Logo" style="height: 35px; margin-left: 5px; vertical-align: middle;">
+        </div>
+        <div class="social-links">
+            <a href="https://discord.gg/your-discord" target="_blank" title="Discord">
+                <i class="fab fa-discord"></i>
+            </a>
+            <a href="https://github.com/your-github" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/your-linkedin" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://twitter.com/your-twitter" target="_blank" title="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="sidebar">
+        <h3>Categories</h3>
+        <div class="facet-group">
+            <div class="facet-title">Product Group</div>
+            <div class="facet-options" id="groupFacets">
+                <!-- Groups will be populated here -->
+            </div>
+        </div>
+        <div class="facet-group">
+            <div class="facet-title">Item Type</div>
+            <div class="facet-options" id="itemFacets">
+                <div class="facet-option">
+                    <input type="checkbox" id="Dress" value="Dress" onchange="handleItemChange(this)">
+                    <label for="Dress">Dress</label>
+                </div>
+                <div class="facet-option">
+                    <input type="checkbox" id="Jacket" value="Jacket" onchange="handleItemChange(this)">
+                    <label for="Jacket">Jacket</label>
+                </div>
+                <div class="facet-option">
+                    <input type="checkbox" id="Sneakers" value="Sneakers" onchange="handleItemChange(this)">
+                    <label for="Sneakers">Sneakers</label>
+                </div>
+                <div class="facet-option">
+                    <input type="checkbox" id="Gloves" value="Gloves" onchange="handleItemChange(this)">
+                    <label for="Gloves">Gloves</label>
+                </div>
+                <div class="facet-option">
+                    <input type="checkbox" id="Shirt" value="Shirt" onchange="handleItemChange(this)">
+                    <label for="Shirt">Shirt</label>
+                </div>
+                <div class="facet-option">
+                    <input type="checkbox" id="Sweater" value="Sweater" onchange="handleItemChange(this)">
+                    <label for="Sweater">Sweater</label>
+                </div>
+            </div>
+        </div>
+        <button class="clear-filters" onclick="clearFilters()">Clear All Filters</button>
+    </div>
+
+    <div class="main-content">
+        <div class="main-search">
+            <input type="text" id="searchInput" placeholder="Search for fashion items... (Press Enter to search)">
+        </div>
+        <div id="loading" class="loading">Searching...</div>
+        <div id="summary" class="results-summary" style="display: none;"></div>
+        <div id="results" class="results-grid"></div>
+        <div class="load-more">
+            <button id="loadMoreBtn" onclick="loadMore()">Load More</button>
+        </div>
+    </div>
+
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-body">
+                <img id="modalImage" src="" alt="">
+                <div class="modal-details">
+                    <h2 id="modalTitle"></h2>
+                    <div class="product-meta">
+                        <span class="price">$<span id="modalPrice">0.00</span></span>
+                        <span class="availability" id="modalAvailability"></span>
+                    </div>
+                    <div class="product-info">
+                        <div class="info-row">
+                            <span class="label">Category:</span>
+                            <span id="modalCategory"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Type:</span>
+                            <span id="modalType"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Color:</span>
+                            <span id="modalColor"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Size:</span>
+                            <span id="modalSize"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Article ID:</span>
+                            <span id="modalArticleId"></span>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <h3>Description</h3>
+                        <p id="modalDescription"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentOffset = 0;
+        let currentQuery = '';
+        let selectedGroups = new Set();
+        let selectedItems = new Set();
+        let hasMore = true;
+
+        async function loadGroups() {
+            try {
+                const response = await fetch('/groups');
+                if (!response.ok) throw new Error('Failed to load groups');
+                const groups = await response.json();
+                
+                const groupFacets = document.getElementById('groupFacets');
+                groups.forEach(group => {
+                    const facetOption = document.createElement('div');
+                    facetOption.className = 'facet-option';
+                    facetOption.innerHTML = `
+                        <input type="checkbox" id="${group}" value="${group}" onchange="handleGroupChange(this)">
+                        <label for="${group}">${group}</label>
+                    `;
+                    groupFacets.appendChild(facetOption);
+                });
+            } catch (error) {
+                console.error('Error loading groups:', error);
+            }
+        }
+
+        function handleGroupChange(checkbox) {
+            if (checkbox.checked) {
+                selectedGroups.add(checkbox.value);
+            } else {
+                selectedGroups.delete(checkbox.value);
+            }
+            searchFashion();
+        }
+
+        function handleItemChange(checkbox) {
+            if (checkbox.checked) {
+                selectedItems.add(checkbox.value);
+            } else {
+                selectedItems.delete(checkbox.value);
+            }
+            searchFashion();
+        }
+
+        function clearFilters() {
+            selectedGroups.clear();
+            selectedItems.clear();
+            document.querySelectorAll('.facet-option input[type="checkbox"]').forEach(cb => {
+                cb.checked = false;
+            });
+            document.getElementById('searchInput').value = '';
+            searchFashion();
+        }
+
+        async function searchFashion() {
+            currentOffset = 0;
+            currentQuery = document.getElementById('searchInput').value.trim();
+            hasMore = true;
+            
+            const loadingDiv = document.getElementById('loading');
+            const resultsDiv = document.getElementById('results');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+            loadingDiv.style.display = 'block';
+            resultsDiv.innerHTML = '';
+            loadMoreBtn.style.display = 'none';
+
+            try {
+                await fetchResults();
+            } finally {
+                loadingDiv.style.display = 'none';
+            }
+        }
+
+        async function loadMore() {
+            if (!hasMore) return;
+            
+            const loadingDiv = document.getElementById('loading');
+            loadingDiv.style.display = 'block';
+            
+            try {
+                await fetchResults();
+            } finally {
+                loadingDiv.style.display = 'none';
+            }
+        }
+
+        async function fetchResults() {
+            try {
+                const searchParams = new URLSearchParams();
+                if (currentQuery) searchParams.append('query', currentQuery);
+                if (selectedGroups.size > 0) {
+                    selectedGroups.forEach(group => {
+                        searchParams.append('group', group);
+                    });
+                }
+                if (selectedItems.size > 0) {
+                    selectedItems.forEach(item => {
+                        searchParams.append('item', item);
+                    });
+                }
+                searchParams.append('limit', '20');
+                searchParams.append('offset', currentOffset.toString());
+                
+                const startTime = performance.now();
+                const response = await fetch(`/search?${searchParams}`);
+                const data = await response.json();
+                const searchTime = Math.round(performance.now() - startTime);
+                
+                if (!response.ok) {
+                    throw new Error(data.detail || 'Search failed');
+                }
+                
+                const resultsDiv = document.getElementById('results');
+                const summaryDiv = document.getElementById('summary');
+                const loadMoreBtn = document.getElementById('loadMoreBtn');
+
+                if (currentOffset === 0) {
+                    summaryDiv.innerHTML = `${data.length} results found in ${searchTime}ms`;
+                    summaryDiv.style.display = 'block';
+                }
+
+                if (data.length === 0) {
+                    if (currentOffset === 0) {
+                        resultsDiv.innerHTML = '<p style="text-align: center; grid-column: 1 / -1;">No matching items found.</p>';
+                        summaryDiv.style.display = 'none';
+                    }
+                    hasMore = false;
+                    loadMoreBtn.style.display = 'none';
+                } else {
+                    data.forEach(result => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'product-card';
+                        productCard.innerHTML = `
+                            <img src="${result.image_url === 'binary_stored' ? `/image/${result.article_id}` : result.image_url}" alt="${result.prod_name}" 
+                                 onerror="this.onerror=null; this.src='https://via.placeholder.com/300x400?text=Image+Not+Available';">
+                            <h3>${result.prod_name}</h3>
+                            <div class="product-desc">${result.detail_desc.length > 100 ? result.detail_desc.substring(0, 100) + '...' : result.detail_desc}</div>
+                        `;
+                        productCard.onclick = () => showProductDetails(result);
+                        resultsDiv.appendChild(productCard);
+                    });
+
+                    currentOffset += data.length;
+                    loadMoreBtn.style.display = data.length === 20 ? 'inline-block' : 'none';
+                    hasMore = data.length === 20;
+                }
+            } catch (error) {
+                const resultsDiv = document.getElementById('results');
+                const summaryDiv = document.getElementById('summary');
+                resultsDiv.innerHTML = `<p style="text-align: center; grid-column: 1 / -1;">Error: ${error.message}</p>`;
+                summaryDiv.style.display = 'none';
+                console.error('Error:', error);
+            }
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!hasMore) return;
+            
+            const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+            if (scrollTop + clientHeight >= scrollHeight - 5) {
+                loadMore();
+            }
+        });
+
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchFashion();
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadGroups();  // First load the groups
+            searchFashion();     // Then load all results
+        });
+
+        function showProductDetails(result) {
+            const modal = document.getElementById('productModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDesc = document.getElementById('modalDescription');
+            const modalPrice = document.getElementById('modalPrice');
+            const modalAvailability = document.getElementById('modalAvailability');
+            const modalCategory = document.getElementById('modalCategory');
+            const modalType = document.getElementById('modalType');
+            const modalColor = document.getElementById('modalColor');
+            const modalSize = document.getElementById('modalSize');
+            const modalArticleId = document.getElementById('modalArticleId');
+
+            modalImg.src = result.image_url === 'binary_stored' ? `/image/${result.article_id}` : result.image_url;
+            modalImg.onerror = () => {
+                modalImg.src = 'https://via.placeholder.com/400x533?text=Image+Not+Available';
+            };
+            modalTitle.textContent = result.prod_name;
+            modalDesc.textContent = result.detail_desc;
+            modalPrice.textContent = result.price.toFixed(2);
+            
+            modalAvailability.textContent = result.available ? 'In Stock' : 'Out of Stock';
+            modalAvailability.className = 'availability ' + (result.available ? 'in-stock' : 'out-of-stock');
+            
+            modalCategory.textContent = result.index_group_name;
+            modalType.textContent = result.product_type_name;
+            modalColor.textContent = result.color || 'N/A';
+            modalSize.textContent = result.size || 'N/A';
+            modalArticleId.textContent = result.article_id;
+
+            modal.style.display = 'block';
+        }
+
+        document.querySelector('.close').onclick = function() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html> 

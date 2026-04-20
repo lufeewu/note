@@ -31,8 +31,22 @@ frame_index = from_idx
 frame = dict(dataset[frame_index])
 
 batch = preprocess(frame)
+
+# Some datasets expose images as observation.images.image/image2, while
+# SmolVLA checkpoints can expect camera1/camera2/camera3 feature names.
+expected_image_keys = [
+    key
+    for key, feature in policy.config.input_features.items()
+    if getattr(getattr(feature, "type", None), "value", None) == "VISUAL"
+]
+available_image_keys = [key for key in batch.keys() if key.startswith("observation.images.")]
+
+if expected_image_keys and not any(key in batch for key in expected_image_keys):
+    for src_key, dst_key in zip(sorted(available_image_keys), sorted(expected_image_keys)):
+        batch[dst_key] = batch[src_key]
+
 with torch.inference_mode():
-    pred_action = policy.select_action(frame)
+    pred_action = policy.select_action(batch)
     # use your policy postprocess, this post process the action
     # for instance unnormalize the actions, detokenize it etc..
     pred_action = postprocess(pred_action)

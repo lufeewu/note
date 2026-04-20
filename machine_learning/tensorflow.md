@@ -27,6 +27,8 @@ Tokenizer 标记器, 目标是将文本转换为模型可以处理的数据, 模
 
 BertTokenizer 是基于 BasicTokenizer 和 WordPieceTokenizer 的分词器.
 
+tokenzier 可以理解为模型的"专用字典"或语言翻译官. 不同的模型(甚至同一模型的不同版本)往往有着不同的"词汇表"和"拼写规则".
+
 ### keras.Model
 kreas.Model 全功能模型类, 由层组成, 它可以训练、评估、加载、保存, 甚至在多台机器上进行训练.
 

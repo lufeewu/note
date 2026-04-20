@@ -61,6 +61,7 @@ def build_batch(policy, image, instruction: str, device):
     # ---- 语言 token ----
     processor = policy.model.vlm_with_expert.processor
     tokenizer = getattr(processor, "tokenizer", processor)
+    print(f"使用 tokenizer: {tokenizer.__class__.__name__}", f"type: {type(tokenizer)}")
     token_out = tokenizer(
         instruction,
         return_tensors="pt",

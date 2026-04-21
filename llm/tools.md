@@ -35,3 +35,22 @@ Pillow 是 Python 图像处理库, 用于打开、操作和保存多种图像格
 
 ## Open Webui
 Open WebUI(Ollama WebUI)是一个开源、自托管且功能丰富的 AI 应用平台, 旨在为本地大语言模型(LLM)提供类似 ChatGPT 的用户体验. 设计上支持完离线运行, 能够轻松连接 Ollama 或 OpenAI 兼容的 API, 具备内置 RAG(检索增强生成)功能.
+
+
+## 数据集格式
+### 机器人 VLA 数据集格式
+机器人领域的数据非常复杂, 包含图像、关节角度、末端姿势、夹爪状态、语言指令等. 常见的数据集格式有:
+- RLDS / TFRecord: 将数据视为序列决策, 以 Episode 为单位, 每个 Episode 包含多个 Step. 每个 Step 包含 observation、action、reward、discount 等. 读写依赖 tensorflow 或者特定的库. RLDS 是用于存储和处理强化学习/机器人轨迹数据的标准和生态系统, RLDS 一般运行在 TFRecord 之上, TFRecord 是一种二进制文件格式.
+- HDF5: 开源社区最常用的格式, 它采用分层数据结构, 通常包含 action 数组、observations / images 组、observations / qpos(关节位置) 等.
+- Dexdata: 视频存为 .mp4、文本数据存为 .jsonl, 通过 index_cache.json 索引.
+
+### 自动驾驶 VLA 数据集格式
+自动驾驶 VLA 更关注车辆的控制(速度、转向)和轨迹预测, 而非机械臂的关节控制.
+- QA 格式: 问答对齐格式, 在端到端自动驾驶 VLA (如 SANA 标准)中, 数据通常被处理成问答对的形式. 比如输入图像、历史轨迹, 输出未来轨迹预测、驾驶指令(左转、减速等).
+- Nuscenes / Waymo 格式: 主要是感知数据集, VLA 模型通常基于这些格式进行微调. 其核心是多传感器融合(激光雷达、摄像头、雷达), 配合高精地图和标注框. 在这个基础上, 增加自然语言指令和轨迹规划.
+
+### 通用多模态/基础模型格式
+训练通用"大脑"的基础大模型, 数据格式更接近 NLP 或 CV 的标准.
+- Alpaca: 适用于指令微调, 结构特点是 instruction、input、output, 让模型学会听懂人话.
+- ShareGPT: 适用于多轮对话, 包含 conversations 列表, 包含 human 和 gpt 的交替对话.
+- LMDB + JSONL: 适用于大模型训练, 将图片打包成 tar 包, 元数据(Caption 或 QA 对) 存为 jsonl.

@@ -1,0 +1,8 @@
+module robot {
+  module dds {
+    struct ChatMessage {
+      long index;
+      string text;
+    };
+  };
+};

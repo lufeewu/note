@@ -99,11 +99,21 @@ class LanceDBService:
             raise RuntimeError("MinIO-only mode enabled: set Config.USE_MINIO = True")
 
         lancedb_path = f"s3://{Config.MINIO_BUCKET}/{Config.MINIO_PATH}"
+        storage_options = {
+            "aws_access_key_id": Config.MINIO_ACCESS_KEY,
+            "aws_secret_access_key": Config.MINIO_SECRET_KEY,
+            "aws_endpoint": Config.MINIO_ENDPOINT,
+            "region": Config.MINIO_REGION,
+            # MinIO uses path-style URLs, not virtual-hosted-style
+            "virtual_hosted_style_request": "false",
+            # Allow plain HTTP (set to "false" if MinIO is behind TLS)
+            "allow_http": "true",
+        }
         self._set_storage_env(True)
         print(f"Connecting to LanceDB (MinIO/S3) at: {lancedb_path}")
 
         try:
-            self.db = lancedb.connect(lancedb_path)
+            self.db = lancedb.connect(lancedb_path, storage_options=storage_options)
             print(f"Connected to LanceDB via MinIO successfully: {lancedb_path}")
             self._ensure_table_exists()
             return self.db

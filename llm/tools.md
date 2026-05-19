@@ -1,7 +1,7 @@
 # 简介
 一些大模型相关的工具链.
 
-## gradio
+## Gradio
 gradio 是一个开源的 python 库, 用于快速构建机器学习模型、API 或任意 Python 函数的交互式 Web 界面. 它旨在让开发者无需任何前端开发经验(无需写 HTML、CSS 或 JS), 即可通过几行代码实现模型的前端界面生成、测试、展示和部署.
 
 特性:
@@ -61,3 +61,29 @@ Webviz 是一个基于 Web 的开源可视化工具, 主要由 Cruise 公司开�
 - Alpaca: 适用于指令微调, 结构特点是 instruction、input、output, 让模型学会听懂人话.
 - ShareGPT: 适用于多轮对话, 包含 conversations 列表, 包含 human 和 gpt 的交替对话.
 - LMDB + JSONL: 适用于大模型训练, 将图片打包成 tar 包, 元数据(Caption 或 QA 对) 存为 jsonl.
+
+## Onyx 
+onyx 是一款开源可自托管的开源企业级 AI 聊天平台, 专门用于构建基于内部数据的知识库和搜索系统. 它有以下核心特性:
+- 企业级知识库连接器(40+ Data Sources): 支持超过 50 数据源, 包括 slack、github、notion 等分散的文件.
+- 深度学习与智能检索(Agentic RAG): 与传统的向量数据库不一样, onyx 使用基于代理的检索增强生成, 根据用户问题自主决定使用的语义检索、关键词匹配或知识图谱, 确保答案的准确性.
+- 私有化部署与高隐私: 支持私有化部署, 数据安全性高.
+- 全模型支持: 包括 OpenAI、Anthropic 等云端模型, Ollama、LM Studio 等本地模型.
+
+应用场景如下:
+- 企业内网知识助手: 员工可以通过对话方式在数万份文档(PDF、DOCX、Markdown) 中定位信息, 不需要记忆标题.
+- 技术文档与代码查询: 可以对接 github、confluence, 快速检索技术文档、代码仓库.
+- 智能化研究助手: 利用 Deep Research 功能, 自动化进行多步搜索、信息集成和深度分析.
+
+相比传统知识库的核心优势有如下:
+- 接入难度低: 50+ 连接器, 直接接入各类知识.
+- 搜索精度: 传统知识库主要采用单一向量检索, 容易出错. onyx 采用混合检索、知识图谱和 Agentic RAG.
+- 隐私保护: 离线私有化部署, 数据安全.
+- 多模态: 支持文档、图像、代码解释器的多模态数据
+
+### 组件分析
+Onyx Standard 模式的组件有如下:
+- index 索引服务: 使用 vespaengine/vespa, 是 Onyx 系统的语义大脑和核心记忆库. 上传文档的时候, 会将文本切块, 通过模型服务器转化成向, 它会通过 ANN 技术快速找到意思相近但字面不同的内容. 它还支持混合检索, 将向量检索、关键词搜索结合起来. vespa 会将处理好的文本块、向量数据、倒排索引持久化存储到磁盘上.
+- 代码解释与执行: 提供了 onyxdotapp/code-interprete, LLM 不擅长的数学计算、数据分析、图表绘制或逻辑推演任务, 会使用这个服务, 通过 Python 运行后获取结果.
+- 搜索服务: 使用 opensearchproject/opensearch 提供搜索、分析. onyx 使用它快速检索关键词, 向量不仅存储在 vespa, 也会将原始文件、标题、元数据存入 OpenSearch. 提问的时候, OpenSearch 可以毫秒级匹配. OpenSearch 提供的还是传统高效的倒排索引搜索能力.
+- 模型服务: onyxdotapp/onyx-model-server 提供模型索引、推理, 它会加载嵌入模型或大语言模型. 文档基于这个组件的向量模型如 nomic-embed-text 进行向量化交给 vespa 服务, 由 indexing_model_server 提供. inference_model_server 服务则负责加载大语言模型 LLM 进行实时对话, 将 vespa 检索的文档片段结合问题生成回答.
+- Web 交互: onyxdotapp/onyx-web-server 提供类 ChatGPT 的交互界面, 主要是 Next.js + React + TypeScript 编写的前端应用. 它调用后台 onyx-backend 的 API, 通过 WebSocket 长连接完成 Chat 实时对话. onyx-backend 提供 api_server 和 background 两个服务, 其中 api_server 提供 restful api, 实时处理前端界面的请求. background 核心任务是在后台默默处理耗时多的工作, 不阻塞前端交互, 比如定时处理 onyx 连接的外部系统 slack、github 等, 将文档(PDF、Word 等)进行文本提取、切片、调用 embedding 模型生成向量, 存入向量数据库建立索引等耗时多的工作..
